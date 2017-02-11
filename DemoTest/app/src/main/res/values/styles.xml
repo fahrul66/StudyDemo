@@ -1,0 +1,21 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:actionOverflowButtonStyle">@style/overflowButton</item>
+        <!--<item name="android:listDivider">@drawable/list_divider_shape</item>-->
+    </style>
+    <!--toolbar的overflowButton的样式-->
+    <style name="overflowButton" parent="Theme.AppCompat">
+        <item name="android:src">@mipmap/overflow</item>
+    </style>
+    <!--collapsingToolbar的字体-->
+    <style name="ExpandTextfont">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+</resources>

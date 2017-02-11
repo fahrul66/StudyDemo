@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@mipmap/tm"
+        android:elevation="10dp"
+        android:layout_gravity="center"
+        android:layout_margin="25dp"
+         />
+<android.support.design.widget.TextInputLayout
+    app:counterEnabled="true"
+    app:counterOverflowTextAppearance="@style/TextAppearance.AppCompat.Headline"
+    app:counterMaxLength="5"
+    app:hintAnimationEnabled="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="我是控件"
+        />
+</android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        app:errorTextAppearance="@style/TextAppearance.AppCompat.Large"
+        app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
+        app:passwordToggleEnabled="true"
+        app:errorEnabled="true"
+        app:counterEnabled="true"
+        app:counterOverflowTextAppearance="@style/TextAppearance.AppCompat.Headline"
+        app:counterMaxLength="5"
+        app:hintAnimationEnabled="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="我是控件qq"
+            />
+    </android.support.design.widget.TextInputLayout>
+</LinearLayout>

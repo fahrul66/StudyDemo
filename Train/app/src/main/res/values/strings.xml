@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Train</string>
+    <string name="user">账号</string>
+    <string name="password">密码</string>
+    <string name="btn_login">登录</string>
+    <string name="register">Register an account?</string>
+    <string name="name">姓名</string>
+    <string name="sex">性别：</string>
+    <string name="college">学院：</string>
+    <string name="profession">专业：</string>
+    <string name="date">入学日期：</string>
+    <string name="btn_register">注册</string>
+    <string name="btn_display">确定</string>
+    <string name="edit_display">请输入要查的车次</string>
+    <string-array name="college">
+        <item>学院：</item>
+    </string-array>
+    <string-array name="profession">
+        <item>专业：</item>
+    </string-array>
+    <string-array name="date">
+        <item>入学日期：</item>
+    </string-array>
+</resources>

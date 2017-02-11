@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item
+        android:id="@+id/start"
+        android:title="开始记录"
+        app:showAsAction="ifRoom|withText"
+        android:orderInCategory="100"
+        />
+    <item
+        android:id="@+id/menu3"
+        android:title="关闭"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/menu4"
+        android:title="打开"
+        app:showAsAction="ifRoom"
+        />
+</menu>

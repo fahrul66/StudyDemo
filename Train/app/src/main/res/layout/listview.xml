@@ -1,0 +1,23 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+    <ImageView
+        android:id="@+id/im"
+        android:src="@mipmap/ark_icon"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:scaleType="center"
+        />
+<TextView 
+    android:id="@+id/textview1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="TextView"
+    style="@style/MyText"
+    android:layout_toRightOf="@id/im"
+    android:layout_alignBottom="@id/im"
+    />
+    
+
+</RelativeLayout>

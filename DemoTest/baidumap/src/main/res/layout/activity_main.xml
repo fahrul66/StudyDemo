@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/activity_main"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.wulei.baidumap.MainActivity">
+   <android.support.v7.widget.Toolbar
+       android:id="@+id/toolbar"
+       app:title="百度地图Demo"
+       app:titleTextColor="#ffffff"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:minHeight="?actionBarSize"
+       android:fitsSystemWindows="true"
+       android:background="@color/colorAccent"
+       app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+       app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+       />
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true" />
+</LinearLayout>
