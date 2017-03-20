@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#b1001223"
+    android:radius="@dimen/activity_horizontal_margin"
+>
+    <item android:width="100dp"
+        android:height="100dp"
+        android:drawable="@drawable/ic_thumb_up_black_24dp"/>
+</ripple>

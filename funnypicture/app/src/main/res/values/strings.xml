@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">funny picture</string>
+
+    <string name="tab_item1">笑话</string>
+    <string name="tab_item2">趣图</string>
+    <string name="footerView_text">正在加载...</string>
+
+
+</resources>

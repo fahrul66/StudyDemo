@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?><!--抽屉NavigationView的包裹类DrawerLayout必须是根布局-->
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--android的app命名空间是support包中的自定义属性，
+        如果使用的是support包的控件有些属性只有app的属性有效-->
+        <!--appbarLayout 是垂直排布的LinearLayout-->
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--<android.support.design.widget.CollapsingToolbarLayout-->
+            <!--android:id="@+id/collapsingToolbarLayout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--app:contentScrim="#bbbfff"-->
+            <!--app:layout_scrollFlags="scroll|exitUntilCollapsed"-->
+            <!--app:titleEnabled="true"-->
+            <!--app:title="CollapsingToolbar"-->
+            <!--app:expandedTitleTextAppearance="@style/ExpandTextfont"-->
+            <!--&gt;-->
+
+            <!--<ImageView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:minHeight="100dp"-->
+            <!--android:maxHeight="400dp"-->
+            <!--android:scaleType="fitXY"-->
+            <!--android:src="@mipmap/toolbar_icon"-->
+            <!--app:layout_collapseMode="parallax"-->
+            <!--app:layout_collapseParallaxMultiplier="0.7"-->
+            <!--/>-->
+            添加属性使toolbar可以滑动，enterAlways是向下滑动可见，
+            enterAlwaysCollapsed是消失后显示，如果设置了minHeight和enterAlways则上滑至最小高度显示
+            相反exitUtilCollapsed是显示后退出
+
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ff0bf3"
+                android:elevation="10dp"
+                android:fitsSystemWindows="true"
+                app:theme="@style/Base.ThemeOverlay.AppCompat.Dark"
+                android:minHeight="?actionBarSize"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:titleTextColor="#ffffff">
+
+                <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:text="自定义"-->
+                <!--android:textColor="#ffffff" />-->
+            </android.support.v7.widget.Toolbar>
+            <!--</android.support.design.widget.CollapsingToolbarLayout>-->
+        </android.support.design.widget.AppBarLayout>
+
+        <!--不设置behavior，由于coordinatorLayout是FrameLayout,会被覆盖，设置了behavior则不会被覆盖-->
+        <!--<ListView-->
+        <!--android:id="@+id/lv"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+        <!--/>-->
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="8dp"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="@string/nestedScrollView1"
+                android:textSize="20sp" />
+        </android.support.v4.widget.NestedScrollView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:clickable="true"
+            android:src="@android:drawable/ic_input_add"
+            app:fabSize="normal"
+            app:layout_anchor="@id/nestedScrollView"
+            app:layout_anchorGravity="bottom|right|end" />
+    </android.support.design.widget.CoordinatorLayout>
+<!--navigationView用来实现抽屉式操作，可以使用menu和drawerlayout一起使用-->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/navigation_header"
+        app:menu="@menu/menu_drawer"
+        app:itemIconTint="#ffbbcf"
+        app:itemTextColor="#ff12ff"
+        />
+
+</android.support.v4.widget.DrawerLayout>
+

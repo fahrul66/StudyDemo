@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_recycler_card_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.wulei.demotest.RecyclerCardView">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarThree"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:title="大帅哥"
+            app:collapsedTitleTextAppearance="@style/ExpandTextfont"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginStart="48dp"
+            app:expandedTitleMarginEnd="64dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/my"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.9"/>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_RecyclerView"
+                android:fitsSystemWindows="true"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:navigationIcon="@android:drawable/ic_input_delete"
+                app:layout_scrollFlags="scroll|enterAlways" />
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRLRecycleCV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!--<android.support.v4.widget.NestedScrollView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:orientation="vertical">-->
+
+                <!--&lt;!&ndash;cardView设置前景foreground并且设置clickable为true，有点击效果-->
+                <!--而设置background无点击效果&ndash;&gt;-->
+                <!--<android.support.v7.widget.CardView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="100dp"-->
+                    <!--android:layout_margin="20dp"-->
+                    <!--android:clickable="true"-->
+                    <!--android:foreground="?android:attr/selectableItemBackground"-->
+                    <!--android:stateListAnimator="@animator/cardview_statelistanimator"-->
+                    <!--app:cardCornerRadius="10dp"-->
+                    <!--app:cardElevation="3dp">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:text="我是一个CardView"-->
+                        <!--android:textColor="@color/colorPrimary"-->
+                        <!--android:textSize="20dp" />-->
+                <!--</android.support.v7.widget.CardView>-->
+
+                <!--<android.support.v7.widget.CardView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="100dp"-->
+                    <!--android:layout_margin="20dp"-->
+                    <!--android:clickable="true"-->
+                    <!--android:foreground="?android:attr/selectableItemBackground"-->
+                    <!--android:stateListAnimator="@animator/cardview_statelistanimator"-->
+                    <!--app:cardCornerRadius="10dp"-->
+                    <!--app:cardElevation="3dp">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:text="CardView1"-->
+                        <!--android:textColor="@color/colorPrimaryDark"-->
+                        <!--android:textSize="20dp" />-->
+                <!--</android.support.v7.widget.CardView>-->
+
+                <!--<android.support.v7.widget.CardView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="100dp"-->
+                    <!--android:layout_margin="20dp"-->
+                    <!--android:clickable="true"-->
+                    <!--android:foreground="?android:attr/selectableItemBackground"-->
+                    <!--android:stateListAnimator="@animator/cardview_statelistanimator"-->
+                    <!--app:cardCornerRadius="10dp"-->
+                    <!--app:cardElevation="3dp">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:text="CardView2"-->
+                        <!--android:textColor="@color/colorAccent"-->
+                        <!--android:textSize="20dp" />-->
+                <!--</android.support.v7.widget.CardView>-->
+                <!--&lt;!&ndash;<android.support.v7.widget.RecyclerView&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/recyclerView"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="wrap_content" />&ndash;&gt;-->
+            <!--</LinearLayout>-->
+        <!--</android.support.v4.widget.NestedScrollView>-->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@android:drawable/ic_media_ff"
+        app:fabSize="auto"
+        app:layout_anchor="@id/appBarThree"
+        app:layout_anchorGravity="bottom|right|end" />
+</android.support.design.widget.CoordinatorLayout>

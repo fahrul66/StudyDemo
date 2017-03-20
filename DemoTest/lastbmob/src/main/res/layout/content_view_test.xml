@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_view_test"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.wulei.lastbmob.ViewTest"
+    tools:showIn="@layout/activity_view_test">
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCt"
+        android:completionThreshold="1"
+        android:cursorVisible="false"
+        android:completionHint="noting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextClock
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/autoCt"
+        android:textColor="#ffbb"
+        android:id="@+id/textClock2"
+        android:textStyle="normal|bold|italic"
+        android:textAllCaps="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/button2"
+        android:text="测试"
+        android:layout_below="@+id/checkedTextView2"
+        android:layout_centerHorizontal="true" />
+
+    <CheckedTextView
+        android:text="CheckedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+        android:checked="true"
+        android:filterTouchesWhenObscured="true"
+        android:focusableInTouchMode="true"
+        android:id="@+id/checkedTextView2"
+        tools:text="checkTestView"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/textClock2"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

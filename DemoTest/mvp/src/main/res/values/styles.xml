@@ -1,0 +1,16 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--普通的颜色-->
+        <item name="colorButtonNormal">#673AB7</item>
+        <!--点击后的水波纹的颜色-->
+        <item name="colorControlHighlight">#CDDC39</item>
+        <item name="colorControlActivated">#67afff</item>
+    </style>
+
+</resources>
