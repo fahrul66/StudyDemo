@@ -1,11 +1,19 @@
 <resources>
     <string name="app_name">Runner</string>
 
-    <string name="text_home">Home Fragment</string>
-    <string name="text_notifications">Notifications Fragment</string>
-    <string name="text_search">Search Fragment</string>
+    <!--navigationView menu-->
+    <string name="menu_run">运动主页</string>
+    <string name="menu_goal">每日目标</string>
+    <string name="menu_record">运动记录</string>
+    <string name="menu_news">运动资讯</string>
+    <string name="menu_rank">排行榜</string>
+    <string name="menu_setting">个人设置</string>
+    <string name="menu_remind">提醒功能</string>
+    <string name="menu_share">分享</string>
+    <string name="menu_timing">计时功能</string>
+    <string name="menu_sub_title">其他</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_search">Search</string>
-    <string name="menu_notifications">Notifications</string>
+    <!--navigation Header-->
+    <string name="navi_header_tv">未登录</string>
+
 </resources>

@@ -14,10 +14,13 @@ import cn.bmob.v3.Bmob;
 
 public class App extends Application {
 
+    private static App sInstance;
+
     @Override
     public void onCreate() {
         super.onCreate();
-
+        //获得系统上下文
+        sInstance = this;
         //初始化操作
         initBaiduMap();
         initBmob();
@@ -35,5 +38,9 @@ public class App extends Application {
      */
     private void initBaiduMap() {
         SDKInitializer.initialize(this);
+    }
+
+    public static App getInstance() {
+        return sInstance;
     }
 }

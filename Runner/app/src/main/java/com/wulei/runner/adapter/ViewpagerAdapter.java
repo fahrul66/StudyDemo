@@ -3,9 +3,7 @@ package com.wulei.runner.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
 
-import com.wulei.runner.fragment.MenuFragment;
 
 import java.util.List;
 
@@ -28,11 +26,12 @@ public class ViewpagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (list.isEmpty() && list == null) {
-             return new MenuFragment();
+//             return new MenuFragment();
         }else {
 
             return list.get(position);
         }
+        return null;
     }
 
     @Override

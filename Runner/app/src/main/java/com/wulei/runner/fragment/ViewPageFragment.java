@@ -28,9 +28,6 @@ public class ViewPageFragment extends Fragment {
 
     List<Fragment> list = new ArrayList<>();
 
-    MenuFragment menuOne = new MenuFragment();
-
-    MenuFragment menuTwo = new MenuFragment();
 
     @BindView(R.id.viewPage) ViewPager viewPager;
 
@@ -56,22 +53,22 @@ public class ViewPageFragment extends Fragment {
         /**
          * 传递参数
          */
-        Bundle bundle = new Bundle();
-        bundle.putInt("PARA",1);
-        menuOne.setArguments(bundle);
-        bundle.clear();
-
-        bundle.putInt("PARA",2);
-        menuTwo.setArguments(bundle);
-        bundle.clear();
-
-        setText(menuOne);
-
-        setText(menuTwo);
-
-        //fragment集合
-        list.add(menuOne);
-        list.add(menuTwo);
+//        Bundle bundle = new Bundle();
+//        bundle.putInt("PARA",1);
+//        menuOne.setArguments(bundle);
+//        bundle.clear();
+//
+//        bundle.putInt("PARA",2);
+//        menuTwo.setArguments(bundle);
+//        bundle.clear();
+//
+//        setText(menuOne);
+//
+//        setText(menuTwo);
+//
+//        //fragment集合
+//        list.add(menuOne);
+//        list.add(menuTwo);
 
         viewPager.setAdapter(new ViewpagerAdapter(getChildFragmentManager(),list));
 
@@ -83,12 +80,12 @@ public class ViewPageFragment extends Fragment {
      * fragment之间改变数据
      * @param fragment
      */
-    private void setText(Fragment fragment) {
-        TextView textView = (TextView) fragment.getView().findViewById(R.id.fragment_text);
-        if (textView.getText().equals("menuOne")) {
-
-            textView.setText("menuTwo");
-        }
-        textView.setText("menuOne");
-    }
+//    private void setText(Fragment fragment) {
+//        TextView textView = (TextView) fragment.getView().findViewById(R.id.fragment_text);
+//        if (textView.getText().equals("menuOne")) {
+//
+//            textView.setText("menuTwo");
+//        }
+//        textView.setText("menuOne");
+//    }
 }

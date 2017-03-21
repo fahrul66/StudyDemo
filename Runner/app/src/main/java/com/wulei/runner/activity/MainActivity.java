@@ -2,30 +2,31 @@ package com.wulei.runner.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 
 import com.wulei.runner.R;
 import com.wulei.runner.activity.base.BaseActivity;
-import com.wulei.runner.fragment.MenuFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    @BindView(R.id.bottomNav)
-    BottomNavigationView bottomNavigationView;
+    //抽屉
+    @BindView(R.id.drawer)
+    DrawerLayout mDrawerLayout;
+    //抽屉view
+    @BindView(R.id.navigation)
+    NavigationView mNavigationView;
 
     /**
      * fragment实例
      */
-    Fragment fragmentMain = new MenuFragment();
-    Fragment fragmentSeach = new MenuFragment();
-    Fragment fragmentNotification = new MenuFragment();
 
 
 
@@ -42,46 +43,56 @@ public class MainActivity extends BaseActivity {
         /**
          * 传递参数
          */
-        Bundle bundle = new Bundle();
-        bundle.putInt("PARA",1);
-        fragmentMain.setArguments(bundle);
-        bundle.clear();
 
-        bundle.putInt("PARA",2);
-        fragmentSeach.setArguments(bundle);
-        bundle.clear();
 
-        bundle.putInt("PARA",3);
-        fragmentNotification.setArguments(bundle);
-        bundle.clear();
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.menu_home:
-                        clickFragmentManager(fragmentMain);
-                        break;
-                    case R.id.menu_notifications:
-                        clickFragmentManager(fragmentSeach);
-                        break;
-                    case R.id.menu_search:
-                        clickFragmentManager(fragmentNotification);
-                        break;
-                }
-                return true;
-            }
-        });
+        /**
+         * 注册监听器
+         */
+        mNavigationView.setNavigationItemSelectedListener(this);
 
     }
 
     /**
      * 点击事件的管理器
+     *
      * @param fragment
      */
     private void clickFragmentManager(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction().replace(R.id.fragment_main,fragment);
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction().replace(R.id.content, fragment);
         fragmentTransaction.commit();
+    }
+
+    /**
+     * 抽屉的点击事件，fragment的切换
+     *
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.run:
+                break;
+            case R.id.goal:
+                break;
+            case R.id.record:
+                break;
+            case R.id.news:
+                break;
+            case R.id.rank:
+                break;
+            case R.id.setting:
+                break;
+            case R.id.remind:
+                break;
+            case R.id.shard:
+                break;
+            case R.id.timing:
+                break;
+        }
+        //关闭抽屉
+        mDrawerLayout.closeDrawers();
+        return false;
     }
 }
