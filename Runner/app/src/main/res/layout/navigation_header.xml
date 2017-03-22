@@ -2,25 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="192dp"
     android:background="@color/colorPrimary"
+    android:padding="16dp"
+    android:gravity="bottom"
     android:orientation="vertical">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_navigation_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="45dp"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="2dp"
+        app:civ_border_overlay="true"
+        android:layout_marginBottom="16dp"
         android:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/btn_navigation_header"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/navi_header_tv"
         android:background="?android:selectableItemBackground"
-        android:padding="18dp"
         android:textColor="@color/white"
         android:textSize="18sp" />
 </LinearLayout>
