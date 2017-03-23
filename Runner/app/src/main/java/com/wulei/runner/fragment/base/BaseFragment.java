@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,8 @@ import com.wulei.runner.app.App;
 public abstract class BaseFragment extends Fragment implements View.OnClickListener {
     protected App mApp;
     protected View mContentView;
-    protected BaseActivity mActivity;
+    protected Activity mActivity;
+    protected AppCompatActivity mAppCompatActivity;
 
     @Override
     public void onAttach(Context context) {
