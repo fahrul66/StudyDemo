@@ -11,6 +11,8 @@ import android.view.MenuItem;
 
 import com.wulei.runner.R;
 import com.wulei.runner.activity.base.BaseActivity;
+import com.wulei.runner.fragment.FragmentRun;
+import com.wulei.runner.utils.FragmentUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,6 +26,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @BindView(R.id.navigation)
     NavigationView mNavigationView;
 
+    //运动的fragment
+    FragmentRun mFragmentRun = (FragmentRun) FragmentUtils.newInstance(FragmentUtils.TAG_RUN);
     /**
      * fragment实例
      */
@@ -39,9 +43,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
          */
         ButterKnife.bind(this);
 
+
         /**
-         * 传递参数
+         * 初始化fragment
          */
+        FragmentUtils.add(this,mFragmentRun,FragmentUtils.TAG_RUN);
 
 
         /**

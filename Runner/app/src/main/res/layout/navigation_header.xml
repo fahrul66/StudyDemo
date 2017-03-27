@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:text="@string/navi_header_tv"
         android:background="?android:selectableItemBackground"
+        android:clickable="true"
         android:textColor="@color/white"
         android:textSize="18sp" />
 </LinearLayout>

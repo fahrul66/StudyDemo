@@ -32,6 +32,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         mActivity = (BaseActivity) activity;
+        mAppCompatActivity = (AppCompatActivity) activity;
     }
 
     @Override
@@ -47,32 +48,14 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // 避免多次从xml中加载布局文件
-        if (mContentView == null) {
-            initView(savedInstanceState);
-            setListener();
-            processLogic(savedInstanceState);
-        } else {
-            ViewGroup parent = (ViewGroup) mContentView.getParent();
-            if (parent != null) {
-                parent.removeView(mContentView);
-            }
-        }
+        initView(savedInstanceState);
+        setListener();
+        processLogic(savedInstanceState);
         return mContentView;
     }
 
     protected void setContentView(@LayoutRes int layoutResID) {
         mContentView = LayoutInflater.from(mApp).inflate(layoutResID, null);
-    }
-
-    /**
-     * 查找View
-     *
-     * @param id   控件的id
-     * @param <VT> View类型
-     * @return
-     */
-    protected <VT extends View> VT getViewById(@IdRes int id) {
-        return (VT) mContentView.findViewById(id);
     }
 
     /**

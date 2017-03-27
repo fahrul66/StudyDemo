@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.wulei.runner.customView.ArcProgressBar
+        android:id="@+id/arcProgressbar_run"
+        app:currProgress="28"
+        app:angle="270"
+        app:maxProgress="100"
+        app:topText="今日已跑步数"
+        app:bottomText="目标：5000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
