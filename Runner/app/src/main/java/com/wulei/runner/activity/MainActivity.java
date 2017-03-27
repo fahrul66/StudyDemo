@@ -29,7 +29,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
      */
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,14 +72,19 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.run:
+                mNavigationView.setCheckedItem(R.id.run);
                 break;
             case R.id.goal:
+                mNavigationView.setCheckedItem(R.id.goal);
                 break;
             case R.id.record:
+                mNavigationView.setCheckedItem(R.id.record);
                 break;
             case R.id.news:
+                mNavigationView.setCheckedItem(R.id.news);
                 break;
             case R.id.rank:
+                mNavigationView.setCheckedItem(R.id.rank);
                 break;
             case R.id.setting:
                 break;

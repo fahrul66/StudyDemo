@@ -1,0 +1,7 @@
+#Wed Feb 15 14:12:44 CST 2017
+base.0=D\:\\ASWorkSpace\\LruCacheDemo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_59fe9d7444a184886927f64b9f529cfff4afd1e8
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=D\:\\ASWorkSpace\\LruCacheDemo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_46ef68414c2c9c9609c6b49aa6aa3fe47994d731\\classes.dex
+base.1=D\:\\ASWorkSpace\\LruCacheDemo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_46ef68414c2c9c9609c6b49aa6aa3fe47994d731
+file.0=D\:\\ASWorkSpace\\LruCacheDemo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_59fe9d7444a184886927f64b9f529cfff4afd1e8\\classes.dex

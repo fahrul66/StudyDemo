@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.2.1_34056150f297d3fd69ec96164c7da37949d43775\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-24.2.1_59dcdf301b688c6c5933c82b7745625d72a4fce1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.0\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_4d11fbaff5680592ac1f3588669e25be84bc974e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-24.2.1_e8534bae63ca36296bda812c07b27a4e81d6d63c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_bfbfbc8e7e0a1a1b45c740332dc7073131dd5c7b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_ac790d1662270c4f93ae72fd5b53d2d8eac3949a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="eb94fb290d6ec8aa95942e42363e0294d64f4157">
+        <dex dex="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_59fe9d7444a184886927f64b9f529cfff4afd1e8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.2.1_9340397911f0b387a2d40b5be04b5cbc57999f94\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\wulei\.gradle\caches\modules-2\files-2.1\com.jakewharton\disklrucache\2.0.2\93b399470e72c0bc8cb52379943b63c9aa586cd8\disklrucache-2.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="93b399470e72c0bc8cb52379943b63c9aa586cd8">
+        <dex dex="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\transforms\dex\debug\folders\1000\10\disklrucache-2.0.2_d687bacaf638417f9b5de41c6e09ff907e076e8b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-24.2.1_7e7d1dabfe5e56ee468b0a54f81c91b4eb1640a7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="26674000177e45447a0326a6ad84612761199a13">
+        <dex dex="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.0.0_f574d9270faf4f98957c54a8b5bd7d5d660836c3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.2.1_30e021fd1a2b02fda39ab25a6f518e067f47e229\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5e497d60f0cb6ce87c458ac5420a46d0fed49bd0">
+        <dex dex="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-25.0.0_8c6fe49293805ecb4d027716d4525ca252b8da98\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.0\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f2e3b9bc1ec25f652e8007ce7774c991e38f6a00">
+        <dex dex="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_6fc6d8025e50d747c33dce1cc4c381324996439f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="15cef7527177afe7177f26e414f2407044026de1">
+        <dex dex="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_46ef68414c2c9c9609c6b49aa6aa3fe47994d731\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="75b1f366ff0bbc78f8b1f7cf0dc82e7c53afef6a">
+        <dex dex="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.0.0_3e4009f2c379e846c0bf647a80564394c5993b8a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_66d4328a65363ae1a3b03ae0bbb2d8b1b3265652\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.1_ec8a2c7718f17de454e0912a5848ac380b44ae4d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\Android-SDK-r24.3.2\extras\android\m2repository\com\android\support\support-annotations\25.0.0\support-annotations-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a22d2cc94da87b254451fa8ed28afc30b4653773">
+        <dex dex="D:\ASWorkSpace\LruCacheDemo\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.0.0_978888a6d299779b5338e6d7064f0b5c7826300f\classes.dex" />
+    </item>
+
+</items>
