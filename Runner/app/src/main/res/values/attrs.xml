@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="arcProgress">
-        <attr name="topText" format="string|reference"/>
-        <attr name="bottomText" format="string|reference"/>
-        <attr name="maxProgress" format="integer"/>
-        <attr name="currProgress" format="integer"/>
-        <attr name="angle" format="integer"/>
+        <attr name="topText" format="string|reference" />
+        <attr name="bottomText" format="string|reference" />
+        <attr name="maxProgress" format="integer" />
+        <attr name="currProgress" format="integer" />
+        <attr name="angle" format="integer" />
+        <attr name="midTextColor" format="string|color" />
+        <attr name="topTextColor" format="string|color" />
+        <attr name="arcBgColor" format="string|color" />
+        <!--背景颜色，需要时渲染器关闭-->
+        <attr name="arcColor" format="string|color" />
+        <attr name="closable" format="boolean" />
     </declare-styleable>
 </resources>

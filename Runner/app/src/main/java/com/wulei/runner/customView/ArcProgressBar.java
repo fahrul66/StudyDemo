@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.SweepGradient;
 import android.graphics.Typeface;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -27,26 +28,33 @@ public class ArcProgressBar extends View {
     private int mWidth;
     private int mHeight;
     private RectF mRectF;
-    private int strokeWidth = 30;
+    private int strokeWidth = 50;
     //角度
     private float angle = 0f;
     private float angleSum;
     private float maxValue;
     private int progress;
     //text size
-    private int textSize = 200;
+    private int textSize = 180;
+    private int smallTextSize = 40;
     //text
     private String topText = "截止当前已走";
     private String bottomText = "步";
-
     //所有角度两种270,360
     private float angleMode;
+    //增大的系数
+    private float multiNum;
 
-    //背景颜色
-    private String firstArcColor = "#D3D3D3";
+    //颜色属性值
+    private boolean isClosedShader;
+    private String arcColor;
+    private String bgArcColor;
+    private String midTextColor;
+    private String topTextColor;
+
     //渐变色
-    private int[] colors = {Color.parseColor("#FF0000"), Color.parseColor("#FFFF00"), Color.parseColor("#00FF00")
-            };
+    private int[] colors = {Color.parseColor("#FF0000"), Color.parseColor("#FFFF00"), Color.parseColor("#00FF00"),
+            Color.parseColor("#0000FF"), Color.parseColor("#00FFFF"), Color.parseColor("#FFFFFF")};
 
     public ArcProgressBar(Context context) {
         this(context, null);
@@ -55,6 +63,21 @@ public class ArcProgressBar extends View {
     public ArcProgressBar(Context context, AttributeSet attrs) {
         super(context, attrs);
 
+        //初始化xml属性值
+        xmlAttrs(context, attrs);
+
+        //初始化数据
+        init();
+
+    }
+
+    /**
+     * 从xml中解析自定义属性
+     *
+     * @param context 上下文
+     * @param attrs   属性值
+     */
+    private void xmlAttrs(Context context, AttributeSet attrs) {
         if (attrs != null) {
 
             TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.arcProgress);
@@ -63,13 +86,16 @@ public class ArcProgressBar extends View {
             maxValue = ta.getInteger(R.styleable.arcProgress_maxProgress, 100);
             progress = ta.getInteger(R.styleable.arcProgress_currProgress, 0);
             angleMode = ta.getInteger(R.styleable.arcProgress_angle, 360);
+            //color
+            bgArcColor = ta.getString(R.styleable.arcProgress_arcBgColor);
+            midTextColor = ta.getString(R.styleable.arcProgress_midTextColor);
+            topTextColor = ta.getString(R.styleable.arcProgress_topTextColor);
+            //进度的颜色，需关闭渲染器
+            arcColor = ta.getString(R.styleable.arcProgress_arcColor);
+            isClosedShader = ta.getBoolean(R.styleable.arcProgress_closable, false);
             //释放资源
             ta.recycle();
         }
-
-        //初始化数据
-        init();
-
     }
 
 
@@ -78,25 +104,71 @@ public class ArcProgressBar extends View {
     }
 
 
+    /**
+     * 数据初始化
+     */
     private void init() {
-        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mPaint.setColor(Color.parseColor(firstArcColor));
-        mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(strokeWidth);
+        /**
+         * 颜色值初始化
+         */
+        if (TextUtils.isEmpty(bgArcColor)) {
+            bgArcColor = "#D3D3D3";
+        }
+        if (TextUtils.isEmpty(midTextColor)) {
+            midTextColor = "#000000";
+        }
+        if (TextUtils.isEmpty(topTextColor)) {
+            topTextColor = "#000000";
+        }
+        if (TextUtils.isEmpty(arcColor)) {
 
+            //默认颜色为系统的颜色
+            int color = getResources().getColor(R.color.colorAccent);
+            arcColor = "#" + Integer.toHexString(color);
+        }
 
         /**
-         * 字体
+         * 背景arc
+         */
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaint.setColor(Color.parseColor(bgArcColor));
+        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setStrokeWidth(strokeWidth);
+        mPaint.setStrokeJoin(Paint.Join.ROUND);
+        mPaint.setStrokeCap(Paint.Cap.ROUND);
+
+        /**
+         * 进度arc
+         */
+        p = new Paint(Paint.ANTI_ALIAS_FLAG);
+        p.setStyle(Paint.Style.STROKE);
+        p.setStrokeWidth(strokeWidth);
+        p.setStrokeJoin(Paint.Join.ROUND);
+        p.setStrokeCap(Paint.Cap.ROUND);
+
+        //颜色值设置
+        if (!isClosedShader) {
+            SweepGradient s = new SweepGradient(0, 0, colors, null);
+            p.setShader(s);
+        } else {
+            p.setColor(Color.parseColor(arcColor));
+        }
+
+        /**
+         * 计数字体
          */
         mPaintText = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mPaintText.setColor(Color.BLACK);
+        mPaintText.setColor(Color.parseColor(midTextColor));
         mPaintText.setTextSize(textSize);
         mPaintText.setTextAlign(Paint.Align.CENTER);
         mPaintText.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
 
+        /**
+         * 小字体
+         */
         mPaintSmallTv = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mPaintSmallTv.setColor(Color.BLACK);
-        mPaintSmallTv.setTextSize(40);
+        mPaintSmallTv.setColor(Color.parseColor(topTextColor));
+        mPaintSmallTv.setTextSize(smallTextSize);
         mPaintSmallTv.setTextAlign(Paint.Align.CENTER);
         mPaintSmallTv.setTypeface(Typeface.DEFAULT);
 
@@ -105,6 +177,8 @@ public class ArcProgressBar extends View {
          * xml设置了progress后，代码中的初始化
          */
         angle = (angleMode / maxValue) * progress;
+
+
     }
 
     @Override
@@ -127,7 +201,25 @@ public class ArcProgressBar extends View {
             mHeight = mWidth = dp2px(200);
         }
 
+        //设置测量的尺寸
         setMeasuredDimension(mWidth, mHeight);
+
+        /**
+         * 默认的尺寸为200*200dp,故尺寸增大必然给字体也要曾大，同比例增加。
+         * 增加倍数
+         */
+        multiNum = px2dp(mWidth) / 200.0f;
+        //字体大小
+        textSize = (int) (multiNum * textSize);
+        mPaintText.setTextSize(textSize);
+        //上下字体
+        smallTextSize = (int) (multiNum * smallTextSize);
+        mPaintSmallTv.setTextSize(smallTextSize);
+        //arc的线宽
+        strokeWidth *= multiNum;
+        mPaint.setStrokeWidth(strokeWidth);
+        //第二层的线宽
+        p.setStrokeWidth(strokeWidth);
     }
 
     @Override
@@ -144,12 +236,6 @@ public class ArcProgressBar extends View {
         /**
          * 绘制上层的进度条
          */
-        p = new Paint(Paint.ANTI_ALIAS_FLAG);
-        p.setStyle(Paint.Style.STROKE);
-        p.setStrokeWidth(strokeWidth);
-        SweepGradient s = new SweepGradient(0, 0, colors, null);
-        p.setShader(s);
-
 
         //画圆弧
         canvas.drawArc(mRectF, angleMode / 2, angle, false, p);
@@ -166,7 +252,7 @@ public class ArcProgressBar extends View {
         }
         if (bottomText != null) {
 
-            canvas.drawText(bottomText, length / 2, length / 2 + textSize - 50, mPaintSmallTv);
+            canvas.drawText(bottomText, length / 2, length / 2 + textSize - 40 * multiNum, mPaintSmallTv);
         }
 
         /**
@@ -198,10 +284,13 @@ public class ArcProgressBar extends View {
      * 清除所有数据
      */
     public void clear() {
+        //数据置空
         progress = 0;
         angleSum = 0;
         angle = 0;
 
+        //重新绘制
+        invalidate();
     }
 
     /**
@@ -244,6 +333,6 @@ public class ArcProgressBar extends View {
 
     private int px2dp(int px) {
         float dpi = getResources().getDisplayMetrics().density;
-        return (int) ((px / dpi) + 0.5);
+        return (int) ((px / dpi) + 0.5f);
     }
 }
