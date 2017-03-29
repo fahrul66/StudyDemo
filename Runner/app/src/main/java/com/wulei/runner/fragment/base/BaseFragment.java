@@ -52,7 +52,6 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         initView(savedInstanceState);
         setListener();
         processLogic(savedInstanceState);
-
         return  inflater.inflate(setContentView(), container, false);
     }
 
@@ -103,4 +102,6 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
      */
     public void onClick(View v) {
     }
+
+
 }
