@@ -1,6 +1,7 @@
 package com.wulei.runner.app;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.baidu.mapapi.SDKInitializer;
 import com.wulei.runner.utils.ConstantFactory;
@@ -14,16 +15,16 @@ import cn.bmob.v3.Bmob;
 
 public class App extends Application {
 
-    private static App sInstance;
+    public static  Context mAPPContext;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        //获得系统上下文
-        sInstance = this;
         //初始化操作
         initBaiduMap();
         initBmob();
+        //获得系统上下文
+        mAPPContext = this;
     }
 
     /**
@@ -40,7 +41,5 @@ public class App extends Application {
         SDKInitializer.initialize(this);
     }
 
-    public static App getInstance() {
-        return sInstance;
-    }
+
 }

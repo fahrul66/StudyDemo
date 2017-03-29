@@ -5,14 +5,41 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.wulei.runner.customView.ArcProgressBar
-        android:id="@+id/arcProgressbar_run"
-        app:currProgress="28"
-        app:angle="270"
-        app:maxProgress="100"
-        app:topText="今日已跑步数"
-        app:bottomText="目标：5000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_run"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?actionBarSize"
+        app:navigationIcon="@mipmap/ic_launcher"
+        app:popupTheme="@style/Theme.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:title="run">
+
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/activity_horizontal_margin">
+
+        <com.wulei.runner.customView.ArcProgressBar
+            android:id="@+id/arcProgressbar_run"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            app:angle="270"
+            app:bottomText="目标：5000"
+            app:currProgress="28"
+            app:maxProgress="100"
+            app:topText="今日已跑步数" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="run" />
+    </RelativeLayout>
 
 </LinearLayout>

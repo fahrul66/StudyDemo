@@ -5,28 +5,29 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.wulei.runner.R;
 import com.wulei.runner.activity.base.BaseActivity;
 import com.wulei.runner.app.App;
+
 
 /**
  * Created by wule on 2017/03/21.
  */
 public abstract class BaseFragment extends Fragment implements View.OnClickListener {
-    protected App mApp;
-    protected View mContentView;
     protected Activity mActivity;
     protected AppCompatActivity mAppCompatActivity;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mApp = App.getInstance();
     }
 
     public void onAttach(Activity activity) {
@@ -51,12 +52,20 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         initView(savedInstanceState);
         setListener();
         processLogic(savedInstanceState);
-        return mContentView;
+
+        return  inflater.inflate(setContentView(), container, false);
     }
 
-    protected void setContentView(@LayoutRes int layoutResID) {
-        mContentView = LayoutInflater.from(mApp).inflate(layoutResID, null);
-    }
+
+
+    /**
+     * 设置fragment的resID
+     * @return 返回布局的id
+     */
+    @NonNull
+    @LayoutRes
+    protected abstract int setContentView();
+
 
     /**
      * 初始化View控件
