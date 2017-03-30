@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.wulei.runner.R;
 import com.wulei.runner.activity.base.BaseActivity;
+import com.wulei.runner.fragment.FragmentMap;
 import com.wulei.runner.fragment.FragmentRun;
 
 /**
@@ -16,6 +17,7 @@ import com.wulei.runner.fragment.FragmentRun;
 
 public class FragmentUtils {
     public static final String TAG_RUN = "run";
+    public static final String TAG_MAP = "map";
     public static final String TAG_GOAL = "goal";
     public static final String TAG_RECORD = "record";
 
@@ -31,6 +33,9 @@ public class FragmentUtils {
         switch (tag) {
             case TAG_RUN:
                 fragment = new FragmentRun();
+                break;
+            case TAG_MAP:
+                fragment = new FragmentMap();
                 break;
         }
         return fragment;
@@ -54,12 +59,13 @@ public class FragmentUtils {
 
     /**
      * 替换fragment
-     * @param context 上下文
-     * @param fragment 要替换的fragment
-     * @param tag fragment的标识tag
+     *
+     * @param context        上下文
+     * @param fragment       要替换的fragment
+     * @param tag            fragment的标识tag
      * @param addToBackStack 是否添加到返回栈中
      */
-    public static void repalce(Context context,Fragment fragment,String tag,boolean addToBackStack) {
+    public static void repalce(Context context, Fragment fragment, String tag, boolean addToBackStack) {
         FragmentManager fm = ((BaseActivity) context).getSupportFragmentManager();
         Fragment target = fm.findFragmentByTag(tag);
         //判断fragmentManager对象池中是否有此tag,没有时才再次添加。
@@ -69,8 +75,8 @@ public class FragmentUtils {
             FragmentTransaction ft = fm.beginTransaction();
             ft.replace(R.id.content, fragment, tag);
             //添加到返回栈中
-            if (addToBackStack){
-               ft.addToBackStack(null);
+            if (addToBackStack) {
+                ft.addToBackStack(null);
             }
             ft.commit();
         }
@@ -78,27 +84,47 @@ public class FragmentUtils {
 
     /**
      * 隐藏此fragment
+     *
      * @param context
      * @param fragment
      */
-    public static void hide(Context context,Fragment fragment) {
+    public static void hide(Context context, Fragment fragment) {
+        //判断fragmentManager的对象池中的fragment，是否都隐藏
+
         FragmentManager fm = ((BaseActivity) context).getSupportFragmentManager();
-            //fragmentManager开启事务隐藏fragment
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.hide(fragment);
-            ft.commit();
+        //fragmentManager开启事务隐藏fragment
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.hide(fragment);
+        ft.commit();
     }
 
     /**
      * 显示此fragment
+     *
      * @param context
      * @param fragment
      */
-    public static void show(Context context,Fragment fragment) {
+    public static void show(Context context, Fragment fragment) {
         FragmentManager fm = ((BaseActivity) context).getSupportFragmentManager();
         //fragmentManager开启事务隐藏fragment
         FragmentTransaction ft = fm.beginTransaction();
         ft.show(fragment);
         ft.commit();
+    }
+
+    /**
+     * 清空回退栈
+     *
+     * @param context
+     */
+    public static void clearBackStack(Context context) {
+
+        FragmentManager fm = ((BaseActivity) context).getSupportFragmentManager();
+        int backStackCount = fm.getBackStackEntryCount();
+        if (backStackCount > 1) {
+            for (int i = 0; i < backStackCount; i++) {
+                fm.popBackStack();
+            }
+        }
     }
 }

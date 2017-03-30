@@ -49,6 +49,9 @@
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote">
         </service>
 
+        <!--网络改变时的广播接收器，检查网络是否可用-->
+        <receiver android:name="com.wulei.runner.borcastReceiver.NetworkReceiver"/>
+
     </application>
 
 </manifest>

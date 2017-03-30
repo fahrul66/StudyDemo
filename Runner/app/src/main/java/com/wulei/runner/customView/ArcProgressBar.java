@@ -172,7 +172,6 @@ public class ArcProgressBar extends View {
         mPaintSmallTv.setTextAlign(Paint.Align.CENTER);
         mPaintSmallTv.setTypeface(Typeface.DEFAULT);
 
-
         /**
          * xml设置了progress后，代码中的初始化
          */

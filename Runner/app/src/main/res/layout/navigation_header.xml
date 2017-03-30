@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="192dp"
-    android:background="@color/colorPrimary"
+    android:background="@color/primary"
     android:padding="16dp"
     android:gravity="bottom"
     android:orientation="vertical">
@@ -12,7 +12,7 @@
         android:id="@+id/img_navigation_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:civ_border_color="@color/white"
+        app:civ_border_color="@color/text_light"
         app:civ_border_width="2dp"
         app:civ_border_overlay="true"
         android:layout_marginBottom="16dp"

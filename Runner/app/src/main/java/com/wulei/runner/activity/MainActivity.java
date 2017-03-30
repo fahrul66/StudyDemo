@@ -1,5 +1,6 @@
 package com.wulei.runner.activity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -28,6 +29,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     //运动的fragment
     FragmentRun mFragmentRun = (FragmentRun) FragmentUtils.newInstance(FragmentUtils.TAG_RUN);
+
     /**
      * fragment实例
      */
@@ -36,20 +38,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        /**
-         * butterKnife三方库绑定
-         */
-        ButterKnife.bind(this);
-
-
-        /**
-         * 初始化fragment
-         */
-        FragmentUtils.add(this,mFragmentRun,FragmentUtils.TAG_RUN);
-
-
         /**
          * 注册监听器
          */
@@ -57,16 +45,17 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     }
 
-    /**
-     * 点击事件的管理器
-     *
-     * @param fragment
-     */
-    private void clickFragmentManager(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction().replace(R.id.content, fragment);
-        fragmentTransaction.commit();
+    @Override
+    public String getFragmentTag() {
+        return FragmentUtils.TAG_RUN;
     }
+
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
 
     /**
      * 抽屉的点击事件，fragment的切换
@@ -105,4 +94,5 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         mDrawerLayout.closeDrawers();
         return false;
     }
+
 }

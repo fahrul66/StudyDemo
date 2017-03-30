@@ -9,37 +9,45 @@
         android:id="@+id/toolbar_run"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@color/primary"
         android:minHeight="?actionBarSize"
-        app:navigationIcon="@mipmap/ic_launcher"
+        android:elevation="@dimen/appBar"
+        app:navigationIcon="@android:drawable/ic_menu_add"
         app:popupTheme="@style/Theme.AppCompat.Light"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:title="run">
+        app:title="Run">
 
     </android.support.v7.widget.Toolbar>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/activity_horizontal_margin">
 
-        <com.wulei.runner.customView.ArcProgressBar
-            android:id="@+id/arcProgressbar_run"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            app:angle="270"
-            app:bottomText="目标：5000"
-            app:currProgress="28"
-            app:maxProgress="100"
-            app:topText="今日已跑步数" />
+    <com.wulei.runner.customView.ArcProgressBar
+        android:id="@+id/arcProgressbar_run"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="50dp"
+        app:angle="360"
+        app:arcColor="@color/primary"
+        app:bottomText="目标：5000"
+        app:closable="true"
+        app:currProgress="28"
+        app:maxProgress="100"
+        app:midTextColor="@color/primary"
+        app:topText="今日已跑步数"
+        app:topTextColor="@color/secondary_text" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="run" />
-    </RelativeLayout>
+    <include
+        android:id="@+id/data_fragment_run"
+        layout="@layout/data_run" />
+
+    <Button
+        android:id="@+id/btn_start_run"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="@dimen/textView_appbar"
+        android:textColor="@color/text_light"
+        android:text="@string/button_run_tv" />
 
 </LinearLayout>

@@ -16,4 +16,11 @@
     <!--navigation Header-->
     <string name="navi_header_tv">未登录</string>
 
+    <!--fragment run-->
+    <string name="button_run_tv">start run</string>
+
+
+    <!--network Receiver 的toast-->
+    <string name="network_success">网络已连接</string>
+    <string name="network_failure">您已进入没有网络的异次元</string>
 </resources>

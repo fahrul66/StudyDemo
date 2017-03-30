@@ -1,5 +1,7 @@
 package com.wulei.runner.activity;
 
+import android.app.Activity;
+
 import com.wulei.runner.activity.base.BaseActivity;
 
 /**
@@ -8,4 +10,13 @@ import com.wulei.runner.activity.base.BaseActivity;
  */
 
 public class StartUpActivity extends BaseActivity {
+    @Override
+    public String getFragmentTag() {
+        return null;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return 0;
+    }
 }
