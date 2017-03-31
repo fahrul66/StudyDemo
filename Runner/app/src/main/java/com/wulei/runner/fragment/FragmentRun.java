@@ -13,6 +13,7 @@ import android.widget.Button;
 
 import com.wulei.runner.R;
 import com.wulei.runner.fragment.base.BaseFragment;
+import com.wulei.runner.utils.ConstantFactory;
 import com.wulei.runner.utils.FragmentUtils;
 import com.wulei.runner.utils.ToastUtil;
 
@@ -33,7 +34,7 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view,savedInstanceState);
+        super.onViewCreated(view, savedInstanceState);
         mAppCompatActivity.setSupportActionBar(mToolbar);
     }
 
@@ -50,7 +51,7 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
 
     @Override
     protected void setListener() {
-       mButton.setOnClickListener(this);
+        mButton.setOnClickListener(this);
     }
 
     @Override
@@ -60,8 +61,10 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-           Fragment fragment= FragmentUtils.newInstance(FragmentUtils.TAG_MAP);
+           Fragment fragment = FragmentUtils.newInstance(ConstantFactory.TAG_MAP);
            FragmentUtils.hide(mActivity,this);
-           FragmentUtils.add(mActivity,fragment,FragmentUtils.TAG_MAP);
+           FragmentUtils.add(mActivity,fragment,ConstantFactory.TAG_MAP);
+
+           //权限问题
     }
 }

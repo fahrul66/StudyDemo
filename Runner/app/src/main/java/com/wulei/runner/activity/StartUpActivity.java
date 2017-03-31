@@ -11,6 +11,11 @@ import com.wulei.runner.activity.base.BaseActivity;
 
 public class StartUpActivity extends BaseActivity {
     @Override
+    protected void hideShowFragment() {
+
+    }
+
+    @Override
     public String getFragmentTag() {
         return null;
     }

@@ -28,8 +28,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getLayoutId());
         //初始化ButterKnife
         ButterKnife.bind(this);
-        //初始化默认fragment
-        initFragment(getFragmentTag());
+        //正常情况下加载首个fragment
+        if (savedInstanceState == null) {
+            //初始化默认fragment
+            initFragment(getFragmentTag());
+        } else {
+            //出现异常时的加载
+            hideShowFragment();
+        }
     }
 
     @Override
@@ -61,6 +67,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
+     * 异常情况下的，activity重建，与fragment的重启
+     */
+    protected abstract void hideShowFragment();
+
+    /**
      * 获得fragment的标识，TAG
      *
      * @return 返回fragment的TAG
@@ -69,6 +80,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 返回activity的布局
+     *
      * @return 返回的布局id
      */
     public abstract int getLayoutId();

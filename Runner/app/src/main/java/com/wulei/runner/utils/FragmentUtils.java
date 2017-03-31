@@ -1,5 +1,6 @@
 package com.wulei.runner.utils;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,18 +11,14 @@ import com.wulei.runner.activity.base.BaseActivity;
 import com.wulei.runner.fragment.FragmentMap;
 import com.wulei.runner.fragment.FragmentRun;
 
+import java.util.List;
+
 /**
  * Created by wulei on 2017/3/27.
  * 主要用来添加，替换，隐藏，显示工作
  */
 
 public class FragmentUtils {
-    public static final String TAG_RUN = "run";
-    public static final String TAG_MAP = "map";
-    public static final String TAG_GOAL = "goal";
-    public static final String TAG_RECORD = "record";
-
-
     /**
      * 根据tag标记，创建fragment。
      *
@@ -31,10 +28,10 @@ public class FragmentUtils {
     public static Fragment newInstance(String tag) {
         Fragment fragment = null;
         switch (tag) {
-            case TAG_RUN:
+            case ConstantFactory.TAG_RUN:
                 fragment = new FragmentRun();
                 break;
-            case TAG_MAP:
+            case ConstantFactory.TAG_MAP:
                 fragment = new FragmentMap();
                 break;
         }
@@ -89,13 +86,15 @@ public class FragmentUtils {
      * @param fragment
      */
     public static void hide(Context context, Fragment fragment) {
-        //判断fragmentManager的对象池中的fragment，是否都隐藏
-
-        FragmentManager fm = ((BaseActivity) context).getSupportFragmentManager();
-        //fragmentManager开启事务隐藏fragment
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.hide(fragment);
-        ft.commit();
+        //如果fragment状态，则显示。
+        if (fragment.isVisible()) {
+            //判断fragmentManager的对象池中的fragment，是否都隐藏
+            FragmentManager fm = ((BaseActivity) context).getSupportFragmentManager();
+            //fragmentManager开启事务隐藏fragment
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.hide(fragment);
+            ft.commit();
+        }
     }
 
     /**
@@ -105,12 +104,16 @@ public class FragmentUtils {
      * @param fragment
      */
     public static void show(Context context, Fragment fragment) {
-        FragmentManager fm = ((BaseActivity) context).getSupportFragmentManager();
-        //fragmentManager开启事务隐藏fragment
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.show(fragment);
-        ft.commit();
+        //如果fragment隐藏状态，则显示。
+        if (fragment.isHidden()) {
+            FragmentManager fm = ((BaseActivity) context).getSupportFragmentManager();
+            //fragmentManager开启事务隐藏fragment
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.show(fragment);
+            ft.commit();
+        }
     }
+
 
     /**
      * 清空回退栈

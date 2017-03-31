@@ -23,4 +23,6 @@
     <!--network Receiver 的toast-->
     <string name="network_success">网络已连接</string>
     <string name="network_failure">您已进入没有网络的异次元</string>
+
+    <string name="quit_toast">再点一次，退出程序</string>
 </resources>
