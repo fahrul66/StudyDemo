@@ -1,31 +1,92 @@
 package com.wulei.runner.utils;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 
 /**
  * Created by wule on 2017/03/31.
  */
 
-public class PermissionUtil extends Activity {
+public class PermissionUtil {
+    //返回码
+    private int mRequestCode;
+    //fragment
+    private Fragment mFragment;
+    //activity
+    private Activity mActivity;
+    //回调
+    private OnPermissionResultListener mPermissonListener;
+    //实例
+    private static PermissionUtil p = new PermissionUtil();
 
-    private static final int REQUEST_CODE_LOCATION = 1;
+    public static PermissionUtil getInstance() {
+        return p;
+    }
 
     /**
-     * android 6.0运行时权限
+     * android 6.0运行时权限,fragment使用
      */
-    private void runtimePermisson() {
+    public void runtimePermisson(Fragment fragment, String[] permissons, int requestCode, OnPermissionResultListener onPermissionResultListener) {
+
+        //初始化
+        this.mFragment = fragment;
+        this.mRequestCode = requestCode;
+        this.mPermissonListener = onPermissionResultListener;
+
         //如果当前的API版本大于等于23，即android6.0
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             //检查自身是否有定位权限
-            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission_group.STORAGE}, REQUEST_CODE_LOCATION);
+            if (isPermissonGranted(permissons)) {
+                mFragment.requestPermissions(permissons, mRequestCode);
+            } else {
+                //权限全部获得
+                mPermissonListener.permissionGranted();
             }
         }
+    }
+
+    /**
+     * android 6.0权限，activity中使用，方法重载
+     * @param activity
+     * @param permissons
+     * @param requestCode
+     * @param onPermissionResultListener
+     */
+    public void runtimePermisson(Activity activity, String[] permissons, int requestCode, OnPermissionResultListener onPermissionResultListener) {
+
+        //初始化
+        this.mActivity = activity;
+        this.mRequestCode = requestCode;
+        this.mPermissonListener = onPermissionResultListener;
+
+        //如果当前的API版本大于等于23，即android6.0
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //检查自身是否有定位权限
+            if (isPermissonGranted(permissons)) {
+                activity.requestPermissions(permissons, mRequestCode);
+            } else {
+                //权限全部获得
+                mPermissonListener.permissionGranted();
+            }
+        }
+    }
+
+    /**
+     * 检查所有的权限
+     *
+     * @param permission
+     * @return true call requestPermission,false otherwise
+     */
+    private boolean isPermissonGranted(String[] permission) {
+        for (String per : permission) {
+            if (mFragment.getActivity().checkSelfPermission(per) != PackageManager.PERMISSION_GRANTED) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -35,18 +96,42 @@ public class PermissionUtil extends Activity {
      * @param permissions
      * @param grantResults
      */
-    @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case REQUEST_CODE_LOCATION:
-                //做相应的处理
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Snackbar.make(getWindow().getDecorView(), "权限处理成功！", Snackbar.LENGTH_SHORT).show();
-                } else {
-                    Snackbar.make(getWindow().getDecorView(), "权限处理失败！", Snackbar.LENGTH_SHORT).show();
-                }
-                break;
+        //做相应的处理
+        if (mRequestCode == requestCode) {
+
+            if (isGranted(grantResults)) {
+                mPermissonListener.permissionGranted();
+            } else {
+                mPermissonListener.permissionDenied();
+            }
         }
+    }
+
+    /**
+     * 判断返回的值，是否全部授权完成
+     *
+     * @param grantResults 结果值
+     * @return true all is granted ，false otherwise
+     */
+    private boolean isGranted(int[] grantResults) {
+        if (grantResults.length > 0) {
+            for (int granted : grantResults) {
+                if (granted != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * 接口回调，返回值成功后者失败
+     */
+    public interface OnPermissionResultListener {
+        void permissionGranted();
+
+        void permissionDenied();
     }
 }

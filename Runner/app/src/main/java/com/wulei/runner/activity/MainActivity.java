@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import com.wulei.runner.R;
 import com.wulei.runner.activity.base.BaseActivity;
 import com.wulei.runner.fragment.FragmentMap;
+import com.wulei.runner.fragment.FragmentNews;
 import com.wulei.runner.fragment.FragmentRun;
 import com.wulei.runner.utils.ConstantFactory;
 import com.wulei.runner.utils.FragmentUtils;
@@ -33,8 +34,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @BindView(R.id.navigation)
     NavigationView mNavigationView;
     //运动的fragment
-    FragmentRun mFragmentRun = (FragmentRun) FragmentUtils.newInstance(ConstantFactory.TAG_RUN);
-    FragmentMap mFragmentMap = (FragmentMap) FragmentUtils.newInstance(ConstantFactory.TAG_MAP);
+    private FragmentRun mFragmentRun = (FragmentRun) FragmentUtils.newInstance(ConstantFactory.TAG_RUN);
+    private FragmentMap mFragmentMap = (FragmentMap) FragmentUtils.newInstance(ConstantFactory.TAG_MAP);
+    private FragmentNews mFragmentNews = (FragmentNews) FragmentUtils.newInstance(ConstantFactory.TAG_NEWS);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +115,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 mNavigationView.setCheckedItem(R.id.record);
                 break;
             case R.id.news:
+                FragmentUtils.repalce(this,mFragmentNews,ConstantFactory.TAG_NEWS,true);
                 mNavigationView.setCheckedItem(R.id.news);
                 break;
             case R.id.rank:
@@ -155,8 +158,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             finish();
         } else {
             mHandler.sendEmptyMessageDelayed(TAG, 2000);
-            ToastUtil.show(R.string.quit_toast);
-//            Snackbar.make(getWindow().getDecorView(), getResources().getString(R.string.quit_toast), Snackbar.LENGTH_SHORT).show();
+            ToastUtil.show(R.string.toast_quit);
             isQuit = true;
         }
 

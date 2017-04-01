@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,9 +18,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.wulei.runner.R;
+import com.wulei.runner.activity.MainActivity;
 import com.wulei.runner.activity.base.BaseActivity;
 import com.wulei.runner.app.App;
 import com.wulei.runner.borcastReceiver.NetworkReceiver;
+import com.wulei.runner.utils.FragmentUtils;
 import com.wulei.runner.utils.ToastUtil;
 
 import butterknife.ButterKnife;
@@ -77,6 +80,32 @@ public abstract class BaseFragment extends Fragment {
         //销毁广播
         mActivity.unregisterReceiver(mNetworkReceiver);
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        //获得焦点，处理back事件
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                    // handle back button's click listener
+
+                    onBackPressed();
+
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
+    /***
+     * fragment中通过监听根view,实现返回按键
+     */
+    protected void onBackPressed() {}
 
     /**
      * 此方法默认是true，在viewpager中使用时，在FragmentStateAdapter中系统调用，在fragment切换时
@@ -166,6 +195,5 @@ public abstract class BaseFragment extends Fragment {
      */
     public void onUserInVisible() {
     }
-
 
 }

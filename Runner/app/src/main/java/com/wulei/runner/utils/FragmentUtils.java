@@ -8,8 +8,13 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.wulei.runner.R;
 import com.wulei.runner.activity.base.BaseActivity;
+import com.wulei.runner.fragment.FragmentGoal;
 import com.wulei.runner.fragment.FragmentMap;
+import com.wulei.runner.fragment.FragmentNews;
+import com.wulei.runner.fragment.FragmentRank;
+import com.wulei.runner.fragment.FragmentRecord;
 import com.wulei.runner.fragment.FragmentRun;
+import com.wulei.runner.fragment.FragmentSetting;
 
 import java.util.List;
 
@@ -19,8 +24,20 @@ import java.util.List;
  */
 
 public class FragmentUtils {
+
     /**
-     * 根据tag标记，创建fragment。
+     * 所有的fragment，实例，单例模式，懒汉式
+     */
+    private static Fragment mFragmentRun = new FragmentRun();
+    private static Fragment mFragmentMap = new FragmentMap();
+    private static Fragment mFragmentNews = new FragmentNews();
+    private static Fragment mFragmentGoal = new FragmentGoal();
+    private static Fragment mFragmentRank = new FragmentRank();
+    private static Fragment mFragmentRecord = new FragmentRecord();
+    private static Fragment mFragmentSetting = new FragmentSetting();
+
+    /**
+     * 根据tag标记，返回fragment。
      *
      * @param tag
      * @return
@@ -29,10 +46,25 @@ public class FragmentUtils {
         Fragment fragment = null;
         switch (tag) {
             case ConstantFactory.TAG_RUN:
-                fragment = new FragmentRun();
+                fragment = mFragmentRun;
                 break;
             case ConstantFactory.TAG_MAP:
-                fragment = new FragmentMap();
+                fragment = mFragmentMap;
+                break;
+            case ConstantFactory.TAG_NEWS:
+                fragment = mFragmentNews;
+                break;
+            case ConstantFactory.TAG_GOAL:
+                fragment = mFragmentGoal;
+                break;
+            case ConstantFactory.TAG_RANK:
+                fragment = mFragmentRank;
+                break;
+            case ConstantFactory.TAG_RECORD:
+                fragment = mFragmentRecord;
+                break;
+            case ConstantFactory.TAG_SETTING:
+                fragment = mFragmentSetting;
                 break;
         }
         return fragment;
@@ -123,6 +155,7 @@ public class FragmentUtils {
     public static void clearBackStack(Context context) {
 
         FragmentManager fm = ((BaseActivity) context).getSupportFragmentManager();
+        List<Fragment> fmFragments = fm.getFragments();
         int backStackCount = fm.getBackStackEntryCount();
         if (backStackCount > 1) {
             for (int i = 0; i < backStackCount; i++) {

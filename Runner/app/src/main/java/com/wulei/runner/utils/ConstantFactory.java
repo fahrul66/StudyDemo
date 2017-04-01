@@ -1,5 +1,7 @@
 package com.wulei.runner.utils;
 
+import android.Manifest;
+
 /**
  * Created by wulei on 2017/1/13.
  */
@@ -15,4 +17,13 @@ public class ConstantFactory {
     public static final String TAG_MAP = "map";
     public static final String TAG_GOAL = "goal";
     public static final String TAG_RECORD = "record";
+    public static final String TAG_NEWS = "news";
+    public static final String TAG_RANK = "rank";
+    public static final String TAG_SETTING= "setting";
+
+    //需要的权限
+    public static final String[] PERMISSION = {Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE};
+    public static final int REQUEST_CODE = 1;
 }

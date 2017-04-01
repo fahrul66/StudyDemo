@@ -24,5 +24,11 @@
     <string name="network_success">网络已连接</string>
     <string name="network_failure">您已进入没有网络的异次元</string>
 
-    <string name="quit_toast">再点一次，退出程序</string>
+    <!--toast-->
+    <string name="toast_quit">再点一次，退出程序</string>
+    <string name="toast_gps">请打开Gps，在开始记录！</string>
+
+    <!--dialog permission -->
+    <string name="dialog_permission_msg">权限获取失败,需要手动打开,应用程序信息,授权相应权限!</string>
+    <string name="dialog_permission_title">注意</string>
 </resources>

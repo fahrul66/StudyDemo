@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.baidu.location.BDLocation;
@@ -29,6 +31,8 @@ import com.wulei.runner.R;
 import com.wulei.runner.activity.MainActivity;
 import com.wulei.runner.app.App;
 import com.wulei.runner.fragment.base.BaseFragment;
+import com.wulei.runner.utils.ConstantFactory;
+import com.wulei.runner.utils.FragmentUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -131,15 +135,7 @@ public class FragmentMap extends BaseFragment {
     }
 
 
-    /**
-     * 判断gps是否打开
-     * @return
-     */
-    private boolean isGPSOpen() {
-        LocationManager locationManager = (LocationManager) mActivity.getSystemService(Context.LOCATION_SERVICE);
-        boolean isEnable = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        return isEnable;
-    }
+
 
     @Override
     public void onHiddenVisible() {
@@ -175,7 +171,22 @@ public class FragmentMap extends BaseFragment {
         mBaiduMap.setMyLocationEnabled(false);
     }
 
+    /**
+     * fragment中的backPressed
+     */
+    @Override
+    protected void onBackPressed() {
+        super.onBackPressed();
 
+        //进行fragment的切换，动画效果，reveal animation
+        FragmentUtils.hide(mActivity,FragmentUtils.newInstance(ConstantFactory.TAG_MAP));
+        FragmentUtils.show(mActivity,FragmentUtils.newInstance(ConstantFactory.TAG_RUN));
+
+    }
+
+    /**
+     * 本地百度定位监听服务
+     */
     class MyLocationListener implements BDLocationListener {
         //location对象
         private static final String TAG = "MyLocationListener";
