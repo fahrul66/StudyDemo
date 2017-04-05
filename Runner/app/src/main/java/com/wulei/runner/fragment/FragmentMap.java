@@ -11,7 +11,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -48,6 +50,8 @@ public class FragmentMap extends BaseFragment {
     //百度map
     @BindView(R.id.mapView)
     MapView mMapView;
+    @BindView(R.id.data_layout)
+    LinearLayout linearLayout;
     //地图
     private BaiduMap mBaiduMap;
     //定位的客户端
@@ -77,10 +81,6 @@ public class FragmentMap extends BaseFragment {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        //关闭侧滑栏
-        ((MainActivity) mActivity).mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-        //初始化toolbar
-
         //初始化mapview
         mBaiduMap = mMapView.getMap();
         //地图设置
@@ -104,6 +104,7 @@ public class FragmentMap extends BaseFragment {
 
     @Override
     protected void setListener() {
+
 
     }
 
@@ -135,11 +136,9 @@ public class FragmentMap extends BaseFragment {
     }
 
 
-
-
     @Override
     public void onHiddenVisible() {
-        ((MainActivity) mActivity).mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+
     }
 
     /**
@@ -148,7 +147,6 @@ public class FragmentMap extends BaseFragment {
     @Override
     public void onHiddenInVisible() {
         super.onHiddenInVisible();
-        ((MainActivity) mActivity).mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
     }
 
     @Override
@@ -176,13 +174,12 @@ public class FragmentMap extends BaseFragment {
      */
     @Override
     protected void onBackPressed() {
-        super.onBackPressed();
-
         //进行fragment的切换，动画效果，reveal animation
-        FragmentUtils.hide(mActivity,FragmentUtils.newInstance(ConstantFactory.TAG_MAP));
-        FragmentUtils.show(mActivity,FragmentUtils.newInstance(ConstantFactory.TAG_RUN));
+        FragmentUtils.hide(mActivity, FragmentUtils.newInstance(ConstantFactory.TAG_MAP));
+        FragmentUtils.show(mActivity, FragmentUtils.newInstance(ConstantFactory.TAG_RUN));
 
     }
+
 
     /**
      * 本地百度定位监听服务
@@ -304,6 +301,9 @@ public class FragmentMap extends BaseFragment {
                 mBaiduMap.setMyLocationConfigeration(mc1);
             }
 
+            /*
+             * 在地图上，添加覆盖物。动健网
+             */
             if (latLngList.size() > 10) {
 
                 OverlayOptions olo = new PolylineOptions()

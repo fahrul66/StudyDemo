@@ -84,7 +84,9 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        //获得焦点，处理back事件
+        /*
+         * 获得焦点，处理back事件
+         */
         getView().setFocusableInTouchMode(true);
         getView().requestFocus();
         getView().setOnKeyListener(new View.OnKeyListener() {
@@ -105,7 +107,12 @@ public abstract class BaseFragment extends Fragment {
     /***
      * fragment中通过监听根view,实现返回按键
      */
-    protected void onBackPressed() {}
+    protected void onBackPressed() {
+        //默认行为,返回栈
+        mAppCompatActivity.getSupportFragmentManager().popBackStack();
+        //toolbar返回
+        ((MainActivity)mActivity).mNavigationView.setCheckedItem(R.id.run);
+    }
 
     /**
      * 此方法默认是true，在viewpager中使用时，在FragmentStateAdapter中系统调用，在fragment切换时

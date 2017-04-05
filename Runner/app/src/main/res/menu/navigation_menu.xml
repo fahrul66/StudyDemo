@@ -41,6 +41,10 @@
                 android:id="@+id/timing"
                 android:icon="@android:drawable/ic_menu_add"
                 android:title="@string/menu_timing" />
+            <item
+                android:id="@+id/suggest"
+                android:icon="@android:drawable/ic_menu_add"
+                android:title="@string/menu_suggest" />
         </menu>
     </item>
 </menu>

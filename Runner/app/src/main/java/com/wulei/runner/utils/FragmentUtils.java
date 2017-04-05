@@ -94,7 +94,7 @@ public class FragmentUtils {
      * @param tag            fragment的标识tag
      * @param addToBackStack 是否添加到返回栈中
      */
-    public static void repalce(Context context, Fragment fragment, String tag, boolean addToBackStack) {
+    public static void replace(Context context, Fragment fragment, String tag, boolean addToBackStack) {
         FragmentManager fm = ((BaseActivity) context).getSupportFragmentManager();
         Fragment target = fm.findFragmentByTag(tag);
         //判断fragmentManager对象池中是否有此tag,没有时才再次添加。

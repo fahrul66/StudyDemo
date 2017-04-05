@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Runner</string>
 
+    <!--toolbar Drawer-->
+    <string name="toolbar_drawer_open">打开抽屉</string>
+    <string name="toolbar_drawer_close">关闭抽屉</string>
     <!--navigationView menu-->
     <string name="menu_run">运动主页</string>
     <string name="menu_goal">每日目标</string>
@@ -11,6 +14,7 @@
     <string name="menu_remind">提醒功能</string>
     <string name="menu_share">分享</string>
     <string name="menu_timing">计时功能</string>
+    <string name="menu_suggest">意见反馈</string>
     <string name="menu_sub_title">其他</string>
 
     <!--navigation Header-->

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/app_bar" />
+    <!--<include layout="@layout/app_bar" />-->
 
     <com.wulei.runner.customView.ArcProgressBar
         android:id="@+id/arcProgressbar_run"
@@ -24,9 +24,7 @@
         app:topText="今日已跑步数"
         app:topTextColor="@color/secondary_text" />
 
-    <include
-        android:id="@+id/data_fragment_run"
-        layout="@layout/data_run" />
+    <include layout="@layout/data_run" />
 
     <Button
         android:id="@+id/btn_start_run"
@@ -36,5 +34,14 @@
         android:text="@string/button_run_tv"
         android:textColor="@color/text_light"
         android:textSize="@dimen/textView_appbar" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_run"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:visibility="gone"
+        app:rippleColor="@color/green"
+        android:layout_gravity="center"
+        app:fabSize="normal" />
 
 </LinearLayout>

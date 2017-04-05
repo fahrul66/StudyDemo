@@ -5,10 +5,14 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.wulei.runner.R;
 import com.wulei.runner.activity.base.BaseActivity;
@@ -23,16 +27,19 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private static final int TAG = 1;
     //flag,退出
     private boolean isQuit = false;
+    //toolbar
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
     //抽屉
     @BindView(R.id.drawer)
-    public DrawerLayout mDrawerLayout;
+    DrawerLayout mDrawerLayout;
     //抽屉view
     @BindView(R.id.navigation)
-    NavigationView mNavigationView;
+    public NavigationView mNavigationView;
     //运动的fragment
     private FragmentRun mFragmentRun = (FragmentRun) FragmentUtils.newInstance(ConstantFactory.TAG_RUN);
     private FragmentMap mFragmentMap = (FragmentMap) FragmentUtils.newInstance(ConstantFactory.TAG_MAP);
@@ -41,10 +48,25 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /**
-         * 注册监听器
-         */
+
+        //导航栏监听
         mNavigationView.setNavigationItemSelectedListener(this);
+
+        //toolbar设置
+        setSupportActionBar(mToolbar);
+        //添加navigation icon
+        ActionBarDrawerToggle abt = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar,R.string.toolbar_drawer_open, R.string.toolbar_drawer_close);
+        mDrawerLayout.addDrawerListener(abt);
+        abt.syncState();
+
+        //toolbar监听器
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //打开
+                mDrawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
 
     }
 
@@ -101,11 +123,14 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
      */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Fragment fragment = null;
         switch (item.getItemId()) {
             case R.id.run:
+
                 //显示
                 FragmentUtils.show(this, mFragmentRun);
                 FragmentUtils.hide(this, mFragmentMap);
+                FragmentUtils.replace(this,mFragmentRun,ConstantFactory.TAG_RUN,false);
                 mNavigationView.setCheckedItem(R.id.run);
                 break;
             case R.id.goal:
@@ -115,7 +140,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 mNavigationView.setCheckedItem(R.id.record);
                 break;
             case R.id.news:
-                FragmentUtils.repalce(this,mFragmentNews,ConstantFactory.TAG_NEWS,true);
+                FragmentUtils.replace(this, mFragmentNews, ConstantFactory.TAG_NEWS,true);
                 mNavigationView.setCheckedItem(R.id.news);
                 break;
             case R.id.rank:
@@ -154,7 +179,19 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
      */
     @Override
     public void onBackPressed() {
-        if (isQuit) {
+        /*
+         * 如果抽屉打开就关闭，然后返回，不执行下面的语句
+         */
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)){
+            //抽屉打开时，按下返回键关闭
+            mDrawerLayout.closeDrawers();
+            return;
+        }
+
+        /*
+         * 如果抽屉关闭，则执行确认操作。
+         */
+        if (isQuit && !mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             finish();
         } else {
             mHandler.sendEmptyMessageDelayed(TAG, 2000);
@@ -162,5 +199,19 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             isQuit = true;
         }
 
+    }
+
+    /**
+     * 点击事件
+     *
+     * @param v
+     */
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.toolbar:
+
+                break;
+        }
     }
 }

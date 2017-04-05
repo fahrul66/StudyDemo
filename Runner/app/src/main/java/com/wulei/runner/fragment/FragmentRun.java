@@ -3,8 +3,6 @@ package com.wulei.runner.fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
@@ -13,11 +11,9 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
-import android.view.MenuItem;
+import android.support.design.widget.FloatingActionButton;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.widget.Button;
 
 import com.wulei.runner.R;
@@ -30,8 +26,6 @@ import com.wulei.runner.utils.PermissionUtil;
 import com.wulei.runner.utils.ToastUtil;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by wulei on 2017/3/27.
@@ -39,16 +33,21 @@ import butterknife.OnClick;
 
 public class FragmentRun extends BaseFragment implements View.OnClickListener {
 
-    @BindView(R.id.toolbar_run)
-    Toolbar mToolbar;
     @BindView(R.id.btn_start_run)
     Button mButton;
+    @BindView(R.id.fab_run)
+    FloatingActionButton mFab;
+    /*
+     * 按钮的变化标识
+     */
+    boolean btnFlag = false;
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mAppCompatActivity.setSupportActionBar(mToolbar);
+
     }
 
     @NonNull
@@ -59,17 +58,13 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        //toolbar
-        mToolbar.setNavigationOnClickListener(this);
+
     }
 
-    @OnClick(R.id.toolbar_run)
-    public void hh(){
-        ((MainActivity)mActivity).mDrawerLayout.openDrawer(Gravity.LEFT,true);
-    }
     @Override
     protected void setListener() {
         mButton.setOnClickListener(this);
+        mFab.setOnClickListener(this);
     }
 
     @Override
@@ -82,11 +77,25 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_start_run:
+                //权限和gps判断
                 startRun();
+                //按钮变化判断
+                if (btnFlag) {
+                    mButton.setVisibility(View.GONE);
+                    mFab.setVisibility(View.VISIBLE);
+
+//                    int x
+//                    ViewAnimationUtils.createCircularReveal(mButton,)
+                } else {
+                    mButton.setVisibility(View.VISIBLE);
+                    mFab.setVisibility(View.GONE);
+
+                }
                 break;
-            case R.id.toolbar_run:
-                ((MainActivity)mActivity).mDrawerLayout.openDrawer(Gravity.LEFT,true);
-                ToastUtil.show("123");
+            case R.id.fab_run:
+                btnFlag = false;
+                mButton.setVisibility(View.VISIBLE);
+                mFab.setVisibility(View.GONE);
                 break;
         }
 
@@ -103,10 +112,14 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
                 //授权成功,进行跳转
                 //判断gps，是否打开。
                 if (isGPSOpen()) {
+                    //只有成功跳转的时候才会使按钮变形。
+                    btnFlag = true;
+
                     //切换fragment
                     FragmentUtils.hide(mActivity, FragmentUtils.newInstance(ConstantFactory.TAG_RUN));
                     FragmentUtils.add(mActivity, FragmentUtils.newInstance(ConstantFactory.TAG_MAP), ConstantFactory.TAG_MAP);
                     FragmentUtils.show(mActivity, FragmentUtils.newInstance(ConstantFactory.TAG_MAP));
+
                 } else {
                     //跳转到gps
                     toGpsSetting();
@@ -177,7 +190,5 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
     @Override
     protected void onBackPressed() {
         super.onBackPressed();
-        //退出程序判断
-        ((MainActivity)mActivity).onBackPressed();
     }
 }
