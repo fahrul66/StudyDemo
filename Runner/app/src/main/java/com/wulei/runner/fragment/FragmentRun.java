@@ -3,6 +3,10 @@ package com.wulei.runner.fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
@@ -18,12 +22,18 @@ import android.widget.Button;
 
 import com.wulei.runner.R;
 import com.wulei.runner.activity.MainActivity;
+import com.wulei.runner.app.App;
+import com.wulei.runner.customView.ArcProgressBar;
+import com.wulei.runner.db.LocalSqlHelper;
 import com.wulei.runner.fragment.base.BaseFragment;
+import com.wulei.runner.model.LocalSqlModel;
 import com.wulei.runner.utils.ConstantFactory;
 import com.wulei.runner.utils.DialogUtils;
 import com.wulei.runner.utils.FragmentUtils;
 import com.wulei.runner.utils.PermissionUtil;
 import com.wulei.runner.utils.ToastUtil;
+
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -31,17 +41,27 @@ import butterknife.BindView;
  * Created by wulei on 2017/3/27.
  */
 
-public class FragmentRun extends BaseFragment implements View.OnClickListener {
+public class FragmentRun extends BaseFragment implements View.OnClickListener, SensorEventListener {
 
     @BindView(R.id.btn_start_run)
     Button mButton;
     @BindView(R.id.fab_run)
     FloatingActionButton mFab;
+    @BindView(R.id.arcProgressbar_run)
+    ArcProgressBar mArc;
     /*
      * 按钮的变化标识
      */
     boolean btnFlag = false;
-
+    /*
+     *传感器设置
+     */
+    private SensorManager mSensorManger;
+    private Sensor mStepSensor;
+    /*
+     * 数据库设置
+     */
+    private LocalSqlHelper lsh;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -50,6 +70,21 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
 
     }
 
+    /**
+     * 销毁，注销传感器
+     */
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mSensorManger.unregisterListener(this);
+        lsh.close();
+    }
+
+    /**
+     * 布局优化
+     *
+     * @return
+     */
     @NonNull
     @Override
     protected int setContentView() {
@@ -57,16 +92,51 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        /*
+         * 传感器设置
+         */
+        mSensorManger = (SensorManager) mActivity.getSystemService(Context.SENSOR_SERVICE);
+        mStepSensor = mSensorManger.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        mSensorManger.registerListener(this, mStepSensor, SensorManager.SENSOR_DELAY_UI);
+    }
+
+    /**
+     * 数据初始化
+     *
+     * @param savedInstanceState
+     */
+    @Override
     protected void initView(Bundle savedInstanceState) {
+        /*
+         * 初始化arcProgressBar的数值。
+         * 1.未登录，本地数据库读取
+         * 2.已登录，云数据库读取
+         */
+        lsh = new LocalSqlHelper(App.mAPPContext);
+        List<LocalSqlModel> list = lsh.query();
+        //数据为空
+        if (!list.isEmpty()) {
+//            mArc.setProgress(list.get(0).getSteps());
+        }
 
     }
 
+    /**
+     * 监听器设置
+     */
     @Override
     protected void setListener() {
         mButton.setOnClickListener(this);
         mFab.setOnClickListener(this);
     }
 
+    /**
+     * 逻辑处理
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void processLogic(Bundle savedInstanceState) {
 
@@ -188,7 +258,17 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
     }
 
     @Override
-    protected void onBackPressed() {
-        super.onBackPressed();
+    public void onSensorChanged(SensorEvent event) {
+        int steps = (int) event.values[0];
+        //更新数据
+        mArc.setProgress(steps);
+        //写入本地数据库
+        lsh.insert(new LocalSqlModel(steps, null, null, null, null));
+
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
     }
 }

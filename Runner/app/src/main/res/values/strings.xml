@@ -22,6 +22,8 @@
 
     <!--fragment run-->
     <string name="button_run_tv">start run</string>
+    <string name="arcProgressBar_bottom_text">目标：5000</string>
+    <string name="arcProgressBar_top_text">今日已跑步数</string>
 
 
     <!--network Receiver 的toast-->

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -21,6 +23,7 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.Poi;
 import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
@@ -50,22 +53,35 @@ public class FragmentMap extends BaseFragment {
     //百度map
     @BindView(R.id.mapView)
     MapView mMapView;
-    @BindView(R.id.data_layout)
-    LinearLayout linearLayout;
     //地图
     private BaiduMap mBaiduMap;
     //定位的客户端
     private LocationClient mLocationClient;
-    //定位data
-    private BDLocation location;
-    //地图坐标
-    private LatLng latLng;
-    //坐标集合
-    private List<LatLng> latLngList = new ArrayList<>();
     //定位打开，结束的标记
     private boolean locationFlag;
     //第一次加载的标记
     private boolean isFirstLoc = true;
+    //获取的坐标信息
+    private LatLng mLatLng;
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            Bundle bundle = msg.getData();
+            switch (msg.what) {
+                case 1:
+                    mLatLng = bundle.getParcelable("Latlng");
+                    //设置地图缩放级别,17为100米距离
+                    MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newLatLngZoom(mLatLng, 18);
+                    if (mLatLng != null) {
+                        mBaiduMap.animateMapStatus(mapStatusUpdate);
+                    }
+                    //打开定位图层
+                    mBaiduMap.setMyLocationEnabled(true);
+                    break;
+            }
+        }
+    };
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -81,6 +97,8 @@ public class FragmentMap extends BaseFragment {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        //关闭drawer
+//        ((MainActivity)mActivity).mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         //初始化mapview
         mBaiduMap = mMapView.getMap();
         //地图设置
@@ -96,10 +114,12 @@ public class FragmentMap extends BaseFragment {
         mLocationClient.start();
 
         //设置地图缩放级别,17为100米距离
-        MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.zoomTo(18);
+        MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newLatLngZoom(mLatLng, 18);
         mBaiduMap.animateMapStatus(mapStatusUpdate);
         //打开定位图层
         mBaiduMap.setMyLocationEnabled(true);
+
+
     }
 
     @Override
@@ -136,9 +156,12 @@ public class FragmentMap extends BaseFragment {
     }
 
 
+    /**
+     * 不可见，当show，或者hide时调用
+     */
     @Override
     public void onHiddenVisible() {
-
+//        ((MainActivity)mActivity).mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
     }
 
     /**
@@ -146,7 +169,7 @@ public class FragmentMap extends BaseFragment {
      */
     @Override
     public void onHiddenInVisible() {
-        super.onHiddenInVisible();
+        ((MainActivity) mActivity).mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
     }
 
     @Override
@@ -187,6 +210,10 @@ public class FragmentMap extends BaseFragment {
     class MyLocationListener implements BDLocationListener {
         //location对象
         private static final String TAG = "MyLocationListener";
+        //地图坐标
+        private LatLng latLng;
+        //坐标集合
+        private List<LatLng> latLngList = new ArrayList<>();
 
         @RequiresApi(api = Build.VERSION_CODES.M)
         @Override
@@ -196,8 +223,6 @@ public class FragmentMap extends BaseFragment {
             if (location == null && mMapView == null) {
                 return;
             }
-
-            FragmentMap.this.location = location;
 
             //Receive Location
             StringBuffer sb = new StringBuffer(256);
@@ -265,6 +290,7 @@ public class FragmentMap extends BaseFragment {
             latLngList.add(latLng);
 
 
+
             //第一次定位，加载自己的位置，和缩放级别
             if (isFirstLoc) {
                 isFirstLoc = false;
@@ -273,6 +299,13 @@ public class FragmentMap extends BaseFragment {
                 //百度地图设置，定位位置
                 MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newLatLng(latLng);
                 mBaiduMap.animateMapStatus(mapStatusUpdate);
+
+                Message m = new Message();
+                m.what = 1;
+                Bundle b = new Bundle();
+                b.putParcelable("Latlng", latLng);
+                m.setData(b);
+                mHandler.sendMessage(m);
             }
 
             //判断gps定位开关打开没有,定位更加精确
@@ -307,7 +340,7 @@ public class FragmentMap extends BaseFragment {
             if (latLngList.size() > 10) {
 
                 OverlayOptions olo = new PolylineOptions()
-                        .width(15).color(getResources().getColor(R.color.colorAccent, null))
+                        .width(15).color(getResources().getColor(R.color.accent, null))
                         .points(latLngList);
                 mBaiduMap.addOverlay(olo);
 

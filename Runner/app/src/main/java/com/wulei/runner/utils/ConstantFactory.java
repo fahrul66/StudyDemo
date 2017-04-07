@@ -19,11 +19,16 @@ public class ConstantFactory {
     public static final String TAG_RECORD = "record";
     public static final String TAG_NEWS = "news";
     public static final String TAG_RANK = "rank";
-    public static final String TAG_SETTING= "setting";
+    public static final String TAG_SETTING = "setting";
 
     //需要的权限
     public static final String[] PERMISSION = {Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE};
     public static final int REQUEST_CODE = 1;
+
+    //数据库名
+    public static final String SQL_NAME = "localDB";
+    public static final String SQL_TABLE = "NoUser";
+    public static final int SQL_VERSION = 1;
 }

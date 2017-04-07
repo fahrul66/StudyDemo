@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.wulei.runner.R;
+import com.wulei.runner.activity.MainActivity;
 import com.wulei.runner.fragment.base.BaseFragment;
 
 /**
@@ -31,5 +32,13 @@ public class FragmentNews extends BaseFragment {
     @Override
     protected void processLogic(Bundle savedInstanceState) {
 
+    }
+
+    @Override
+    protected void onBackPressed() {
+        //默认行为,返回栈
+        mAppCompatActivity.getSupportFragmentManager().popBackStack();
+        //toolbar返回
+        ((MainActivity)mActivity).mNavigationView.setCheckedItem(R.id.run);
     }
 }

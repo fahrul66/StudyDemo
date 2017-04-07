@@ -108,10 +108,12 @@ public abstract class BaseFragment extends Fragment {
      * fragment中通过监听根view,实现返回按键
      */
     protected void onBackPressed() {
+        //调用activity的onBackPressed方法
+         mAppCompatActivity.onBackPressed();
         //默认行为,返回栈
-        mAppCompatActivity.getSupportFragmentManager().popBackStack();
-        //toolbar返回
-        ((MainActivity)mActivity).mNavigationView.setCheckedItem(R.id.run);
+//        mAppCompatActivity.getSupportFragmentManager().popBackStack();
+//        //toolbar返回
+//        ((MainActivity)mActivity).mNavigationView.setCheckedItem(R.id.run);
     }
 
     /**

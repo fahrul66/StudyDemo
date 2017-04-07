@@ -5,8 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--<include layout="@layout/app_bar" />-->
-
     <com.wulei.runner.customView.ArcProgressBar
         android:id="@+id/arcProgressbar_run"
         android:layout_width="wrap_content"
@@ -16,12 +14,12 @@
         android:layout_marginTop="50dp"
         app:angle="360"
         app:arcColor="@color/primary"
-        app:bottomText="目标：5000"
+        app:bottomText="@string/arcProgressBar_bottom_text"
         app:closable="true"
-        app:currProgress="28"
-        app:maxProgress="100"
+        app:currProgress="0"
+        app:maxProgress="200"
         app:midTextColor="@color/primary"
-        app:topText="今日已跑步数"
+        app:topText="@string/arcProgressBar_top_text"
         app:topTextColor="@color/secondary_text" />
 
     <include layout="@layout/data_run" />
@@ -40,8 +38,9 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:visibility="gone"
-        app:rippleColor="@color/green"
+        android:stateListAnimator="@drawable/fab_state_list_animator"
         android:layout_gravity="center"
+        app:rippleColor="@color/accent"
         app:fabSize="normal" />
 
 </LinearLayout>

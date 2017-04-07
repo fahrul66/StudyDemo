@@ -36,7 +36,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     Toolbar mToolbar;
     //抽屉
     @BindView(R.id.drawer)
-    DrawerLayout mDrawerLayout;
+    public DrawerLayout mDrawerLayout;
     //抽屉view
     @BindView(R.id.navigation)
     public NavigationView mNavigationView;
