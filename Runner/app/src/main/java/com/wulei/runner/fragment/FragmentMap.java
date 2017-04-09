@@ -38,6 +38,7 @@ import com.wulei.runner.app.App;
 import com.wulei.runner.fragment.base.BaseFragment;
 import com.wulei.runner.utils.ConstantFactory;
 import com.wulei.runner.utils.FragmentUtils;
+import com.wulei.runner.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -141,7 +142,7 @@ public class FragmentMap extends BaseFragment {
         option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy
         );//可选，默认高精度，设置定位模式，高精度，低功耗，仅设备
         option.setCoorType("bd09ll");//可选，默认gcj02，设置返回的定位结果坐标系
-        int span = 1000;
+        int span = 2000;
         option.setScanSpan(span);//可选，默认0，即仅定位一次，设置发起定位请求的间隔需要大于等于1000ms才是有效的
         option.setIsNeedAddress(true);//可选，设置是否需要地址信息，默认不需要
         option.setOpenGps(true);//可选，默认false,设置是否使用gps
@@ -208,9 +209,7 @@ public class FragmentMap extends BaseFragment {
      * 本地百度定位监听服务
      */
     class MyLocationListener implements BDLocationListener {
-        //location对象
-        private static final String TAG = "MyLocationListener";
-        //地图坐标
+       //地图坐标
         private LatLng latLng;
         //坐标集合
         private List<LatLng> latLngList = new ArrayList<>();
@@ -290,7 +289,6 @@ public class FragmentMap extends BaseFragment {
             latLngList.add(latLng);
 
 
-
             //第一次定位，加载自己的位置，和缩放级别
             if (isFirstLoc) {
                 isFirstLoc = false;
@@ -345,6 +343,19 @@ public class FragmentMap extends BaseFragment {
                 mBaiduMap.addOverlay(olo);
 
                 latLngList.removeAll(latLngList);
+
+
+            }
+
+            /*
+             *异常错误时，提示
+             */
+            if (location.getLocType() == BDLocation.TypeServerError) {
+                ToastUtil.show("server定位失败，没有对应的位置信息");
+            } else if (location.getLocType() == BDLocation.TypeNetWorkException) {
+                ToastUtil.show("网络不同导致定位失败，请检查网络是否通畅");
+            } else if (location.getLocType() == BDLocation.TypeCriteriaException) {
+                ToastUtil.show("无法获取有效定位依据导致定位失败，一般是由于手机的原因，处于飞行模式下一般会造成这种结果，可以试着重启手机");
             }
         }
     }

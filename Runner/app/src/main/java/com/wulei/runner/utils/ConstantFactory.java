@@ -29,6 +29,7 @@ public class ConstantFactory {
 
     //数据库名
     public static final String SQL_NAME = "localDB";
-    public static final String SQL_TABLE = "NoUser";
+    public static final String SQL_TABLE_JB = "pedometer";
+    public static final String SQL_TABLE_PB = "run";
     public static final int SQL_VERSION = 1;
 }

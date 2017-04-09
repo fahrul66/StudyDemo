@@ -36,7 +36,7 @@ public class LocalSqlHelper {
         //集合
         List<LocalSqlModel> list = new ArrayList<>();
         //获取数据
-        Cursor c = sqlRead.query(ConstantFactory.SQL_TABLE, null, null, null, null, null, "id desc");
+        Cursor c = sqlRead.query(ConstantFactory.SQL_TABLE_JB, null, null, null, null, null, "id desc");
         //指针调至第一个
         if (c.moveToFirst()) {
             do {
@@ -68,7 +68,7 @@ public class LocalSqlHelper {
         c.put("goals", data.getGoals());
         c.put("picUrl", data.getPicUrl());
         //写入数据
-        sqlWrite.insert(ConstantFactory.SQL_TABLE, null, c);
+        sqlWrite.insert(ConstantFactory.SQL_TABLE_JB, null, c);
 
         sqlWrite.setTransactionSuccessful();
         sqlWrite.endTransaction();
@@ -85,7 +85,7 @@ public class LocalSqlHelper {
      * 删除数据
      */
     public void delete(LocalSqlModel data) {
-        sqlWrite.delete(ConstantFactory.SQL_TABLE, "", null);
+        sqlWrite.delete(ConstantFactory.SQL_TABLE_JB, "", null);
     }
 
     /**

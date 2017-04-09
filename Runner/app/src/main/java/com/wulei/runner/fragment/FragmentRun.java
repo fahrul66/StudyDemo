@@ -45,14 +45,8 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener, S
 
     @BindView(R.id.btn_start_run)
     Button mButton;
-    @BindView(R.id.fab_run)
-    FloatingActionButton mFab;
     @BindView(R.id.arcProgressbar_run)
     ArcProgressBar mArc;
-    /*
-     * 按钮的变化标识
-     */
-    boolean btnFlag = false;
     /*
      *传感器设置
      */
@@ -129,7 +123,6 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener, S
     @Override
     protected void setListener() {
         mButton.setOnClickListener(this);
-        mFab.setOnClickListener(this);
     }
 
     /**
@@ -150,23 +143,9 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener, S
                 //权限和gps判断
                 startRun();
                 //按钮变化判断
-                if (btnFlag) {
-                    mButton.setVisibility(View.GONE);
-                    mFab.setVisibility(View.VISIBLE);
-
-//                    int x
-//                    ViewAnimationUtils.createCircularReveal(mButton,)
-                } else {
-                    mButton.setVisibility(View.VISIBLE);
-                    mFab.setVisibility(View.GONE);
-
-                }
+                mButton.setVisibility(View.GONE);
                 break;
-            case R.id.fab_run:
-                btnFlag = false;
-                mButton.setVisibility(View.VISIBLE);
-                mFab.setVisibility(View.GONE);
-                break;
+
         }
 
     }
@@ -182,9 +161,6 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener, S
                 //授权成功,进行跳转
                 //判断gps，是否打开。
                 if (isGPSOpen()) {
-                    //只有成功跳转的时候才会使按钮变形。
-                    btnFlag = true;
-
                     //切换fragment
                     FragmentUtils.hide(mActivity, FragmentUtils.newInstance(ConstantFactory.TAG_RUN));
                     FragmentUtils.add(mActivity, FragmentUtils.newInstance(ConstantFactory.TAG_MAP), ConstantFactory.TAG_MAP);

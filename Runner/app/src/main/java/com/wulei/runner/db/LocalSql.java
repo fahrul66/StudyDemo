@@ -12,10 +12,13 @@ import com.wulei.runner.utils.ConstantFactory;
 
 public class LocalSql extends SQLiteOpenHelper {
     /*
-     * 创建表
+     * 创建表计步，跑步表
      */
-    private static final String TABLE_NO_USER = "create Table if not exists " + ConstantFactory.SQL_TABLE + " (id integer PRIMARY KEY AUTOINCREMENT," +
-            "steps integer ,time text,km text,goals text,picUrl text)";
+    private static final String SQL_JB = "create Table " + ConstantFactory.SQL_TABLE_JB + " (id integer PRIMARY KEY AUTOINCREMENT," +
+            "steps integer,km text,goals text)";
+
+    private static final String SQL_PB = "create Table " + ConstantFactory.SQL_TABLE_PB + "(id integer PRIMARY KEY AUTOINCREMENT," +
+            "time text,km integer,speed integer,picUrl text)";
 
     public LocalSql(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -23,14 +26,16 @@ public class LocalSql extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(TABLE_NO_USER);
+        db.execSQL(SQL_JB);
+        db.execSQL(SQL_PB);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         switch (oldVersion) {
             case 1:
-                db.execSQL(TABLE_NO_USER);
+                db.execSQL(SQL_JB);
+                db.execSQL(SQL_PB);
             case 2:
             case 3:
         }
