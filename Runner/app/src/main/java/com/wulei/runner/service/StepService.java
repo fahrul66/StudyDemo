@@ -155,7 +155,7 @@ public class StepService extends Service {
         /**
          *  从数据库中读取，前一天的数据,默认是按id 倒叙排列
          */
-        List<LocalSqlPedometer> lastDay = localSqlHelper.queryJB();
+        List<LocalSqlPedometer> lastDay = localSqlHelper.queryJB(null);
         //关机后的数据，记录一次，每次广播
         if (flagS) {
 

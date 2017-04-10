@@ -8,9 +8,9 @@ public class LocalSqlPedometer {
     //步数
     private int steps;
     //运动公里数
-    private int km;
+    private double km;
     //运动消耗卡路里
-    private int calorie;
+    private double calorie;
     //运动的目标
     private int goals;
     //计步的日期
@@ -19,7 +19,7 @@ public class LocalSqlPedometer {
     public LocalSqlPedometer() {
     }
 
-    public LocalSqlPedometer(int steps, int km, int calorie, int goals, String date) {
+    public LocalSqlPedometer(int steps, double km, double calorie, int goals, String date) {
         this.steps = steps;
         this.km = km;
         this.calorie = calorie;
@@ -27,7 +27,7 @@ public class LocalSqlPedometer {
         this.date = date;
     }
 
-    public int getCalorie() {
+    public double getCalorie() {
         return calorie;
     }
 
@@ -51,7 +51,7 @@ public class LocalSqlPedometer {
         this.goals = goals;
     }
 
-    public int getKm() {
+    public double getKm() {
         return km;
     }
 

@@ -9,33 +9,36 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_time_data_run"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableTop="@mipmap/ic_launcher"
-            android:text="00:00"
-            android:gravity="center"
-            android:textSize="@dimen/textView_large_h" />
-
-        <TextView
             android:id="@+id/tv_km_data_run"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawableTop="@mipmap/ic_launcher"
+            android:drawableTop="@mipmap/icon_home_distance"
             android:text="00:00"
             android:gravity="center"
+            android:textStyle="bold"
             android:textSize="@dimen/textView_large_h" />
 
         <TextView
-            android:id="@+id/tv_enery_data_run"
+            android:id="@+id/tv_calorie_data_run"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawableTop="@mipmap/ic_launcher"
+            android:drawableTop="@mipmap/icon_home_burn"
             android:text="00:00"
             android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="@dimen/textView_large_h" />
+
+        <TextView
+            android:id="@+id/tv_maxStep_data_run"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/icon_step"
+            android:text="00:00"
+            android:gravity="center"
+            android:textStyle="bold"
             android:textSize="@dimen/textView_large_h" />
     </LinearLayout>
 

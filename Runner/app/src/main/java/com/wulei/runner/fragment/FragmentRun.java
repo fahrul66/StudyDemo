@@ -3,6 +3,10 @@ package com.wulei.runner.fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -14,12 +18,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.baidu.mapapi.map.Text;
 import com.wulei.runner.R;
 import com.wulei.runner.app.App;
 import com.wulei.runner.customView.ArcProgressBar;
@@ -49,6 +56,12 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
     Button mButton;
     @BindView(R.id.arcProgressbar_run)
     ArcProgressBar mArc;
+    @BindView(R.id.tv_km_data_run)
+    TextView mKm;
+    @BindView(R.id.tv_calorie_data_run)
+    TextView mCalorie;
+    @BindView(R.id.tv_maxStep_data_run)
+    TextView mMaxStep;
     /*
      *传感器设置
      */
@@ -58,29 +71,8 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
      * 数据库设置
      */
     private LocalSqlHelper lsh;
-
-    //昨天的步数
-    private int yesSteps;
-
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-    }
-
-    /**
-     * 销毁，注销传感器
-     */
-    @Override
-    public void onDestroy() {
-        /*
-         * 程序销毁的时候，进行数据的保存，如 calorie，goals，等待
-         * 在 oncreate的时候进行，数据的填充。
-         */
-        super.onDestroy();
-    }
+    //默认的每日目标 5000步
+    public int goals = 5000;
 
     /**
      * 布局优化
@@ -93,11 +85,6 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
         return R.layout.fragment_run;
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     /**
      * 数据初始化
      *
@@ -105,49 +92,103 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
      */
     @Override
     protected void initView(Bundle savedInstanceState) {
-
+        //初始化数据库
+        lsh = new LocalSqlHelper(App.mAPPContext);
+        //开启服务
         Intent intent = new Intent(mActivity, StepService.class);
         mActivity.startService(intent);
 
+        //初始化arc
+        mArc.setMaxProgress(goals);
+        mArc.setBottomText("目标：" + goals);
+        //读取数据库的数据，maxStep
+        List<LocalSqlPedometer> list = lsh.queryJB("steps desc");
+        if (!list.isEmpty()) {
+            //最大的步数
+            int maxStep = list.get(0).getSteps();
+            mMaxStep.setText(String.valueOf(maxStep));
+        } else {
+            mMaxStep.setText("暂无数据");
+        }
+
     }
 
+    /**
+     * 初始化text的drawable对象
+     *
+     * @param textView
+     * @param draws
+     */
+    private void txtDrawableInit(TextView textView, @DrawableRes int draws) {
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), draws);
+        Drawable drawable = new BitmapDrawable(getResources(), bitmap);
+        textView.setCompoundDrawables(null, drawable, null, null);
+    }
+
+    /**
+     * 根据步数，计算km ,calorie
+     *
+     * @param steps
+     */
+    private void initText(int steps) {
+        //设置步数
+        double km = (steps * 0.5) / 1000;
+        mKm.setText(String.valueOf(km));
+        //消耗的卡路里
+        double car = steps * 0.04;
+        mCalorie.setText(String.valueOf(car));
+        //最大的步数，一天更新一次。
+    }
+
+    /**
+     * 销毁，注销传感器
+     */
+    @Override
+    public void onDestroy() {
+        /*
+         * 程序销毁的时候，进行数据的保存，如 calorie，goals，等待
+         * 在 oncreate的时候进行，数据的填充。
+         */
+        String today = DateUtils.convertToStr(System.currentTimeMillis());
+        double calorie = Double.parseDouble(mCalorie.getText().toString());
+        double km = Double.parseDouble(mKm.getText().toString());
+        //数据保存
+        lsh.update(ConstantFactory.SQL_TABLE_JB, "calorie", calorie, "date", today);
+        lsh.update(ConstantFactory.SQL_TABLE_JB, "km", km, "date", today);
+        lsh.update(ConstantFactory.SQL_TABLE_JB, "goals", goals, "date", today);
+        super.onDestroy();
+    }
+
+    /**
+     * 从服务端获取数据
+     */
     public Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case ConstantFactory.INIT:
                     int step = (int) msg.getData().get("steps");
-                    if (mArc != null) {
-
+                    if (mArc != null && step >= 0) {
+                        //更新mrc数据
                         mArc.setProgress(step);
+                        //更新数据
+                        initText(step);
+
                     }
                     break;
                 case ConstantFactory.SAVE:
                     int steps = (int) msg.getData().get("steps");
-                    mArc.setProgress(steps);
+                    if (mArc != null && steps >= 0) {
+                        mArc.setProgress(steps);
+                        //更新数据
+                        initText(steps);
+                    }
                     break;
             }
             super.handleMessage(msg);
         }
     };
 
-    /**
-     * 判断是今天还是昨天
-     *
-     * @param list
-     * @param today
-     * @return
-     */
-    private boolean isToday(List<LocalSqlPedometer> list, String today) {
-        for (LocalSqlPedometer pedometer : list) {
-            String date = pedometer.getDate();
-            if (date.equals(today)) {
-                //数据填充
-                return true;
-            }
-        }
-        return false;
-    }
 
     /**
      * 监听器设置

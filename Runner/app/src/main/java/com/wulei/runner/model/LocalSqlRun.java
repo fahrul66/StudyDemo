@@ -9,9 +9,9 @@ public class LocalSqlRun {
     //跑步的时间，转换00:00格式
     private String time;
     //跑步的公里数
-    private int km;
+    private double km;
     //跑步的速度，gps
-    private int speed;
+    private double speed;
     //跑步的截图
     private String picUrl;
     //跑步的日期
@@ -22,7 +22,7 @@ public class LocalSqlRun {
     public LocalSqlRun() {
     }
 
-    public LocalSqlRun(String time, int km, int speed, String picUrl, String date, String address) {
+    public LocalSqlRun(String time, double km, double speed, String picUrl, String date, String address) {
         this.time = time;
         this.km = km;
         this.speed = speed;
@@ -47,7 +47,7 @@ public class LocalSqlRun {
         this.date = date;
     }
 
-    public int getKm() {
+    public double getKm() {
         return km;
     }
 
@@ -63,7 +63,7 @@ public class LocalSqlRun {
         this.picUrl = picUrl;
     }
 
-    public int getSpeed() {
+    public double getSpeed() {
         return speed;
     }
 

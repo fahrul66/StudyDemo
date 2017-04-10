@@ -51,8 +51,8 @@ public class LocalSqlHelper {
                  * steps integer,km integer,calorie integer,goals Integer,completed integer,date text
                  */
                 int steps = c.getInt(c.getColumnIndex("steps"));
-                int km = c.getInt(c.getColumnIndex("km"));
-                int calorie = c.getInt(c.getColumnIndex("calorie"));
+                double km = c.getDouble(c.getColumnIndex("km"));
+                double calorie = c.getDouble(c.getColumnIndex("calorie"));
                 int goals = c.getInt(c.getColumnIndex("goals"));
                 String date = c.getString(c.getColumnIndex("date"));
                 //数据添加
@@ -64,13 +64,19 @@ public class LocalSqlHelper {
 
     /**
      * 查询所有
+     *
      * @return
      */
-    public List<LocalSqlPedometer> queryJB() {
+    public List<LocalSqlPedometer> queryJB(String order) {
         //集合
         List<LocalSqlPedometer> list = new ArrayList<>();
         //查询
-        Cursor c = sqlRead.query(ConstantFactory.SQL_TABLE_JB, null, null, null, null, null, "id desc");
+        Cursor c = sqlRead.query(ConstantFactory.SQL_TABLE_JB, null, null, null, null, null, order);
+        //默认按照id 时间 逆序排序
+        if (order == null) {
+
+            order = "id desc";
+        }
         //指针调至第一个
         if (c.moveToFirst()) {
             do {
@@ -79,8 +85,8 @@ public class LocalSqlHelper {
                  * steps integer,km integer,calorie integer,goals Integer,completed integer,date text
                  */
                 int steps = c.getInt(c.getColumnIndex("steps"));
-                int km = c.getInt(c.getColumnIndex("km"));
-                int calorie = c.getInt(c.getColumnIndex("calorie"));
+                double km = c.getDouble(c.getColumnIndex("km"));
+                double calorie = c.getDouble(c.getColumnIndex("calorie"));
                 int goals = c.getInt(c.getColumnIndex("goals"));
                 String date = c.getString(c.getColumnIndex("date"));
                 //数据添加
@@ -89,8 +95,10 @@ public class LocalSqlHelper {
         }
         return list;
     }
+
     /**
      * 查询跑步
+     *
      * @param selection
      * @param selectionArgs
      * @param order
@@ -114,8 +122,8 @@ public class LocalSqlHelper {
                  * time text,km integer,speed integer,picUrl text,date text,address text
                  */
                 String time = c.getString(c.getColumnIndex("time"));
-                int km = c.getInt(c.getColumnIndex("km"));
-                int speed = c.getInt(c.getColumnIndex("speed"));
+                double km = c.getDouble(c.getColumnIndex("km"));
+                double speed = c.getDouble(c.getColumnIndex("speed"));
                 String picUrl = c.getString(c.getColumnIndex("picUrl"));
                 String address = c.getString(c.getColumnIndex("address"));
                 String date = c.getString(c.getColumnIndex("date"));
@@ -183,6 +191,20 @@ public class LocalSqlHelper {
     }
 
     public void update(String table, String key, int value, String where, String whereArgs) {
+        /*
+         * 事务
+         */
+        sqlWrite.beginTransaction();
+        //数据更新
+        ContentValues c = new ContentValues();
+        c.put(key, value);
+        sqlWrite.update(table, c, where + "=?", new String[]{whereArgs});
+        //事务结束
+        sqlWrite.setTransactionSuccessful();
+        sqlWrite.endTransaction();
+    }
+
+    public void update(String table, String key, double value, String where, String whereArgs) {
         /*
          * 事务
          */
