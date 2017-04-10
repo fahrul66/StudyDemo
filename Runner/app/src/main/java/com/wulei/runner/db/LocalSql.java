@@ -15,10 +15,10 @@ public class LocalSql extends SQLiteOpenHelper {
      * 创建表计步，跑步表
      */
     private static final String SQL_JB = "create Table " + ConstantFactory.SQL_TABLE_JB + " (id integer PRIMARY KEY AUTOINCREMENT," +
-            "steps integer,km text,goals text)";
+            "steps integer,km integer,calorie integer,goals Integer,date text)";
 
     private static final String SQL_PB = "create Table " + ConstantFactory.SQL_TABLE_PB + "(id integer PRIMARY KEY AUTOINCREMENT," +
-            "time text,km integer,speed integer,picUrl text)";
+            "time text,km integer,speed integer,picUrl text,date text,address text)";
 
     public LocalSql(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);

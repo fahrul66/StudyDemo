@@ -28,8 +28,12 @@ public class ConstantFactory {
     public static final int REQUEST_CODE = 1;
 
     //数据库名
-    public static final String SQL_NAME = "localDB";
+    public static final String SQL_NAME = "localDB.db";
     public static final String SQL_TABLE_JB = "pedometer";
     public static final String SQL_TABLE_PB = "run";
     public static final int SQL_VERSION = 1;
+
+    //更新数据传递
+    public static final int SAVE = 1;
+    public static final int INIT = 2;
 }

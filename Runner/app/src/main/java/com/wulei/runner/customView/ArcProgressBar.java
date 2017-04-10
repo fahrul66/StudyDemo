@@ -280,6 +280,16 @@ public class ArcProgressBar extends View {
     }
 
     /**
+     * 获取当前的进度
+     *
+     * @return
+     */
+    public int getProgress() {
+        return progress;
+    }
+
+
+    /**
      * 清除所有数据
      */
     public void clear() {
@@ -302,6 +312,15 @@ public class ArcProgressBar extends View {
     }
 
     /**
+     * 获取当前的最大进度
+     *
+     * @return
+     */
+    public int getMaxProgress() {
+        return (int) maxValue;
+    }
+
+    /**
      * 设置最上面的text值
      *
      * @param topText
@@ -311,12 +330,29 @@ public class ArcProgressBar extends View {
     }
 
     /**
+     * 获取当前的topText
+     *
+     * @return
+     */
+    public String getTopText() {
+        return topText;
+    }
+
+    /**
      * 设置底部的text值
      *
      * @param bottomText
      */
     public void setBottomText(String bottomText) {
         this.bottomText = bottomText;
+    }
+
+    /**
+     * 获取当前的bottomText
+     * @return
+     */
+    public String getBottomText() {
+        return bottomText;
     }
 
     /**

@@ -11,23 +11,25 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.support.design.widget.FloatingActionButton;
 import android.view.View;
-import android.view.ViewAnimationUtils;
 import android.widget.Button;
 
 import com.wulei.runner.R;
-import com.wulei.runner.activity.MainActivity;
 import com.wulei.runner.app.App;
 import com.wulei.runner.customView.ArcProgressBar;
 import com.wulei.runner.db.LocalSqlHelper;
 import com.wulei.runner.fragment.base.BaseFragment;
-import com.wulei.runner.model.LocalSqlModel;
+import com.wulei.runner.model.LocalSqlPedometer;
+import com.wulei.runner.service.StepInPedometer;
+import com.wulei.runner.service.StepService;
 import com.wulei.runner.utils.ConstantFactory;
+import com.wulei.runner.utils.DateUtils;
 import com.wulei.runner.utils.DialogUtils;
 import com.wulei.runner.utils.FragmentUtils;
 import com.wulei.runner.utils.PermissionUtil;
@@ -41,7 +43,7 @@ import butterknife.BindView;
  * Created by wulei on 2017/3/27.
  */
 
-public class FragmentRun extends BaseFragment implements View.OnClickListener, SensorEventListener {
+public class FragmentRun extends BaseFragment implements View.OnClickListener {
 
     @BindView(R.id.btn_start_run)
     Button mButton;
@@ -57,6 +59,10 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener, S
      */
     private LocalSqlHelper lsh;
 
+    //昨天的步数
+    private int yesSteps;
+
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -69,9 +75,11 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener, S
      */
     @Override
     public void onDestroy() {
+        /*
+         * 程序销毁的时候，进行数据的保存，如 calorie，goals，等待
+         * 在 oncreate的时候进行，数据的填充。
+         */
         super.onDestroy();
-        mSensorManger.unregisterListener(this);
-        lsh.close();
     }
 
     /**
@@ -88,12 +96,6 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener, S
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*
-         * 传感器设置
-         */
-        mSensorManger = (SensorManager) mActivity.getSystemService(Context.SENSOR_SERVICE);
-        mStepSensor = mSensorManger.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        mSensorManger.registerListener(this, mStepSensor, SensorManager.SENSOR_DELAY_UI);
     }
 
     /**
@@ -103,18 +105,48 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener, S
      */
     @Override
     protected void initView(Bundle savedInstanceState) {
-        /*
-         * 初始化arcProgressBar的数值。
-         * 1.未登录，本地数据库读取
-         * 2.已登录，云数据库读取
-         */
-        lsh = new LocalSqlHelper(App.mAPPContext);
-        List<LocalSqlModel> list = lsh.query();
-        //数据为空
-        if (!list.isEmpty()) {
-//            mArc.setProgress(list.get(0).getSteps());
-        }
 
+        Intent intent = new Intent(mActivity, StepService.class);
+        mActivity.startService(intent);
+
+    }
+
+    public Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case ConstantFactory.INIT:
+                    int step = (int) msg.getData().get("steps");
+                    if (mArc != null) {
+
+                        mArc.setProgress(step);
+                    }
+                    break;
+                case ConstantFactory.SAVE:
+                    int steps = (int) msg.getData().get("steps");
+                    mArc.setProgress(steps);
+                    break;
+            }
+            super.handleMessage(msg);
+        }
+    };
+
+    /**
+     * 判断是今天还是昨天
+     *
+     * @param list
+     * @param today
+     * @return
+     */
+    private boolean isToday(List<LocalSqlPedometer> list, String today) {
+        for (LocalSqlPedometer pedometer : list) {
+            String date = pedometer.getDate();
+            if (date.equals(today)) {
+                //数据填充
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -142,8 +174,6 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener, S
             case R.id.btn_start_run:
                 //权限和gps判断
                 startRun();
-                //按钮变化判断
-                mButton.setVisibility(View.GONE);
                 break;
 
         }
@@ -233,18 +263,5 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener, S
         PermissionUtil.getInstance().onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        int steps = (int) event.values[0];
-        //更新数据
-        mArc.setProgress(steps);
-        //写入本地数据库
-        lsh.insert(new LocalSqlModel(steps, null, null, null, null));
 
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-    }
 }
