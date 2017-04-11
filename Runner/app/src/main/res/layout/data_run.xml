@@ -16,6 +16,7 @@
             android:drawableTop="@mipmap/icon_home_distance"
             android:text="00:00"
             android:gravity="center"
+            android:maxLines="1"
             android:textStyle="bold"
             android:textSize="@dimen/textView_large_h" />
 
@@ -27,6 +28,7 @@
             android:drawableTop="@mipmap/icon_home_burn"
             android:text="00:00"
             android:gravity="center"
+            android:maxLines="1"
             android:textStyle="bold"
             android:textSize="@dimen/textView_large_h" />
 
@@ -37,6 +39,7 @@
             android:layout_weight="1"
             android:drawableTop="@mipmap/icon_step"
             android:text="00:00"
+            android:maxLines="1"
             android:gravity="center"
             android:textStyle="bold"
             android:textSize="@dimen/textView_large_h" />

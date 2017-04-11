@@ -1,7 +1,9 @@
 package com.wulei.runner.activity;
 
-import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
 
+import com.wulei.runner.R;
 import com.wulei.runner.activity.base.BaseActivity;
 
 /**
@@ -10,6 +12,8 @@ import com.wulei.runner.activity.base.BaseActivity;
  */
 
 public class StartUpActivity extends BaseActivity {
+
+
     @Override
     protected void hideShowFragment() {
 
@@ -22,6 +26,19 @@ public class StartUpActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {
-        return 0;
+        return R.layout.activity_startup;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //延迟跳转
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                finish();
+                startActivity(new Intent(StartUpActivity.this,MainActivity.class));
+            }
+        },2000);
     }
 }

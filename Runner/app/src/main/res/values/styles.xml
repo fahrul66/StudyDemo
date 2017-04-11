@@ -12,6 +12,9 @@
 
     </style>
 
-
+    <!--fullscreen-->
+    <style name="startup" parent="AppTheme">
+        <item name="android:windowFullscreen">true</item>
+    </style>
 
 </resources>

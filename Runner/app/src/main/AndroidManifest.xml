@@ -44,17 +44,21 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="yTZrb1zAfsoGum3KzdEVG6Aadm2YaVh5" />
 
-        <!--mainActivity-->
+        <!--启动activity-->
         <activity
-            android:name=".activity.MainActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTop">
+            android:name=".activity.StartUpActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--mainActivity-->
+        <activity
+            android:name=".activity.MainActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"></activity>
         <!--百度地图定位服务-->
         <service
             android:name="com.baidu.location.f"
