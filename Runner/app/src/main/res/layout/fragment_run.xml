@@ -20,7 +20,8 @@
         app:maxProgress="200"
         app:midTextColor="@color/primary"
         app:topText="@string/arcProgressBar_top_text"
-        app:topTextColor="@color/secondary_text" />
+        app:topTextColor="@color/secondary_text"
+        android:elevation="@dimen/button_pressed"/>
 
     <include layout="@layout/data_run" />
 

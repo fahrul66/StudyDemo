@@ -8,40 +8,34 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.location.LocationManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.baidu.mapapi.map.Text;
 import com.wulei.runner.R;
+import com.wulei.runner.activity.BDMapActivity;
 import com.wulei.runner.app.App;
 import com.wulei.runner.customView.ArcProgressBar;
 import com.wulei.runner.db.LocalSqlHelper;
 import com.wulei.runner.fragment.base.BaseFragment;
 import com.wulei.runner.model.LocalSqlPedometer;
-import com.wulei.runner.service.StepInPedometer;
 import com.wulei.runner.service.StepService;
 import com.wulei.runner.utils.ConstantFactory;
 import com.wulei.runner.utils.DateUtils;
 import com.wulei.runner.utils.DialogUtils;
-import com.wulei.runner.utils.FragmentUtils;
 import com.wulei.runner.utils.PermissionUtil;
 import com.wulei.runner.utils.ToastUtil;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import butterknife.BindView;
@@ -133,11 +127,21 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
     private void initText(int steps) {
         //设置步数
         double km = (steps * 0.5) / 1000;
-        mKm.setText(String.valueOf(km));
+
+        mKm.setText(String.valueOf(keepNum(km)));
         //消耗的卡路里
         double car = steps * 0.04;
-        mCalorie.setText(String.valueOf(car));
+        mCalorie.setText(String.valueOf(keepNum(car)));
         //最大的步数，一天更新一次。
+    }
+
+    /**
+     * 保留小数
+     */
+    private double keepNum(double v) {
+        BigDecimal bd = new BigDecimal(v);
+        bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+        return bd.doubleValue();
     }
 
     /**
@@ -233,9 +237,10 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
                 //判断gps，是否打开。
                 if (isGPSOpen()) {
                     //切换fragment
-                    FragmentUtils.hide(mActivity, FragmentUtils.newInstance(ConstantFactory.TAG_RUN));
-                    FragmentUtils.add(mActivity, FragmentUtils.newInstance(ConstantFactory.TAG_MAP), ConstantFactory.TAG_MAP);
-                    FragmentUtils.show(mActivity, FragmentUtils.newInstance(ConstantFactory.TAG_MAP));
+//                    FragmentUtils.hide(mActivity, FragmentUtils.newInstance(ConstantFactory.TAG_RUN));
+//                    FragmentUtils.add(mActivity, FragmentUtils.newInstance(ConstantFactory.TAG_MAP), ConstantFactory.TAG_MAP);
+//                    FragmentUtils.show(mActivity, FragmentUtils.newInstance(ConstantFactory.TAG_MAP));
+                    startActivity(new Intent(mActivity, BDMapActivity.class));
 
                 } else {
                     //跳转到gps
