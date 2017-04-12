@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import cn.bmob.v3.b.I;
+
 /**
  * Created by wule on 2017/04/10.
  */
@@ -52,6 +54,23 @@ public class DateUtils {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         String res = sdf.format(new Date((long) time));
         return res;
+    }
 
+    /**
+     * 字符串转换成秒
+     * @param time
+     * @return
+     */
+    public static float strToHour(String time) {
+        long t = 0;
+        //切分
+        String[] split = time.split(":");
+        //小时
+        int hour = Integer.parseInt(split[0]);
+        int minute = Integer.parseInt(split[1]);
+        int second = Integer.parseInt(split[2]);
+
+        t = hour * 60 * 60 + minute * 60 + second;
+        return t/(60 * 60);
     }
 }

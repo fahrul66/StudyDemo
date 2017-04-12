@@ -37,4 +37,8 @@
     <!--dialog permission -->
     <string name="dialog_permission_msg">权限获取失败,需要手动打开,应用程序信息,授权相应权限!</string>
     <string name="dialog_permission_title">注意</string>
+
+    <!--btn-->
+    <string name="btn_start">开始</string>
+    <string name="btn_stop">停止</string>
 </resources>

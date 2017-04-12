@@ -144,7 +144,7 @@ public class ArcProgressBar extends View {
         p.setStyle(Paint.Style.STROKE);
         p.setStrokeWidth(strokeWidth);
         p.setStrokeJoin(Paint.Join.ROUND);
-        p.setStrokeCap(Paint.Cap.ROUND);
+//        p.setStrokeCap(Paint.Cap.ROUND);
 
         //颜色值设置
         if (!isClosedShader) {
@@ -237,7 +237,7 @@ public class ArcProgressBar extends View {
          */
 
         //画圆弧
-        canvas.drawArc(mRectF, angleMode / 2, angle, false, p);
+        canvas.drawArc(mRectF, angleMode / 2, angleSum, false, p);
 
         /**
          * 绘制字体
@@ -257,13 +257,13 @@ public class ArcProgressBar extends View {
         /**
          * 重新绘制
          */
-        if (angle < angleSum) {
-            angle = angle + 5;
-            //计算增加度数转换成progress
-            progress = (int) ((maxValue / angleMode) * angle);
-            //重新绘制
-            invalidate();
-        }
+//        if (angle < angleSum) {
+//            angle = angle + 5;
+//            //计算增加度数转换成progress
+////            progress = (int) ((maxValue / angleMode) * angle);
+//            //重新绘制
+//            invalidate();
+//        }
     }
 
 
@@ -274,7 +274,9 @@ public class ArcProgressBar extends View {
      */
     public void setProgress(int progress) {
 
-        angleSum = (angleMode / maxValue) * progress;
+        this.progress = progress;
+
+        angleSum = ((angleMode / maxValue) * progress);
         invalidate();
 
     }
@@ -349,6 +351,7 @@ public class ArcProgressBar extends View {
 
     /**
      * 获取当前的bottomText
+     *
      * @return
      */
     public String getBottomText() {

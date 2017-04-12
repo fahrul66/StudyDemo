@@ -8,6 +8,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.IBinder;
@@ -49,13 +51,13 @@ public class StepService extends Service {
     //开始数据，传感器累计值
     private int startValue = 0;
     private int finalVaule = 0;
+    private int today;
+    private StepInPedometer mode;
 
     @Override
     public void onCreate() {
         super.onCreate();
         //初始化广播接收器
-
-        finalVaule = StepInPedometer.CURRENT_SETP + shutDown - dateChange - startValue;
 
         initBroadcastReceiver();
         startStep();
@@ -73,6 +75,8 @@ public class StepService extends Service {
         mBatInfoReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(final Context context, final Intent intent) {
+                //finalValue
+                finalVaule = StepInPedometer.CURRENT_SETP + shutDown - dateChange - startValue;
                 String action = intent.getAction();
 
                 if (Intent.ACTION_DATE_CHANGED.equals(intent.getAction())) {
@@ -90,11 +94,13 @@ public class StepService extends Service {
                      */
                     flagS = true;
                     initTodayData();
+                    clearStepData();
                     //更新0
                     updateNotification("今日步数：" + finalVaule + " 步");
                 }
             }
         };
+        //注册广播
         registerReceiver(mBatInfoReceiver, filter);
     }
 
@@ -103,7 +109,7 @@ public class StepService extends Service {
      */
     private void startStep() {
         //初始化传感器
-        StepInPedometer mode = new StepInPedometer(this);
+        mode = new StepInPedometer(this);
         //获取当天类
         CURRENTDATE = DateUtils.convertToStr(System.currentTimeMillis());
     }
@@ -120,8 +126,8 @@ public class StepService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         initTodayData();
+        updateNotification("今日步数：" + today + " 步");
         startTimeCount();
-        updateNotification("今日步数：" + StepInPedometer.CURRENT_SETP + " 步");
         return START_STICKY;
     }
 
@@ -143,13 +149,12 @@ public class StepService extends Service {
             }
             //初始化为0
             StepInPedometer.CURRENT_SETP = 0;
+            today = 0;
 
         } else if (list.size() == 1) {
             StepInPedometer.CURRENT_SETP = list.get(0).getSteps();
+            today = list.get(0).getSteps();
         }
-
-        //数据传递
-        handler(StepInPedometer.CURRENT_SETP, ConstantFactory.INIT);
 
 
         /**
@@ -165,9 +170,12 @@ public class StepService extends Service {
         if (flagD) {
             dateChange = lastDay.get(0).getSteps();
         }
+        //重置
         flagS = false;
         flagD = false;
 
+        //数据传递
+        handler(today + shutDown - dateChange - startValue, ConstantFactory.INIT);
     }
 
 
@@ -175,13 +183,16 @@ public class StepService extends Service {
      * update notification
      */
     private void updateNotification(String content) {
-
+        //bitmap
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.circle);
+        //intent
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, MainActivity.class), 0);
         builder = new NotificationCompat.Builder(this);
         builder.setPriority(Notification.PRIORITY_MIN)
                 .setContentIntent(contentIntent)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setLargeIcon(bitmap)
+                .setSmallIcon(R.mipmap.circle)
                 .setTicker(getResources().getString(R.string.app_name))
                 .setContentTitle(getResources().getString(R.string.app_name))
                 //设置不可清除
@@ -222,6 +233,8 @@ public class StepService extends Service {
     private void save() {
         //数据传递,日期改变，减去差值。关机清除数据，加上前值。
         int tempStep = StepInPedometer.CURRENT_SETP + shutDown - dateChange - startValue;
+        //更新notification
+        updateNotification("今日步数：" + tempStep + " 步");
         //handler
         handler(tempStep, ConstantFactory.SAVE);
         //数据保存
@@ -231,9 +244,6 @@ public class StepService extends Service {
             LocalSqlPedometer lsp = new LocalSqlPedometer();
             lsp.setDate(CURRENTDATE);
             lsp.setSteps(tempStep);
-//            lsp.setKm(tempStep * 0.5);
-//            lsp.setCalorie();
-//            lsp.setGoals();
             localSqlHelper.insert(lsp);
 
 
@@ -243,8 +253,6 @@ public class StepService extends Service {
             localSqlHelper.update(ConstantFactory.SQL_TABLE_JB, "steps", tempStep, "date", CURRENTDATE);
         }
 
-        //更新notification
-        updateNotification("今日步数：" + tempStep + " 步");
 
     }
 
@@ -276,6 +284,7 @@ public class StepService extends Service {
         stopForeground(true);
         localSqlHelper.close();
         unregisterReceiver(mBatInfoReceiver);
+        mode.destory();
         Intent intent = new Intent(this, StepService.class);
         startService(intent);
         super.onDestroy();

@@ -55,7 +55,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         //toolbar设置
         setSupportActionBar(mToolbar);
         //添加navigation icon
-        ActionBarDrawerToggle abt = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar,R.string.toolbar_drawer_open, R.string.toolbar_drawer_close);
+        ActionBarDrawerToggle abt = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.toolbar_drawer_open, R.string.toolbar_drawer_close);
         mDrawerLayout.addDrawerListener(abt);
         abt.syncState();
 
@@ -67,6 +67,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 mDrawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
+        mToolbar.setTitle(getResources().getString(R.string.menu_goal));
 
     }
 
@@ -123,37 +125,36 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
      */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Fragment fragment = null;
         switch (item.getItemId()) {
             case R.id.run:
-
-                //显示
-                FragmentUtils.show(this, mFragmentRun);
-                FragmentUtils.hide(this, mFragmentMap);
-                FragmentUtils.replace(this,mFragmentRun,ConstantFactory.TAG_RUN,false);
+                FragmentUtils.replace(this, mFragmentRun, ConstantFactory.TAG_RUN, false);
                 mNavigationView.setCheckedItem(R.id.run);
+                mToolbar.setTitle(getResources().getString(R.string.menu_run));
                 break;
             case R.id.goal:
                 mNavigationView.setCheckedItem(R.id.goal);
+                mToolbar.setTitle(getResources().getString(R.string.menu_goal));
                 break;
             case R.id.record:
                 mNavigationView.setCheckedItem(R.id.record);
+                mToolbar.setTitle(getResources().getString(R.string.menu_record));
                 break;
             case R.id.news:
-                FragmentUtils.replace(this, mFragmentNews, ConstantFactory.TAG_NEWS,true);
+                FragmentUtils.replace(this, mFragmentNews, ConstantFactory.TAG_NEWS, true);
                 mNavigationView.setCheckedItem(R.id.news);
+                mToolbar.setTitle(getResources().getString(R.string.menu_news));
                 break;
             case R.id.rank:
                 mNavigationView.setCheckedItem(R.id.rank);
+                mToolbar.setTitle(getResources().getString(R.string.menu_rank));
                 break;
             case R.id.setting:
                 break;
-            case R.id.remind:
-                break;
             case R.id.shard:
                 break;
-            case R.id.timing:
+            case R.id.suggest:
                 break;
+
         }
         //关闭抽屉
         mDrawerLayout.closeDrawers();
@@ -182,7 +183,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         /*
          * 如果抽屉打开就关闭，然后返回，不执行下面的语句
          */
-        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)){
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             //抽屉打开时，按下返回键关闭
             mDrawerLayout.closeDrawers();
             return;

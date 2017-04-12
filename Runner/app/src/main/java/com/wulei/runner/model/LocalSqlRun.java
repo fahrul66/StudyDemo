@@ -5,7 +5,7 @@ package com.wulei.runner.model;
  */
 
 public class LocalSqlRun {
-    //跑步的数据 time text,km integer,speed integer,picUrl text,date text,address text
+    //跑步的数据 time text,km REAL,speed REAL,picUrl text,date text,address text
     //跑步的时间，转换00:00格式
     private String time;
     //跑步的公里数

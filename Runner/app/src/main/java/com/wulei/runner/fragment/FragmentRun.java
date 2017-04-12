@@ -57,11 +57,6 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
     @BindView(R.id.tv_maxStep_data_run)
     TextView mMaxStep;
     /*
-     *传感器设置
-     */
-    private SensorManager mSensorManger;
-    private Sensor mStepSensor;
-    /*
      * 数据库设置
      */
     private LocalSqlHelper lsh;
@@ -102,21 +97,9 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
             int maxStep = list.get(0).getSteps();
             mMaxStep.setText(String.valueOf(maxStep));
         } else {
-            mMaxStep.setText("暂无数据");
+            mMaxStep.setText("0.0");
         }
 
-    }
-
-    /**
-     * 初始化text的drawable对象
-     *
-     * @param textView
-     * @param draws
-     */
-    private void txtDrawableInit(TextView textView, @DrawableRes int draws) {
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), draws);
-        Drawable drawable = new BitmapDrawable(getResources(), bitmap);
-        textView.setCompoundDrawables(null, drawable, null, null);
     }
 
     /**

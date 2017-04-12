@@ -12,16 +12,16 @@
         android:layout_gravity="center"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="50dp"
+        android:elevation="@dimen/button_pressed"
         app:angle="360"
         app:arcColor="@color/primary"
         app:bottomText="@string/arcProgressBar_bottom_text"
         app:closable="true"
         app:currProgress="0"
-        app:maxProgress="200"
+        app:maxProgress="5000"
         app:midTextColor="@color/primary"
         app:topText="@string/arcProgressBar_top_text"
-        app:topTextColor="@color/secondary_text"
-        android:elevation="@dimen/button_pressed"/>
+        app:topTextColor="@color/secondary_text" />
 
     <include layout="@layout/data_run" />
 
@@ -29,7 +29,8 @@
         android:id="@+id/btn_start_run"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="center|bottom"
+        android:layout_marginTop="56dp"
         android:text="@string/button_run_tv"
         android:textColor="@color/text_light"
         android:textSize="@dimen/textView_appbar" />

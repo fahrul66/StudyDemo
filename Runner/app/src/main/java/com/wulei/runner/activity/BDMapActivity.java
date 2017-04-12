@@ -1,5 +1,6 @@
 package com.wulei.runner.activity;
 
+import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,6 +9,10 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Chronometer;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -15,9 +20,13 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.Poi;
 import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.BitmapDescriptor;
+import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.LogoPosition;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.OverlayOptions;
@@ -26,8 +35,15 @@ import com.baidu.mapapi.model.LatLng;
 import com.wulei.runner.R;
 import com.wulei.runner.activity.base.BaseActivity;
 import com.wulei.runner.app.App;
+import com.wulei.runner.db.LocalSql;
+import com.wulei.runner.db.LocalSqlHelper;
+import com.wulei.runner.model.LocalSqlRun;
+import com.wulei.runner.utils.ConstantFactory;
+import com.wulei.runner.utils.DateUtils;
+import com.wulei.runner.utils.DialogUtils;
 import com.wulei.runner.utils.ToastUtil;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,35 +56,36 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
     MapView mMapView;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
+    @BindView(R.id.btn_start)
+    Button mStart;
+    @BindView(R.id.btn_stop)
+    Button mStop;
+    @BindView(R.id.run_data)
+    LinearLayout mData;
+    @BindView(R.id.time)
+    Chronometer mTime;
+    //    TextView mTime;
+    @BindView(R.id.speed)
+    TextView mSpeed;
+    @BindView(R.id.km)
+    TextView mKm;
+    @BindView(R.id.cal)
+    TextView mCal;
+
     //地图
     private BaiduMap mBaiduMap;
     //定位的客户端
     private LocationClient mLocationClient;
     //定位打开，结束的标记
     private boolean locationFlag;
-    //第一次加载的标记
-    private boolean isFirstLoc = true;
-    //获取的坐标信息
-    private LatLng mLatLng;
+    //标记，是否运动
+    private boolean isRun;
+    //数据库
+    private LocalSqlHelper lh;
+    //地址
+    private String address;
+    private String currentDay;
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            Bundle bundle = msg.getData();
-            switch (msg.what) {
-                case 1:
-                    mLatLng = bundle.getParcelable("Latlng");
-                    //设置地图缩放级别,17为100米距离
-                    MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newLatLngZoom(mLatLng, 18);
-                    if (mLatLng != null) {
-                        mBaiduMap.animateMapStatus(mapStatusUpdate);
-                    }
-                    //打开定位图层
-                    mBaiduMap.setMyLocationEnabled(true);
-                    break;
-            }
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,15 +114,28 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
      * 数据初始化
      */
     private void initView() {
+        //sql
+        lh = new LocalSqlHelper(App.mAPPContext);
         //初始化toolbar
         setSupportActionBar(mToolbar);
+        mToolbar.setTitle("跑步记录");
         mToolbar.setNavigationIcon(R.mipmap.back);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                //判断是否处于运动状态
+                if (isRun) {
+                    createDialog();
+                } else {
+                    finish();
+                }
             }
         });
+
+        //button
+        mStart.setOnClickListener(this);
+        mStart.setOnClickListener(this);
+
         //初始化mapview
         mBaiduMap = mMapView.getMap();
         //地图设置
@@ -119,12 +149,10 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
         mLocationClient.registerLocationListener(new MyLocationListener());
         //开始定位
         mLocationClient.start();
-
-        //设置地图缩放级别,17为100米距离
-        MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newLatLngZoom(mLatLng, 18);
-        mBaiduMap.animateMapStatus(mapStatusUpdate);
         //打开定位图层
         mBaiduMap.setMyLocationEnabled(true);
+        //关闭开关
+        mMapView.showZoomControls(false);
 
 
     }
@@ -180,12 +208,73 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.toolbar:
+            case R.id.btn_start:
                 //加判断，是否在运动中
-                finish();
-                ToastUtil.show("123");
+                mStart.setVisibility(View.GONE);
+                mStop.setVisibility(View.VISIBLE);
+                isRun = true;
+                //可见
+                mData.setVisibility(View.VISIBLE);
+                break;
+            case R.id.btn_stop:
+                //加判断，是否在运动中
+                mStart.setVisibility(View.VISIBLE);
+                mStop.setVisibility(View.GONE);
+                isRun = false;
+                mTime.stop();
+                //确定,结束，生成图片，pic,保存
+                //缩放整个map,可以看到轨迹，然后，分享，保存本地
+                result();
                 break;
         }
+    }
+
+    /**
+     * dialog
+     */
+    private void createDialog() {
+        DialogUtils.showAlert(this, null, "确定结束运动？", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                //停止运动
+                isRun = false;
+                //确定,结束，生成图片，pic,保存
+
+                //弹出弹出框记录数据
+
+                //缩放整个map,可以看到轨迹，然后，分享，保存本地
+                result();
+            }
+
+
+        });
+    }
+
+
+    /**
+     * 缩放整个map,可以看到轨迹，然后，分享，保存本地
+     */
+    private void result() {
+        //数据保存到数据库中，
+        currentDay = DateUtils.convertToStr(System.currentTimeMillis());
+        List<LocalSqlRun> list = lh.queryPB("date", currentDay, null);
+        //无数据，当天有无
+        if (list == null && list.isEmpty()) {
+            String time = mTime.getText().toString();
+            double km = Double.parseDouble(mKm.getText().toString());
+            double speed = Double.parseDouble(mSpeed.getText().toString());
+//            String picUrl =....
+            String date = currentDay;
+            String addr = address;
+
+            //插入本地数据库
+//            lh.insert(new LocalSqlRun(time, km,speed,picUrl,date,addr));
+        } else if (list.size() >= 1) {
+
+        }
+        //截图，作图，打开activty
+
     }
 
     /**
@@ -193,8 +282,11 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
      */
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         //判断是否在运动中
+        if (isRun) {
+            createDialog();
+        }
+        super.onBackPressed();
     }
 
     /**
@@ -205,6 +297,8 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
         private LatLng latLng;
         //坐标集合
         private List<LatLng> latLngList = new ArrayList<>();
+        //第一次加载的标记
+        private boolean isFirstLoc = true;
 
         @RequiresApi(api = Build.VERSION_CODES.M)
         @Override
@@ -273,34 +367,85 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
                     sb.append(p.getId() + " " + p.getName() + " " + p.getRank());
                 }
             }
-            Log.i("BaiduLocationApiDem", sb.toString());
+            Log.i("BaiduLocationApiDem", sb.toString() + "\r\n" + isFirstLoc + "\r\n" + mTime.getText());
 
 
-            latLng = new LatLng(location.getLatitude(), location.getLongitude());
-            //添加到集合中
-//            latLngList.add(latLng);
-            judgeLatLng(latLng);
+            /**
+             * 运动中，记录轨迹,填充数据
+             */
+            if (isRun) {
+                //Gps 定位
+                if (!(location.getLocType() == BDLocation.TypeGpsLocation)) {
+                    ToastUtil.show("没有搜索到GPS信号");
+                    isRun = false;
+                    mStart.setVisibility(View.VISIBLE);
+                    mStop.setVisibility(View.GONE);
+                    mData.setVisibility(View.GONE);
+                    mTime.stop();
+                } else {
+                    /*
+                     * 记录数据，开始定位
+                     */
+                    latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                    judgeLatLng(latLng);
+
+                    /*
+                     *  数据填充
+                     */
+                    //开始计时
+                    mTime.start();
+                    //获取速度
+                    mSpeed.setText(String.valueOf(location.getSpeed()));
+                    float hour = DateUtils.strToHour((String) mTime.getText());
+                    float km = hour * location.getSpeed();
+                    mKm.setText(String.valueOf(km));
+                    float cal = km * 50;
+                    mCal.setText(String.valueOf(cal));
+
+
+                }
+            } else {
+                //结束运动，添加marker
+                //定义Maker坐标点
+                LatLng start = latLngList.get(0);
+                LatLng stop = latLngList.get(latLngList.size() - 1);
+                //构建Marker图标
+                BitmapDescriptor bitmap = BitmapDescriptorFactory
+                        .fromResource(R.mipmap.activity_map_marker_green_dr);
+                //构建MarkerOption，用于在地图上添加Marker
+                OverlayOptions option = new MarkerOptions()
+                        .position(start)
+                        .icon(bitmap);
+                //在地图上添加Marker，并显示
+                mBaiduMap.addOverlay(option);
+                //构建Marker图标
+                BitmapDescriptor bitmap1 = BitmapDescriptorFactory
+                        .fromResource(R.mipmap.activity_map_marker_red_dr);
+                OverlayOptions option1 = new MarkerOptions()
+                        .position(stop)
+                        .icon(bitmap1);
+                //在地图上添加Marker，并显示
+                mBaiduMap.addOverlay(option1);
+            }
 
 
             //第一次定位，加载自己的位置，和缩放级别
             if (isFirstLoc) {
                 isFirstLoc = false;
+                LatLng latF = new LatLng(location.getLatitude(), location.getLongitude());
                 //坐标
                 mBaiduMap.setMyLocationEnabled(true);
                 //百度地图设置，定位位置
-                MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newLatLng(latLng);
+                MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newLatLngZoom(latF, 18);
                 mBaiduMap.animateMapStatus(mapStatusUpdate);
 
-                Message m = new Message();
-                m.what = 1;
-                Bundle b = new Bundle();
-                b.putParcelable("Latlng", latLng);
-                m.setData(b);
-                mHandler.sendMessage(m);
+                //设置，地址
+                address = location.getAddrStr();
             }
 
+
             //判断gps定位开关打开没有,定位更加精确
-            if (locationFlag) {
+            if (location.getLocType() == BDLocation.TypeGpsLocation) {
                 MyLocationData mLData = new MyLocationData.Builder()
                         .accuracy(50)
                         .direction(location.getDirection())
@@ -310,8 +455,9 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
                         .build();
                 mBaiduMap.setMyLocationData(mLData);
                 //定位Mode两种normal和Following都设置为中心，而normal则是地图不移动，不刷新
-                MyLocationConfiguration mc = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.COMPASS, true, null);
+                MyLocationConfiguration mc = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.FOLLOWING, true, null);
                 mBaiduMap.setMyLocationConfigeration(mc);
+
             } else {
                 //网络定位，精确度没有gps高，并且没有速度，方向等信息
                 MyLocationData mLData1 = new MyLocationData.Builder()
@@ -334,7 +480,7 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
                         .width(15).color(getResources().getColor(R.color.accent, null))
                         .points(latLngList);
                 mBaiduMap.addOverlay(olo);
-
+                //移除所有的数
                 latLngList.removeAll(latLngList);
 
 
@@ -354,6 +500,7 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
 
         /**
          * 过滤坐标
+         *
          * @param latLng
          */
         private void judgeLatLng(LatLng latLng) {
@@ -368,11 +515,20 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
                 //guolv
                 if (l.longitude == latLng.longitude && l.latitude == latLng.latitude) {
                     return;
-                } else if ((lat > 5 && lat < 20) || (lo > 5 && lo < 20)) {
+                } else if ((lat > 0.000005 && lat < 1) || (lo > 0.000005 && lo < 1)) {
 
                     latLngList.add(latLng);
                 }
             }
+        }
+
+        /**
+         * 保留小数
+         */
+        private double keepNum(double v) {
+            BigDecimal bd = new BigDecimal(v);
+            bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+            return bd.doubleValue();
         }
     }
 
