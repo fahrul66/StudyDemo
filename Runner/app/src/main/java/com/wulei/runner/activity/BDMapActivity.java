@@ -1,6 +1,10 @@
 package com.wulei.runner.activity;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,12 +30,15 @@ import com.baidu.mapapi.map.LogoPosition;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.OverlayOptions;
+import com.baidu.mapapi.map.Polyline;
 import com.baidu.mapapi.map.PolylineOptions;
 import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.overlayutil.OverlayManager;
 import com.wulei.runner.R;
 import com.wulei.runner.activity.base.BaseActivity;
 import com.wulei.runner.app.App;
@@ -43,11 +50,18 @@ import com.wulei.runner.utils.DateUtils;
 import com.wulei.runner.utils.DialogUtils;
 import com.wulei.runner.utils.ToastUtil;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+
+import static android.R.attr.bitmap;
 
 public class BDMapActivity extends BaseActivity implements View.OnClickListener {
 
@@ -85,6 +99,8 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
     //地址
     private String address;
     private String currentDay;
+    //照片截图
+    private String picUrl;
 
 
     @Override
@@ -239,9 +255,11 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
 
                 //停止运动
                 isRun = false;
+                mStart.setVisibility(View.GONE);
+                mStop.setVisibility(View.GONE);
                 //确定,结束，生成图片，pic,保存
-
-                //弹出弹出框记录数据
+                captureScreen();
+                //弹出弹出框记录数据,分享。
 
                 //缩放整个map,可以看到轨迹，然后，分享，保存本地
                 result();
@@ -252,27 +270,96 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
     }
 
 
+    public void captureScreen() {
+        //dialog
+        final ProgressDialog p = new ProgressDialog(this);
+        p.show();
+        //线程作图
+        Runnable action = new Runnable() {
+            @Override
+            public void run() {
+                Bitmap bitmap = null;
+                final View contentView = getWindow().getDecorView();
+                ByteArrayOutputStream byteOut = null;
+                try {
+                    bitmap = Bitmap.createBitmap(contentView.getWidth(),
+                            contentView.getHeight(), Bitmap.Config.ARGB_8888);
+                    contentView.draw(new Canvas(bitmap));
+                    byteOut = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteOut);
+                    savePic(bitmap, getPath());
+
+                    //消失
+                    p.dismiss();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        if (null != byteOut)
+                            byteOut.close();
+                        if (null != bitmap && !bitmap.isRecycled()) {
+                            bitmap = null;
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+        };
+
+        try {
+            action.run();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 获取图片路径
+     */
+    private String getPath() {
+        String today = DateUtils.convertToStrAll(System.currentTimeMillis());
+        return getExternalCacheDir() + File.separator + today + ".png";
+    }
+
+    /**
+     * 保存图片路径
+     *
+     * @param b
+     * @param strFileName
+     */
+    private void savePic(Bitmap b, String strFileName) {
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(strFileName);
+            if (null != fos) {
+                //质量压缩
+                b.compress(Bitmap.CompressFormat.PNG, 100, fos);
+                fos.flush();
+                fos.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * 缩放整个map,可以看到轨迹，然后，分享，保存本地
      */
     private void result() {
         //数据保存到数据库中，
         currentDay = DateUtils.convertToStr(System.currentTimeMillis());
-        List<LocalSqlRun> list = lh.queryPB("date", currentDay, null);
         //无数据，当天有无
-        if (list == null && list.isEmpty()) {
-            String time = mTime.getText().toString();
-            double km = Double.parseDouble(mKm.getText().toString());
-            double speed = Double.parseDouble(mSpeed.getText().toString());
-//            String picUrl =....
-            String date = currentDay;
-            String addr = address;
+        String time = mTime.getText().toString();
+        double km = Double.parseDouble(mKm.getText().toString());
+        double speed = Double.parseDouble(mSpeed.getText().toString());
+        String date = currentDay;
+        String addr = address;
 
-            //插入本地数据库
-//            lh.insert(new LocalSqlRun(time, km,speed,picUrl,date,addr));
-        } else if (list.size() >= 1) {
+        //插入本地数据库
+        lh.insert(new LocalSqlRun(time, km, speed, picUrl, date, addr));
 
-        }
         //截图，作图，打开activty
 
     }
@@ -407,25 +494,50 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
             } else {
                 //结束运动，添加marker
                 //定义Maker坐标点
-                LatLng start = latLngList.get(0);
-                LatLng stop = latLngList.get(latLngList.size() - 1);
-                //构建Marker图标
-                BitmapDescriptor bitmap = BitmapDescriptorFactory
-                        .fromResource(R.mipmap.activity_map_marker_green_dr);
-                //构建MarkerOption，用于在地图上添加Marker
-                OverlayOptions option = new MarkerOptions()
-                        .position(start)
-                        .icon(bitmap);
-                //在地图上添加Marker，并显示
-                mBaiduMap.addOverlay(option);
-                //构建Marker图标
-                BitmapDescriptor bitmap1 = BitmapDescriptorFactory
-                        .fromResource(R.mipmap.activity_map_marker_red_dr);
-                OverlayOptions option1 = new MarkerOptions()
-                        .position(stop)
-                        .icon(bitmap1);
-                //在地图上添加Marker，并显示
-                mBaiduMap.addOverlay(option1);
+                if (!latLngList.isEmpty()) {
+
+                    LatLng start = latLngList.get(0);
+                    LatLng stop = latLngList.get(latLngList.size() - 1);
+                    //构建Marker图标
+                    BitmapDescriptor bitmap = BitmapDescriptorFactory
+                            .fromResource(R.mipmap.activity_map_marker_green_dr);
+                    //构建MarkerOption，用于在地图上添加Marker
+                    OverlayOptions option = new MarkerOptions()
+                            .position(start)
+                            .icon(bitmap);
+                    //在地图上添加Marker，并显示
+                    mBaiduMap.addOverlay(option);
+                    //构建Marker图标
+                    BitmapDescriptor bitmap1 = BitmapDescriptorFactory
+                            .fromResource(R.mipmap.activity_map_marker_red_dr);
+                    OverlayOptions option1 = new MarkerOptions()
+                            .position(stop)
+                            .icon(bitmap1);
+                    //在地图上添加Marker，并显示
+                    mBaiduMap.addOverlay(option1);
+
+                    OverlayManager overlayManager = new OverlayManager(mBaiduMap) {
+                        @Override
+                        public List<OverlayOptions> getOverlayOptions() {
+                            return null;
+                        }
+
+                        @Override
+                        public boolean onMarkerClick(Marker marker) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onPolylineClick(Polyline polyline) {
+                            return false;
+                        }
+                    };
+
+                    //合适的缩放范围
+                    overlayManager.addToMap();
+                    overlayManager.zoomToSpan();
+                }
+
             }
 
 

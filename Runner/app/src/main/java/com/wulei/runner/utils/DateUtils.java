@@ -24,7 +24,18 @@ public class DateUtils {
         String res = sdf.format(new Date(mills));
         return res;
     }
+    /**
+     * 将时间转换成yyyy-MM-dd的字符串
+     *
+     * @param mills 毫秒
+     * @return
+     */
+    public static String convertToStrAll(long mills) {
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String res = sdf.format(new Date(mills));
+        return res;
+    }
     /**
      * 将字符串时间转换成long 毫秒
      *
