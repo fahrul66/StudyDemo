@@ -4,18 +4,11 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.ContextMenu;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -26,11 +19,9 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.baidu.location.Poi;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
-import com.baidu.mapapi.map.LogoPosition;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
@@ -46,7 +37,6 @@ import com.baidu.mapapi.overlayutil.OverlayManager;
 import com.wulei.runner.R;
 import com.wulei.runner.activity.base.BaseActivity;
 import com.wulei.runner.app.App;
-import com.wulei.runner.db.LocalSql;
 import com.wulei.runner.db.LocalSqlHelper;
 import com.wulei.runner.model.LocalSqlRun;
 import com.wulei.runner.utils.ConstantFactory;
@@ -56,7 +46,6 @@ import com.wulei.runner.utils.ToastUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -64,8 +53,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-
-import static android.R.attr.bitmap;
 
 public class BDMapActivity extends BaseActivity implements View.OnClickListener {
 
@@ -94,8 +81,6 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
     private BaiduMap mBaiduMap;
     //定位的客户端
     private LocationClient mLocationClient;
-    //定位打开，结束的标记
-    private boolean locationFlag;
     //标记，是否运动
     private boolean isRun;
     //数据库
@@ -298,7 +283,8 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
                     byteOut = new ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteOut);
                     //保存图片
-                    savePic(bitmap, getPath());
+                    picUrl = getPath();
+                    savePic(bitmap, picUrl);
 
 
                 } catch (Exception e) {
@@ -380,7 +366,7 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
         captureScreen();
 
         //获取image,弹出dialog 或者activity分享
-        Intent intent =new Intent(this, ShareActivity.class);
+        Intent intent = new Intent(this, ShareActivity.class);
         intent.putExtra(ConstantFactory.KEY, bitmap);
         startActivity(intent);
         //销毁，回到主画面
@@ -415,8 +401,6 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
         private boolean isFirstLoc = true;
         //定位数据
         private MyLocationData mLData;
-        //定位logo
-        private BitmapDescriptor bit;
 
         @RequiresApi(api = Build.VERSION_CODES.M)
         @Override
@@ -541,8 +525,7 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
                         .build();
                 mBaiduMap.setMyLocationData(mLData);
                 //定位Mode两种normal和Following都设置为中心，而normal则是地图不移动，不刷新
-                bit = BitmapDescriptorFactory.fromResource(R.mipmap.circle);
-                MyLocationConfiguration mc = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.FOLLOWING, true, bit);
+                MyLocationConfiguration mc = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.FOLLOWING, true, null);
                 mBaiduMap.setMyLocationConfigeration(mc);
             }
 
