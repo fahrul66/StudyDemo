@@ -41,4 +41,7 @@
     <!--btn-->
     <string name="btn_start">开始</string>
     <string name="btn_stop">停止</string>
+
+    <!--menu-->
+    <string name="menu_share_info">分享</string>
 </resources>

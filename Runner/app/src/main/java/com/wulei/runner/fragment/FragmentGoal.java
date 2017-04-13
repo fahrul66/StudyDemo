@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
 
 import com.wulei.runner.R;
+import com.wulei.runner.db.LocalSqlHelper;
 import com.wulei.runner.fragment.base.BaseFragment;
 
 import butterknife.BindView;
@@ -22,6 +23,11 @@ public class FragmentGoal extends BaseFragment {
     FloatingActionButton mFab;
     @BindView(R.id.coordinate_goals)
     CoordinatorLayout mCoordi;
+
+    /*
+     * 数据库设置
+     */
+    private LocalSqlHelper lsh;
 
     @NonNull
     @Override

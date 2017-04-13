@@ -86,6 +86,7 @@
         </receiver>
 
         <activity android:name=".activity.BDMapActivity"></activity>
+        <activity android:name=".activity.ShareActivity"></activity>
     </application>
 
 </manifest>

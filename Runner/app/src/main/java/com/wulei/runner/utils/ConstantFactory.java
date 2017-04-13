@@ -36,4 +36,7 @@ public class ConstantFactory {
     //更新数据传递
     public static final int SAVE = 1;
     public static final int INIT = 2;
+
+    //activity key
+    public static final String KEY = "activity";
 }
