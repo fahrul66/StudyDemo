@@ -148,7 +148,6 @@ public class StepService extends Service {
                 startValue = StepInPedometer.CURRENT_SETP;
             }
             //初始化为0
-            StepInPedometer.CURRENT_SETP = 0;
             today = 0;
 
         } else if (list.size() == 1) {

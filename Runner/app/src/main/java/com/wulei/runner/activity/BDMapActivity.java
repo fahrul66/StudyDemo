@@ -513,21 +513,24 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
                 //设置，地址
                 address = location.getAddrStr();
 
-                /*
+
+            }
+
+           
+              /*
                  * 数据初始化
                  */
-                mLData = new MyLocationData.Builder()
-                        .accuracy(location.getRadius())
-                        .direction(location.getDirection())
-                        .latitude(location.getLatitude())
-                        .longitude(location.getLongitude())
-                        .speed(location.getSpeed())
-                        .build();
-                mBaiduMap.setMyLocationData(mLData);
-                //定位Mode两种normal和Following都设置为中心，而normal则是地图不移动，不刷新
-                MyLocationConfiguration mc = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.FOLLOWING, true, null);
-                mBaiduMap.setMyLocationConfigeration(mc);
-            }
+            mLData = new MyLocationData.Builder()
+                    .accuracy(location.getRadius())
+                    .direction(location.getDirection())
+                    .latitude(location.getLatitude())
+                    .longitude(location.getLongitude())
+                    .speed(location.getSpeed())
+                    .build();
+            mBaiduMap.setMyLocationData(mLData);
+            //定位Mode两种normal和Following都设置为中心，而normal则是地图不移动，不刷新
+            MyLocationConfiguration mc = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.NORMAL, true, null);
+            mBaiduMap.setMyLocationConfigeration(mc);
 
             /*
              * 在地图上，添加覆盖物。动健网
