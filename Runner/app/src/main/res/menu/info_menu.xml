@@ -2,8 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/share"
-        android:icon="@mipmap/share_white"
-        android:title="@string/menu_share_info"
-        app:showAsAction="always" />
+        android:id="@+id/share_qq"
+        android:icon="@mipmap/q"
+        android:title="@string/menu_share_qq"
+        app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/share_weixin"
+        android:icon="@mipmap/wexin"
+        android:title="@string/menu_share_weixni"
+        app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/share_weixin_fc"
+        android:icon="@mipmap/f"
+        android:title="@string/menu_share_weixni_fc"
+        app:showAsAction="always|withText" />
 </menu>

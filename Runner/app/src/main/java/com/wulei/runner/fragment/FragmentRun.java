@@ -49,7 +49,7 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
     @BindView(R.id.btn_start_run)
     Button mButton;
     @BindView(R.id.arcProgressbar_run)
-    ArcProgressBar mArc;
+    public ArcProgressBar mArc;
     @BindView(R.id.tv_km_data_run)
     TextView mKm;
     @BindView(R.id.tv_calorie_data_run)
@@ -61,7 +61,7 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
      */
     private LocalSqlHelper lsh;
     //默认的每日目标 5000步
-    public int goals = 5000;
+    public static int goals = 5000;
 
     /**
      * 布局优化

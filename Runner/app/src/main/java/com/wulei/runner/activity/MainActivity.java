@@ -10,15 +10,19 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.wulei.runner.R;
 import com.wulei.runner.activity.base.BaseActivity;
-import com.wulei.runner.fragment.FragmentMap;
+import com.wulei.runner.fragment.FragmentGoal;
 import com.wulei.runner.fragment.FragmentNews;
+import com.wulei.runner.fragment.FragmentRank;
+import com.wulei.runner.fragment.FragmentRecord;
 import com.wulei.runner.fragment.FragmentRun;
+import com.wulei.runner.fragment.FragmentSetting;
+import com.wulei.runner.fragment.FragmentShare;
+import com.wulei.runner.fragment.FragmentSuggest;
 import com.wulei.runner.utils.ConstantFactory;
 import com.wulei.runner.utils.FragmentUtils;
 import com.wulei.runner.utils.ToastUtil;
@@ -42,8 +46,15 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public NavigationView mNavigationView;
     //运动的fragment
     private FragmentRun mFragmentRun = (FragmentRun) FragmentUtils.newInstance(ConstantFactory.TAG_RUN);
-    private FragmentMap mFragmentMap = (FragmentMap) FragmentUtils.newInstance(ConstantFactory.TAG_MAP);
     private FragmentNews mFragmentNews = (FragmentNews) FragmentUtils.newInstance(ConstantFactory.TAG_NEWS);
+    private FragmentGoal mFragmentGoal = (FragmentGoal) FragmentUtils.newInstance(ConstantFactory.TAG_GOAL);
+    private FragmentRank mFragmentRank = (FragmentRank) FragmentUtils.newInstance(ConstantFactory.TAG_RANK);
+    private FragmentRecord mFragmentRecord = (FragmentRecord) FragmentUtils.newInstance(ConstantFactory.TAG_RECORD);
+    private FragmentSetting mFragmentSetting = (FragmentSetting) FragmentUtils.newInstance(ConstantFactory.TAG_SETTING);
+    private FragmentShare mFragmentShare = (FragmentShare) FragmentUtils.newInstance(ConstantFactory.TAG_SHARE);
+    private FragmentSuggest mFragmentSuggest = (FragmentSuggest) FragmentUtils.newInstance(ConstantFactory.TAG_SUGGEST);
+    //判断是否是null
+    private boolean isGoalNull = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,18 +89,14 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     protected void hideShowFragment() {
         FragmentRun fragmentRun = null;
-        FragmentMap fragmentMap = null;
         List<Fragment> fragmentList = getSupportFragmentManager().getFragments();
         for (Fragment fragment : fragmentList) {
             if (fragment instanceof FragmentRun) {
                 fragmentRun = (FragmentRun) fragment;
-            } else if (fragment instanceof FragmentMap) {
-                fragmentMap = (FragmentMap) fragment;
             }
             // 解决重叠问题
             getSupportFragmentManager().beginTransaction()
                     .show(fragmentRun)
-                    .hide(fragmentMap)
                     .commit();
 
 
@@ -132,6 +139,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 mToolbar.setTitle(getResources().getString(R.string.menu_run));
                 break;
             case R.id.goal:
+                FragmentUtils.replace(this, mFragmentGoal, ConstantFactory.TAG_GOAL, true);
                 mNavigationView.setCheckedItem(R.id.goal);
                 mToolbar.setTitle(getResources().getString(R.string.menu_goal));
                 break;

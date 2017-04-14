@@ -20,6 +20,9 @@ public class ConstantFactory {
     public static final String TAG_NEWS = "news";
     public static final String TAG_RANK = "rank";
     public static final String TAG_SETTING = "setting";
+    public static final String TAG_SHARE = "share";
+    public static final String TAG_SUGGEST = "suggest";
+    public static final String TAG_Empty = "empty";
 
     //需要的权限
     public static final String[] PERMISSION = {Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -39,4 +42,11 @@ public class ConstantFactory {
 
     //activity key
     public static final String KEY = "activity";
+
+    //share packageName shareActivity
+    public static final String PACKAGE_NAME_QQ = "com.tencent.mobileqq";
+    public static final String PACKAGE_NAME_WEIXIN = "com.tencent.mm";
+    public static final String SHARE_QQ = "com.tencent.mobileqq.activity.JumpActivity";
+    public static final String SHARE_WEIXIN = "com.tencent.mm.ui.tools.ShareImgUI";
+
 }

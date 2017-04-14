@@ -43,5 +43,10 @@
     <string name="btn_stop">停止</string>
 
     <!--menu-->
-    <string name="menu_share_info">分享</string>
+    <string name="menu_share_qq">QQ</string>
+    <string name="menu_share_weixni">微信</string>
+    <string name="menu_share_weixni_fc">朋友圈</string>
+    <!--framgment goal-->
+    <string name="tv_goal">今日步数：</string>
+    <string name="snack_error">设置失败，步数要大于5000！</string>
 </resources>

@@ -1,6 +1,5 @@
 package com.wulei.runner.utils;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,13 +7,15 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.wulei.runner.R;
 import com.wulei.runner.activity.base.BaseActivity;
+import com.wulei.runner.fragment.FragmentEmpty;
 import com.wulei.runner.fragment.FragmentGoal;
-import com.wulei.runner.fragment.FragmentMap;
 import com.wulei.runner.fragment.FragmentNews;
 import com.wulei.runner.fragment.FragmentRank;
 import com.wulei.runner.fragment.FragmentRecord;
 import com.wulei.runner.fragment.FragmentRun;
 import com.wulei.runner.fragment.FragmentSetting;
+import com.wulei.runner.fragment.FragmentShare;
+import com.wulei.runner.fragment.FragmentSuggest;
 
 import java.util.List;
 
@@ -29,12 +30,14 @@ public class FragmentUtils {
      * 所有的fragment，实例，单例模式，懒汉式
      */
     private static Fragment mFragmentRun = new FragmentRun();
-    private static Fragment mFragmentMap = new FragmentMap();
     private static Fragment mFragmentNews = new FragmentNews();
     private static Fragment mFragmentGoal = new FragmentGoal();
     private static Fragment mFragmentRank = new FragmentRank();
     private static Fragment mFragmentRecord = new FragmentRecord();
     private static Fragment mFragmentSetting = new FragmentSetting();
+    private static Fragment mFragmentShare = new FragmentShare();
+    private static Fragment mFragmentSuggest = new FragmentSuggest();
+    private static Fragment mFragmentEmpty = new FragmentEmpty();
 
     /**
      * 根据tag标记，返回fragment。
@@ -47,9 +50,6 @@ public class FragmentUtils {
         switch (tag) {
             case ConstantFactory.TAG_RUN:
                 fragment = mFragmentRun;
-                break;
-            case ConstantFactory.TAG_MAP:
-                fragment = mFragmentMap;
                 break;
             case ConstantFactory.TAG_NEWS:
                 fragment = mFragmentNews;
@@ -65,6 +65,15 @@ public class FragmentUtils {
                 break;
             case ConstantFactory.TAG_SETTING:
                 fragment = mFragmentSetting;
+                break;
+            case ConstantFactory.TAG_SHARE:
+                fragment = mFragmentShare;
+                break;
+            case ConstantFactory.TAG_SUGGEST:
+                fragment = mFragmentSuggest;
+                break;
+            case ConstantFactory.TAG_Empty:
+                fragment = mFragmentEmpty;
                 break;
         }
         return fragment;

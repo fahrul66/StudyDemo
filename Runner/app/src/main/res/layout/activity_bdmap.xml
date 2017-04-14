@@ -7,13 +7,14 @@
 
     <include layout="@layout/app_bar" />
 
+
     <include
         layout="@layout/item_map"
-        android:visibility="visible" />
-
+        />
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
 
 
         <com.baidu.mapapi.map.MapView
@@ -43,6 +44,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/textView_large_title"
             android:visibility="gone" />
+
     </FrameLayout>
 
 </LinearLayout>
