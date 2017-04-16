@@ -134,7 +134,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.run:
-                FragmentUtils.replace(this, mFragmentRun, ConstantFactory.TAG_RUN, false);
+                //
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.content, mFragmentRun, ConstantFactory.TAG_RUN)
+                        .commit();
+//                FragmentUtils.replace(this, mFragmentRun, ConstantFactory.TAG_RUN, false);
                 mNavigationView.setCheckedItem(R.id.run);
                 mToolbar.setTitle(getResources().getString(R.string.menu_run));
                 break;

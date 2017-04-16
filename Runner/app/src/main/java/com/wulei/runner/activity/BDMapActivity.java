@@ -514,9 +514,9 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
          * 保留小数
          */
         private double keepNum(double v) {
-            BigDecimal bd = new BigDecimal(v);
-            bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
-            return bd.doubleValue();
+            long l1 = Math.round(v*100); //四舍五入
+            double ret = l1/100.0; //注意：使用 100.0 而不是 100
+            return ret;
         }
 
         /**

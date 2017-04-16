@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -112,6 +113,7 @@ public class FragmentGoal extends BaseFragment {
             @Override
             public void onClick(View v) {
                 final EditText editText = new EditText(mActivity);
+                editText.setInputType(EditorInfo.TYPE_CLASS_NUMBER);
                 editText.setHint("步数至少要大于5000");
                 DialogUtils.showAlert(mActivity, "今日目标步数", editText, new DialogInterface.OnClickListener() {
                     @Override

@@ -24,6 +24,7 @@ public class DateUtils {
         String res = sdf.format(new Date(mills));
         return res;
     }
+
     /**
      * 将时间转换成yyyy-MM-dd的字符串
      *
@@ -36,6 +37,7 @@ public class DateUtils {
         String res = sdf.format(new Date(mills));
         return res;
     }
+
     /**
      * 将字符串时间转换成long 毫秒
      *
@@ -69,6 +71,7 @@ public class DateUtils {
 
     /**
      * 字符串转换成秒
+     *
      * @param time
      * @return
      */
@@ -77,11 +80,18 @@ public class DateUtils {
         //切分
         String[] split = time.split(":");
         //小时
-        int hour = Integer.parseInt(split[0]);
-        int minute = Integer.parseInt(split[1]);
-        int second = Integer.parseInt(split[2]);
+        if (split.length == 3) {
 
-        t = hour * 60 * 60 + minute * 60 + second;
-        return t/(60 * 60);
+            int hour = Integer.parseInt(split[0]);
+            int minute = Integer.parseInt(split[1]);
+            int second = Integer.parseInt(split[2]);
+            t = hour * 60 * 60 + minute * 60 + second;
+        } else {
+            int minute = Integer.parseInt(split[0]);
+            int second = Integer.parseInt(split[1]);
+            t = minute * 60 + second;
+        }
+
+        return t / (60 * 60);
     }
 }

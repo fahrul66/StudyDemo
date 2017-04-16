@@ -151,7 +151,8 @@ public class StepService extends Service {
             today = 0;
 
         } else if (list.size() == 1) {
-            StepInPedometer.CURRENT_SETP = list.get(0).getSteps();
+            startValue = list.get(0).getSteps();
+//            StepInPedometer.CURRENT_SETP = list.get(0).getSteps();
             today = list.get(0).getSteps();
         }
 
