@@ -366,6 +366,7 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
         //地图坐标
         private LatLng latLng;
         //坐标集合
+        private List<LatLng> latAll = new ArrayList<>();
         private List<LatLng> latLngList = new ArrayList<>();
         //第一次加载的标记
         private boolean isFirstLoc = true;
@@ -491,6 +492,8 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
         private void judgeLatLng(LatLng latLng) {
             if (latLngList.isEmpty()) {
                 latLngList.add(latLng);
+                //总的坐标
+                latAll.add(latLng);
             } else {
                 //上一个值
                 LatLng l = latLngList.get(latLngList.size() - 1);
@@ -500,11 +503,10 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
                 //guolv
                 if (l.longitude == latLng.longitude && l.latitude == latLng.latitude) {
                     return;
-                } /*else if ((lat > 0.000005 && lat < 1) || (lo > 0.000005 && lo < 1)) {
-
+                } else {
                     latLngList.add(latLng);
-                } */ else {
-                    latLngList.add(latLng);
+                    //总的坐标
+                    latAll.add(latLng);
 
                 }
             }
@@ -514,8 +516,8 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
          * 保留小数
          */
         private double keepNum(double v) {
-            long l1 = Math.round(v*100); //四舍五入
-            double ret = l1/100.0; //注意：使用 100.0 而不是 100
+            long l1 = Math.round(v * 100); //四舍五入
+            double ret = l1 / 100.0; //注意：使用 100.0 而不是 100
             return ret;
         }
 
@@ -559,10 +561,10 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
          * 轨迹记录
          */
         private void traceRecord() {
-            if (!latLngList.isEmpty()) {
+            if (!latAll.isEmpty()) {
 
-                LatLng start = latLngList.get(0);
-                LatLng stop = latLngList.get(latLngList.size() - 1);
+                LatLng start = latAll.get(0);
+                LatLng stop = latAll.get(latAll.size() - 1);
                 //构建Marker图标
                 BitmapDescriptor bitmap = BitmapDescriptorFactory
                         .fromResource(R.mipmap.activity_map_marker_green_dr);

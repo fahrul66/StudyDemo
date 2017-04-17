@@ -48,6 +48,8 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.Holder> {
         } else {
             holder.mImg.setImageResource(R.mipmap.no_complete);
         }
+        //日期填充
+        holder.mTvDate.setText(list.get(position).getDate());
     }
 
     @Override
@@ -64,6 +66,8 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.Holder> {
         TextView mTvGoal;
         @BindView(R.id.tv_goals_normal)
         TextView mTvInFact;
+        @BindView(R.id.tv_date)
+        TextView mTvDate;
         @BindView(R.id.img_goals)
         ImageView mImg;
 

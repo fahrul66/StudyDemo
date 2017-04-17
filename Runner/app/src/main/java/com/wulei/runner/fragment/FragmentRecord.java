@@ -6,12 +6,14 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.wulei.runner.R;
 import com.wulei.runner.activity.MainActivity;
 import com.wulei.runner.app.App;
 import com.wulei.runner.db.LocalSqlHelper;
 import com.wulei.runner.fragment.base.BaseFragment;
+import com.wulei.runner.utils.ConstantFactory;
 import com.wulei.runner.utils.DividerItemDecoration;
 
 import butterknife.BindView;
@@ -30,30 +32,45 @@ public class FragmentRecord extends BaseFragment {
     //数据库helper
     private LocalSqlHelper lsh;
 
+    /**
+     * 布局绑定
+     * @return
+     */
     @NonNull
     @Override
     protected int setContentView() {
-        return 0;
+        return R.layout.fragment_record;
     }
 
+    /**
+     * 数据初始化
+     * @param savedInstanceState
+     */
     @Override
     protected void initView(Bundle savedInstanceState) {
         //数据库
         lsh = new LocalSqlHelper(App.mAPPContext);
         //初始化
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(mActivity, DividerItemDecoration.VERTICAL_LIST));
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(ConstantFactory.SPAN_COUNT,StaggeredGridLayoutManager.VERTICAL));
     }
 
+    /**
+     * 监听器设置
+     */
     @Override
     protected void setListener() {
 
     }
 
+    /**
+     * 逻辑代码处理
+     * @param savedInstanceState
+     */
     @Override
     protected void processLogic(Bundle savedInstanceState) {
 
     }
+
     /**
      * 弹出栈
      */
@@ -62,6 +79,6 @@ public class FragmentRecord extends BaseFragment {
         //默认行为,返回栈
         mAppCompatActivity.getSupportFragmentManager().popBackStack();
         //toolbar返回
-        ((MainActivity)mActivity).mNavigationView.setCheckedItem(R.id.run);
+        ((MainActivity) mActivity).mNavigationView.setCheckedItem(R.id.run);
     }
 }

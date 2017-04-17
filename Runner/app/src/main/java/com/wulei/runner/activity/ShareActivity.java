@@ -91,7 +91,7 @@ public class ShareActivity extends BaseActivity {
                 break;
              //分享到微信
             case R.id.share_weixin:
-                shareUtils.shareWeChatFriendCircle("Runner share", "运动轨迹图", drawable);
+                shareUtils.shareWeChatFriend("Runner share", "运动轨迹图",ShareUtils.DRAWABLE,drawable);
                 break;
              //分享到朋友圈
             case R.id.share_weixin_fc:
