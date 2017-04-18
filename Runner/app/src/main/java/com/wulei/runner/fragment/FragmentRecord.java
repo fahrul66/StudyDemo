@@ -4,17 +4,23 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.wulei.runner.R;
 import com.wulei.runner.activity.MainActivity;
+import com.wulei.runner.adapter.RecordAdapter;
 import com.wulei.runner.app.App;
 import com.wulei.runner.db.LocalSqlHelper;
 import com.wulei.runner.fragment.base.BaseFragment;
+import com.wulei.runner.model.LocalSqlRun;
 import com.wulei.runner.utils.ConstantFactory;
 import com.wulei.runner.utils.DividerItemDecoration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -22,18 +28,24 @@ import butterknife.BindView;
  * Created by wule on 2017/04/01.
  */
 
-public class FragmentRecord extends BaseFragment {
+public class FragmentRecord extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
     @BindView(R.id.coordinate_record)
     CoordinatorLayout mCoordinate;
     @BindView(R.id.fab_record)
     FloatingActionButton mFab;
     @BindView(R.id.recycler_record)
     RecyclerView mRecyclerView;
+    @BindView(R.id.swipeRefresh_record)
+    SwipeRefreshLayout mSrl;
     //数据库helper
     private LocalSqlHelper lsh;
+    //数据
+    List<LocalSqlRun> mList;
+    private RecordAdapter adapter;
 
     /**
      * 布局绑定
+     *
      * @return
      */
     @NonNull
@@ -44,6 +56,7 @@ public class FragmentRecord extends BaseFragment {
 
     /**
      * 数据初始化
+     *
      * @param savedInstanceState
      */
     @Override
@@ -51,7 +64,20 @@ public class FragmentRecord extends BaseFragment {
         //数据库
         lsh = new LocalSqlHelper(App.mAPPContext);
         //初始化
-        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(ConstantFactory.SPAN_COUNT,StaggeredGridLayoutManager.VERTICAL));
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(ConstantFactory.SPAN_COUNT, StaggeredGridLayoutManager.VERTICAL));
+        mList = lsh.queryPB(null);
+        adapter = new RecordAdapter(mActivity, mList);
+        mRecyclerView.setAdapter(adapter);
+
+        //判断是否无数据
+        if (mList.isEmpty() || mList == null) {
+            getChildFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.swipeRefresh_record, FragmentEmpty.create("no data..."))
+                    .addToBackStack(null)
+                    .commit();
+        }
+
     }
 
     /**
@@ -59,11 +85,12 @@ public class FragmentRecord extends BaseFragment {
      */
     @Override
     protected void setListener() {
-
+        mSrl.setOnRefreshListener(this);
     }
 
     /**
      * 逻辑代码处理
+     *
      * @param savedInstanceState
      */
     @Override
@@ -80,5 +107,22 @@ public class FragmentRecord extends BaseFragment {
         mAppCompatActivity.getSupportFragmentManager().popBackStack();
         //toolbar返回
         ((MainActivity) mActivity).mNavigationView.setCheckedItem(R.id.run);
+    }
+
+    /**
+     * 刷新
+     */
+    @Override
+    public void onRefresh() {
+        mSrl.setRefreshing(true);
+        mList = lsh.queryPB(null);
+        adapter = new RecordAdapter(mActivity, mList);
+        adapter.notifyDataSetChanged();
+
+        ////判断是否无数据
+        if (!mList.isEmpty() && mList != null) {
+            getChildFragmentManager().popBackStack();
+        }
+        mSrl.setRefreshing(false);
     }
 }

@@ -153,7 +153,7 @@ public class FragmentGoal extends BaseFragment {
 
         //判断是否无数据
         if (list.isEmpty() || list == null) {
-            mAppCompatActivity.getSupportFragmentManager()
+            getChildFragmentManager()
                     .beginTransaction()
                     .replace(R.id.coordinate_goals, FragmentEmpty.create("no data..."))
                     .addToBackStack(null)

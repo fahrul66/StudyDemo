@@ -70,13 +70,13 @@ public class LocalSqlHelper {
     public List<LocalSqlPedometer> queryJB(String order) {
         //集合
         List<LocalSqlPedometer> list = new ArrayList<>();
-        //查询
-        Cursor c = sqlRead.query(ConstantFactory.SQL_TABLE_JB, null, null, null, null, null, order);
         //默认按照id 时间 逆序排序
         if (order == null) {
 
             order = "id desc";
         }
+        //查询
+        Cursor c = sqlRead.query(ConstantFactory.SQL_TABLE_JB, null, null, null, null, null, order);
         //指针调至第一个
         if (c.moveToFirst()) {
             do {
@@ -114,6 +114,36 @@ public class LocalSqlHelper {
         }
         //查询
         Cursor c = sqlRead.query(ConstantFactory.SQL_TABLE_PB, null, selection + "=?", new String[]{selectionArgs}, null, null, order);
+        //指针调至第一个
+        if (c.moveToFirst()) {
+            do {
+                /*
+                 * 数据解析到读取
+                 * time text,km integer,speed integer,picUrl text,date text,address text
+                 */
+                String time = c.getString(c.getColumnIndex("time"));
+                double km = c.getDouble(c.getColumnIndex("km"));
+                double speed = c.getDouble(c.getColumnIndex("speed"));
+                String picUrl = c.getString(c.getColumnIndex("picUrl"));
+                String address = c.getString(c.getColumnIndex("address"));
+                String date = c.getString(c.getColumnIndex("date"));
+                //数据添加
+                list.add(new LocalSqlRun(time, km, speed, picUrl, date, address));
+            } while (c.moveToNext());
+        }
+        return list;
+    }
+
+    public List<LocalSqlRun> queryPB(String order) {
+        //集合
+        List<LocalSqlRun> list = new ArrayList<>();
+        //获取数据
+        if (order == null) {
+
+            order = "id desc";
+        }
+        //查询
+        Cursor c = sqlRead.query(ConstantFactory.SQL_TABLE_PB, null, null, null, null, null, order);
         //指针调至第一个
         if (c.moveToFirst()) {
             do {

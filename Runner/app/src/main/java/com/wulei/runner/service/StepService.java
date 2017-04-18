@@ -249,8 +249,8 @@ public class StepService extends Service {
 
         } else if (list.size() == 1) {
             LocalSqlPedometer data = list.get(0);
-            data.setSteps(tempStep);
-            localSqlHelper.update(ConstantFactory.SQL_TABLE_JB, "steps", tempStep, "date", CURRENTDATE);
+            int stepsSql = data.getSteps();
+            localSqlHelper.update(ConstantFactory.SQL_TABLE_JB, "steps", stepsSql + tempStep, "date", CURRENTDATE);
         }
 
 

@@ -43,12 +43,6 @@ public class ConstantFactory {
     //activity key
     public static final String KEY = "activity";
 
-    //share packageName shareActivity
-    public static final String PACKAGE_NAME_QQ = "com.tencent.mobileqq";
-    public static final String PACKAGE_NAME_WEIXIN = "com.tencent.mm";
-    public static final String SHARE_QQ = "com.tencent.mobileqq.activity.JumpActivity";
-    public static final String SHARE_WEIXIN = "com.tencent.mm.ui.tools.ShareImgUI";
-
     //fragment record layout spanCount
     public static final int SPAN_COUNT = 2;
 

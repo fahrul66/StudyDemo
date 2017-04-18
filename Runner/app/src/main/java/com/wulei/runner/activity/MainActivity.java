@@ -148,6 +148,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 mToolbar.setTitle(getResources().getString(R.string.menu_goal));
                 break;
             case R.id.record:
+                FragmentUtils.replace(this, mFragmentRecord, ConstantFactory.TAG_RECORD, true);
                 mNavigationView.setCheckedItem(R.id.record);
                 mToolbar.setTitle(getResources().getString(R.string.menu_record));
                 break;
