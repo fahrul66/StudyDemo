@@ -72,7 +72,7 @@ public class FragmentUtils {
             case ConstantFactory.TAG_SUGGEST:
                 fragment = mFragmentSuggest;
                 break;
-            case ConstantFactory.TAG_Empty:
+            case ConstantFactory.TAG_EMPTY:
                 fragment = mFragmentEmpty;
                 break;
         }
@@ -107,7 +107,6 @@ public class FragmentUtils {
         FragmentManager fm = ((BaseActivity) context).getSupportFragmentManager();
         Fragment target = fm.findFragmentByTag(tag);
         //判断fragmentManager对象池中是否有此tag,没有时才再次添加。
-        if (target == null) {
             //target = newInstance(tag);
             //fragmentManager开启事务添加fragment
             FragmentTransaction ft = fm.beginTransaction();
@@ -117,7 +116,6 @@ public class FragmentUtils {
                 ft.addToBackStack(null);
             }
             ft.commit();
-        }
     }
 
     /**

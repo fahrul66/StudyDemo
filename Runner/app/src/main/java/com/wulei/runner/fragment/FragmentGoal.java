@@ -71,7 +71,6 @@ public class FragmentGoal extends BaseFragment {
         lsh = new LocalSqlHelper(App.mAPPContext);
         //初始化progress
         mProgress.setMax(FragmentRun.goals);
-        mProgress.setProgress(mFragmentRun.mArc.getProgress());
         //初始化
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(mActivity, DividerItemDecoration.VERTICAL_LIST));
@@ -149,16 +148,9 @@ public class FragmentGoal extends BaseFragment {
         //实例化
         list = new ArrayList<>();
         getData();
-        mRecyclerView.setAdapter(new GoalAdapter(mActivity, list));
 
-        //判断是否无数据
-        if (list.isEmpty() || list == null) {
-            getChildFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.coordinate_goals, FragmentEmpty.create("no data..."))
-                    .addToBackStack(null)
-                    .commit();
-        }
+
+
     }
 
     /**
@@ -169,27 +161,36 @@ public class FragmentGoal extends BaseFragment {
 
         //本地存储
         List<LocalSqlPedometer> listP = lsh.queryJB(null);
-        for (LocalSqlPedometer l : listP) {
-            if (l.getSteps() >= l.getGoals()) {
+        if (listP.isEmpty()) {
+            //判断是否无数据
+            if (list.isEmpty() || list == null) {
 
-                list.add(new GoalModel(l.getDate(), "目标：" + l.getGoals(), "实际：" + l.getSteps(), true));
-            } else {
-
-                list.add(new GoalModel(l.getDate(), "目标：" + l.getGoals(), "实际：" + l.getSteps(), false));
             }
+        } else {
+
+            for (LocalSqlPedometer l : listP) {
+                if (l.getSteps() >= l.getGoals()) {
+
+                    list.add(new GoalModel(l.getDate(), "目标：" + l.getGoals(), "实际：" + l.getSteps(), true));
+                } else {
+
+                    list.add(new GoalModel(l.getDate(), "目标：" + l.getGoals(), "实际：" + l.getSteps(), false));
+                }
+            }
+            mRecyclerView.setAdapter(new GoalAdapter(mActivity, list));
         }
 
 
     }
 
-    /**
-     * 弹出栈
-     */
-    @Override
-    protected void onBackPressed() {
-        //默认行为,返回栈
-        mAppCompatActivity.getSupportFragmentManager().popBackStack();
-        //toolbar返回
-        ((MainActivity)mActivity).mNavigationView.setCheckedItem(R.id.run);
-    }
+//    /**
+//     * 弹出栈
+//     */
+//    @Override
+//    protected void onBackPressed() {
+//        //默认行为,返回栈
+//        mAppCompatActivity.getSupportFragmentManager().popBackStack();
+//        //toolbar返回
+//        ((MainActivity) mActivity).mNavigationView.setCheckedItem(R.id.run);
+//    }
 }

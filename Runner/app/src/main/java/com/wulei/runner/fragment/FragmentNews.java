@@ -34,11 +34,11 @@ public class FragmentNews extends BaseFragment {
 
     }
 
-    @Override
-    protected void onBackPressed() {
-        //默认行为,返回栈
-        mAppCompatActivity.getSupportFragmentManager().popBackStack();
-        //toolbar返回
-        ((MainActivity)mActivity).mNavigationView.setCheckedItem(R.id.run);
-    }
+//    @Override
+//    protected void onBackPressed() {
+//        //默认行为,返回栈
+//        mAppCompatActivity.getSupportFragmentManager().popBackStack();
+//        //toolbar返回
+//        ((MainActivity)mActivity).mNavigationView.setCheckedItem(R.id.run);
+//    }
 }

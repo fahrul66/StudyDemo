@@ -91,8 +91,10 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
     private boolean successCapture;
     //定位监听器
     private MyLocationListener locationListener;
-    //截取的图片
-    Bitmap bitmap = null;
+    //dialog
+    private ProgressDialog mPd;
+    //是否从运动状态退出
+    private boolean isQuit;
 
 
     @Override
@@ -163,7 +165,9 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
         //关闭开关
         mMapView.showZoomControls(false);
 
-
+        //dialog
+        mPd = new ProgressDialog(this);
+        mPd.setMessage("loading...");
     }
 
 
@@ -204,6 +208,7 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        mPd.dismiss();
         mMapView.onDestroy();
         //关闭定位图层
         mLocationClient.stop();
@@ -221,8 +226,6 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_start:
-//                captureScreen();
-//               加判断，是否在运动中
                 mStart.setVisibility(View.GONE);
                 mStop.setVisibility(View.VISIBLE);
                 isRun = true;
@@ -237,7 +240,10 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
                 mTime.stop();
                 //确定,结束，生成图片，pic,保存
                 //缩放整个map,可以看到轨迹，然后，分享，保存本地
-                result();
+//                result();
+                isQuit = true;
+                //显示
+                mPd.show();
                 break;
         }
     }
@@ -255,14 +261,17 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
                 mTime.stop();
                 mStart.setVisibility(View.GONE);
                 mStop.setVisibility(View.GONE);
+                //显示
+                mPd.show();
                 //缩放整个map,可以看到轨迹，然后，分享，保存本地
-                result();
+//                result();
+                isQuit = true;
 
 
             }
 
 
-        });
+        },null);
     }
 
     /**
@@ -270,16 +279,11 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
      */
     public void captureScreen() {
 
-
-        //
         mBaiduMap.snapshot(new BaiduMap.SnapshotReadyCallback() {
             @Override
             public void onSnapshotReady(Bitmap bitmap) {
                 picUrl = getPath();
                 savePic(bitmap, picUrl);
-                BDMapActivity.this.bitmap = bitmap;
-
-
                 //获取image,弹出dialog 或者activity分享
                 Intent intent = new Intent(BDMapActivity.this, ShareActivity.class);
                 intent.putExtra(ConstantFactory.KEY, picUrl);
@@ -324,11 +328,6 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
      * 缩放整个map,可以看到轨迹，然后，分享，保存本地
      */
     private void result() {
-        //dialog
-        final ProgressDialog p = new ProgressDialog(this);
-        p.setMessage("loading...");
-        p.show();
-
         //数据保存到数据库中，
         currentDay = DateUtils.convertToStr(System.currentTimeMillis());
         //无数据，当天有无
@@ -342,8 +341,6 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
 
         //确定,结束，生成图片，pic,保存
         captureScreen();
-        //消失
-        p.dismiss();
     }
 
     /**
@@ -417,11 +414,16 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
 
                 }
             } else {
-                //数据填充
-                txtData();
-                //结束运动，添加marker
-                //定义Maker坐标点
-                traceRecord();
+                if (isQuit) {
+                    //数据填充
+                    txtData();
+                    //结束运动，添加marker
+                    //定义Maker坐标点
+                    traceRecord();
+                    //截图跳转
+                    result();
+                }
+
 
             }
 

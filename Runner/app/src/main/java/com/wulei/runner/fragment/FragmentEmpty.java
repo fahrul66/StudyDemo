@@ -32,9 +32,9 @@ public class FragmentEmpty extends BaseFragment {
      * @return
      */
     public static FragmentEmpty create(String str) {
-        FragmentEmpty mFragmentEmpty = (FragmentEmpty) FragmentUtils.newInstance(ConstantFactory.TAG_Empty);
+        FragmentEmpty mFragmentEmpty = (FragmentEmpty) FragmentUtils.newInstance(ConstantFactory.TAG_EMPTY);
         Bundle b = new Bundle();
-        b.putString(ConstantFactory.TAG_Empty, str);
+        b.putString(ConstantFactory.TAG_EMPTY, str);
         mFragmentEmpty.setArguments(b);
         return mFragmentEmpty;
 
@@ -52,7 +52,7 @@ public class FragmentEmpty extends BaseFragment {
         AnimationDrawable a = (AnimationDrawable) mImg.getBackground();
         a.start();
 
-        msg = getArguments().getString(ConstantFactory.TAG_Empty);
+        msg = getArguments().getString(ConstantFactory.TAG_EMPTY);
         //设置数据
         if (msg != null) {
             mTv.setText(msg);

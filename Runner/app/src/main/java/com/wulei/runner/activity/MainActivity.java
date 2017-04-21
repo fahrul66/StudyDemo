@@ -1,19 +1,25 @@
 package com.wulei.runner.activity;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.wulei.runner.R;
 import com.wulei.runner.activity.base.BaseActivity;
 import com.wulei.runner.fragment.FragmentGoal;
 import com.wulei.runner.fragment.FragmentNews;
@@ -30,6 +36,10 @@ import com.wulei.runner.utils.ToastUtil;
 import java.util.List;
 
 import butterknife.BindView;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobFile;
+
+import com.wulei.runner.R;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private static final int TAG = 1;
@@ -44,6 +54,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     //抽屉view
     @BindView(R.id.navigation)
     public NavigationView mNavigationView;
+    TextView mTv;
+    ImageView mImage;
     //运动的fragment
     private FragmentRun mFragmentRun = (FragmentRun) FragmentUtils.newInstance(ConstantFactory.TAG_RUN);
     private FragmentNews mFragmentNews = (FragmentNews) FragmentUtils.newInstance(ConstantFactory.TAG_NEWS);
@@ -55,6 +67,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     private FragmentSuggest mFragmentSuggest = (FragmentSuggest) FragmentUtils.newInstance(ConstantFactory.TAG_SUGGEST);
     //判断是否是null
     private boolean isGoalNull = false;
+    //request code
+    public static final int REQUEST = 12;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +96,20 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         mToolbar.setTitle(getResources().getString(R.string.menu_goal));
 
+        //header click
+        initHeader();
+
+
+    }
+
+    /**
+     * 初始化header
+     */
+    private void initHeader() {
+        View header = mNavigationView.getHeaderView(0);
+        mTv = (TextView) header.findViewById(R.id.btn_navigation_header);
+        mImage = (ImageView) header.findViewById(R.id.img_navigation_header);
+        mTv.setOnClickListener(this);
     }
 
     /**
@@ -220,12 +249,39 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
      *
      * @param v
      */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.toolbar:
+            case R.id.btn_navigation_header:
+                //有无账号登陆
+                if (BmobUser.getCurrentUser() == null) {
+                    //跳转登陆
+//                    View view = LayoutInflater.from(this).inflate(R.layout.activity_login, null);
+//                    Bundle bundle = ActivityOptionsCompat.makeClipRevealAnimation(view, 0, 0, view.getWidth(), view.getHeight()).toBundle();
+                    startActivityForResult(new Intent(this, LoginActivity.class), REQUEST);
+                } else {
+                    //跳转到个人设置
 
+                }
                 break;
         }
+    }
+
+    /**
+     * 获取user的账号信息
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //没登陆，就不获取
+        if (BmobUser.getCurrentUser() != null) {
+            String username = (String) BmobUser.getObjectByKey(ConstantFactory.USERNAME);
+            mTv.setText(username);
+            BmobFile bmobFile= (BmobFile) BmobUser.getObjectByKey(ConstantFactory.ICON);
+            bmobFile.getUrl();
+//
+        }
+
     }
 }

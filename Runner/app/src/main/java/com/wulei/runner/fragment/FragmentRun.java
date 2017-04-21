@@ -240,7 +240,7 @@ public class FragmentRun extends BaseFragment implements View.OnClickListener {
                         //页面跳转，permission
                         toPermissionSetting();
                     }
-                });
+                },null);
             }
         });
     }

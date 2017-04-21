@@ -190,7 +190,7 @@ public class LocalSqlHelper {
         sqlWrite.beginTransaction();
 
         ContentValues c = new ContentValues();
-        c.put("steps", data.getTime());
+        c.put("time", data.getTime());
         c.put("km", data.getKm());
         c.put("speed", data.getSpeed());
         c.put("picUrl", data.getPicUrl());

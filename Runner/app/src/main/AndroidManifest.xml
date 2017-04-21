@@ -58,6 +58,12 @@
             android:name=".activity.MainActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <activity android:name=".activity.BDMapActivity"/>
+        <activity android:name=".activity.ShareActivity"/>
+        <activity android:name=".activity.LoginActivity"/>
+        <activity android:name=".activity.RegisterActivity"/>
+        <activity android:name=".activity.FindPwActivity"/>
+        <activity android:name=".activity.SettingActivity" />
         <!-- 百度地图定位服务 -->
         <service
             android:name="com.baidu.location.f"
@@ -85,8 +91,7 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".activity.BDMapActivity"></activity>
-        <activity android:name=".activity.ShareActivity"></activity>
+
     </application>
 
 </manifest>

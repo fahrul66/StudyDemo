@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 
 /**
@@ -65,8 +66,8 @@ public class PermissionUtil {
         //如果当前的API版本大于等于23，即android6.0
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             //检查自身是否有定位权限
-            if (isPermissonGranted(permissons)) {
-                activity.requestPermissions(permissons, mRequestCode);
+            if (isPermissonGrantedActivity(permissons)) {
+                mActivity.requestPermissions(permissons, mRequestCode);
             } else {
                 //权限全部获得
                 mPermissonListener.permissionGranted();
@@ -80,9 +81,25 @@ public class PermissionUtil {
      * @param permission
      * @return true call requestPermission,false otherwise
      */
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private boolean isPermissonGranted(String[] permission) {
         for (String per : permission) {
             if (mFragment.getActivity().checkSelfPermission(per) != PackageManager.PERMISSION_GRANTED) {
+                return true;
+            }
+        }
+        return false;
+    }
+    /**
+     * 检查所有的权限
+     *
+     * @param permission
+     * @return true call requestPermission,false otherwise
+     */
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private boolean isPermissonGrantedActivity(String[] permission) {
+        for (String per : permission) {
+            if (mActivity.checkSelfPermission(per) != PackageManager.PERMISSION_GRANTED) {
                 return true;
             }
         }
