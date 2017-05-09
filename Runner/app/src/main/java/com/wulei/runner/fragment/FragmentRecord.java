@@ -36,8 +36,8 @@ import butterknife.BindView;
 public class FragmentRecord extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
     @BindView(R.id.coordinate_record)
     CoordinatorLayout mCoordinate;
-    @BindView(R.id.fab_record)
-    FloatingActionButton mFab;
+//    @BindView(R.id.fab_record)
+//    FloatingActionButton mFab;
     @BindView(R.id.recycler_record)
     RecyclerView mRecyclerView;
     @BindView(R.id.swipeRefresh_record)

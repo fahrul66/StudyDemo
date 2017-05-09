@@ -84,24 +84,24 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        /*
-         * 获得焦点，处理back事件
-         */
-        getView().setFocusableInTouchMode(true);
-        getView().requestFocus();
-        getView().setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
-                    // handle back button's click listener
-
-                    onBackPressed();
-
-                    return true;
-                }
-                return false;
-            }
-        });
+//        /*
+//         * 获得焦点，处理back事件
+//         */
+//        getView().setFocusableInTouchMode(true);
+//        getView().requestFocus();
+//        getView().setOnKeyListener(new View.OnKeyListener() {
+//            @Override
+//            public boolean onKey(View v, int keyCode, KeyEvent event) {
+//                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+//                    // handle back button's click listener
+//
+//                    onBackPressed();
+//
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
     }
 
     /***
@@ -109,7 +109,7 @@ public abstract class BaseFragment extends Fragment {
      */
     protected void onBackPressed() {
         //调用activity的onBackPressed方法
-         mAppCompatActivity.onBackPressed();
+//         mAppCompatActivity.onBackPressed();
         //默认行为,返回栈
 //        mAppCompatActivity.getSupportFragmentManager().popBackStack();
 //        //toolbar返回

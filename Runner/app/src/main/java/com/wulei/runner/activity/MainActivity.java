@@ -1,6 +1,8 @@
 package com.wulei.runner.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,11 +35,14 @@ import com.wulei.runner.utils.ConstantFactory;
 import com.wulei.runner.utils.FragmentUtils;
 import com.wulei.runner.utils.ToastUtil;
 
+import java.io.File;
 import java.util.List;
 
 import butterknife.BindView;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.DownloadFileListener;
 
 import com.wulei.runner.R;
 
@@ -278,8 +283,28 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         if (BmobUser.getCurrentUser() != null) {
             String username = (String) BmobUser.getObjectByKey(ConstantFactory.USERNAME);
             mTv.setText(username);
-            BmobFile bmobFile= (BmobFile) BmobUser.getObjectByKey(ConstantFactory.ICON);
-            bmobFile.getUrl();
+            BmobFile bmobFile = (BmobFile) BmobUser.getObjectByKey(ConstantFactory.ICON);
+            if (bmobFile != null) {
+                String path = getCacheDir() + File.separator + "bmob" + File.separator + bmobFile.getFilename();
+                //进行头像的设置,下载到默认的目录中，getCahceDir/bmob/getFileName
+                bmobFile.getUrl();
+                bmobFile.download(new DownloadFileListener() {
+                    @Override
+                    public void done(String s, BmobException e) {
+                        if (e == null) {
+                            //头像设置
+                            Bitmap bitmap = BitmapFactory.decodeFile(s);
+                            mImage.setImageBitmap(bitmap);
+                        }
+                    }
+
+                    @Override
+                    public void onProgress(Integer integer, long l) {
+
+                    }
+                });
+            }
+//            bmobFile.getUrl();
 //
         }
 

@@ -463,7 +463,7 @@ public class BDMapActivity extends BaseActivity implements View.OnClickListener 
             /*
              * 在地图上，添加覆盖物。动健网
              */
-            if (latLngList.size() > 5) {
+            if (latLngList.size() > 10) {
 
                 OverlayOptions olo = new PolylineOptions()
                         .width(15).color(getColor(location.getSpeed()))

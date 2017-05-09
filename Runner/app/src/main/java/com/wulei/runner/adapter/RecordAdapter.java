@@ -34,7 +34,7 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.Holder> {
         //记录为每个控件产生的随机高度,避免滑回到顶部出现空白
         heightList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
-            int height = new Random().nextInt(200) + 100;//[100,300)的随机数
+            int height = new Random().nextInt(200) + 600;//[100,300)的随机数
             heightList.add(height);
         }
 

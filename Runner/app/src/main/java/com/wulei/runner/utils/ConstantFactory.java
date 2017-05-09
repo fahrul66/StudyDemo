@@ -55,4 +55,6 @@ public class ConstantFactory {
     public static final String SEX ="sex";
     public static final String SIGNED_TEXT ="singedText";
 
+    //webview
+    public static final String URL = "http://run.sports.163.com/zn/";
 }
