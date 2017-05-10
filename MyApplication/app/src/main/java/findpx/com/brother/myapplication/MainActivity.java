@@ -1,6 +1,7 @@
 package findpx.com.brother.myapplication;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
@@ -32,7 +33,7 @@ import findpx.com.brother.myapplication.ColorPicker.ThemeColorPicker;
 
 public class MainActivity extends AppCompatActivity {
     Button mBtn;
-    Button mBtn1, mBtn2;
+    Button mBtn1, mBtn2,mBtn3,mBtn4,mBtn5;
 
 
     private TextView tv;
@@ -49,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.imge_bit);
         mBtn1 = (Button) findViewById(R.id.btn1);
         mBtn2 = (Button) findViewById(R.id.btn2);
+        mBtn3 = (Button) findViewById(R.id.btn3);
+        mBtn4 = (Button) findViewById(R.id.btn4);
+        mBtn5 = (Button) findViewById(R.id.btn5);
 
         //init
         mBtn = (Button) findViewById(R.id.btn);
@@ -85,10 +89,25 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * 清除btn的背景色
+     */
+    private void clearBtnBg() {
+//        mBtn.setBackgroundColor(Color.parseColor("#ffffff"));
+        mBtn1.setBackgroundColor(Color.parseColor("#ffffff"));
+        mBtn2.setBackgroundColor(Color.parseColor("#ffffff"));
+        mBtn3.setBackgroundColor(Color.parseColor("#ffffff"));
+        mBtn4.setBackgroundColor(Color.parseColor("#ffffff"));
+        mBtn5.setBackgroundColor(Color.parseColor("#ffffff"));
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        clearBtnBg();
+
         if (requestCode == 1 && resultCode == RESULT_OK) {
 
             Uri uri = data.getData();
@@ -97,13 +116,18 @@ public class MainActivity extends AppCompatActivity {
 //            double[] rgb = colorFromJNI(path);
 //            tv.setText(stringFromJNI());
 
+            final ProgressDialog p = new ProgressDialog(this);
+            p.setMessage("loading..");
+            p.setCanceledOnTouchOutside(false);
+            p.show();
+
             //开子线程
             new Thread(new Runnable() {
                 @Override
                 public void run() {
 
                     final List<Integer> colors = new ArrayList<>();
-                    int ColorNum = 3;
+                    int ColorNum = 5;
                     ThemeColorPicker tcp = new ThemeColorPicker(path);
                     tcp.setColorNumber(ColorNum);
                     List<MyVector> vectors = tcp.getThemeColor();
@@ -119,20 +143,29 @@ public class MainActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            p.dismiss();
                             for (Integer integer : colors) {
                                 Log.i("123", "onActivityResult: color" + integer);
 
-                                mBtn.setBackgroundColor(integer);
+                                mBtn1.setBackgroundColor(integer);
                             }
                             for (int i = 0; i < colors.size(); i++) {
-                                mBtn.setBackgroundColor(colors.get(0));
+                                mBtn1.setBackgroundColor(colors.get(0));
                                 if (colors.size() >= 2) {
 
-                                    mBtn1.setBackgroundColor(colors.get(1));
+                                    mBtn2.setBackgroundColor(colors.get(1));
                                 }
                                 if (colors.size() >= 3) {
 
-                                    mBtn2.setBackgroundColor(colors.get(2));
+                                    mBtn3.setBackgroundColor(colors.get(2));
+                                }
+                                if (colors.size() >= 4) {
+
+                                    mBtn4.setBackgroundColor(colors.get(3));
+                                }
+                                if (colors.size() >= 5) {
+
+                                    mBtn5.setBackgroundColor(colors.get(4));
                                 }
                             }
 
@@ -142,9 +175,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }).start();
 
-
-            tv.setBackgroundColor(-7291582);
-
+           //压缩显示图片
             BitmapFactory.Options opt = new BitmapFactory.Options();
             opt.inJustDecodeBounds = true;
             bitM = BitmapFactory.decodeFile(path, opt);

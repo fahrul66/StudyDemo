@@ -2,6 +2,7 @@ package findpx.com.brother.myapplication.Algo;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,39 +19,39 @@ public class KMeans {
     private int numberOfCluster = 0;
     private List<Cluster> clusters = new ArrayList<>(); //储存所有的族
 
-    private int numberOfIteration = 20;
+    private int numberOfIteration = 100;
 
-    public KMeans(List<MyVector> vectors,int numberOfCluster){
+    public KMeans(List<MyVector> vectors, int numberOfCluster) {
         this.vectors = vectors;
         this.numberOfCluster = numberOfCluster;
         initCenters();
         initClusters();
     }
 
-    public List<Cluster> getClusters(){
+    public List<Cluster> getClusters() {
         return clusters;
     }
 
-    private void initClusters(){
+    private void initClusters() {
         clusters.clear();
         //预先初始化所有的簇
-        for (int i=0;i<numberOfCluster;i++){
+        for (int i = 0; i < numberOfCluster; i++) {
             clusters.add(new Cluster());
         }
     }
 
 
-    public void setNumberOfIteration(int numberOfIteration){
-        if (numberOfIteration > 0){
+    public void setNumberOfIteration(int numberOfIteration) {
+        if (numberOfIteration > 0) {
             this.numberOfIteration = numberOfIteration;
-        }else {
+        } else {
             System.out.println("numberOfIteration should be greater than 0");
         }
     }
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void startClustering(){
+    public void startClustering() {
 
         System.out.println("开始聚类");
 
@@ -59,25 +60,25 @@ public class KMeans {
 
         boolean converged = false;
 
-        while (!converged && counter < numberOfIteration){
+        while (!converged && counter < numberOfIteration) {
             //printCenters();
-            System.out.println("第"+counter+"次迭代");
+            System.out.println("第" + counter + "次迭代");
 
             double[][] distanceMatrix = new double[vectors.size()][numberOfCluster];
 
             //生成距离矩阵
-            for (int i=0;i<vectors.size();i++){
-                for (int j=0;j<centers.size();j++){
+            for (int i = 0; i < vectors.size(); i++) {
+                for (int j = 0; j < centers.size(); j++) {
                     MyVector currentVector = vectors.get(i);
                     MyVector centerVector = centers.get(j);
                     //每一个点都和种子点比较，得到种子点到其他点的距离。
-                    double distance = Distance.getSimDistance(centerVector,currentVector);
+                    double distance = Distance.getSimDistance(centerVector, currentVector);
                     distanceMatrix[i][j] = distance;
                 }
             }
 
             //add vectors to different clusters
-            for (int i=0;i<distanceMatrix.length;i++){
+            for (int i = 0; i < distanceMatrix.length; i++) {
                 //到K个点的距离数组
                 double[] centerDistance = distanceMatrix[i];
                 //获取相应的图片像素点
@@ -93,23 +94,23 @@ public class KMeans {
             lastCenters.clear();
             lastCenters.addAll(centers);
 
-           // printClusters();
+            // printClusters();
 
             //Refresh centers
-            for (int i=0;i<numberOfCluster;i++){
+            for (int i = 0; i < numberOfCluster; i++) {
                 MyVector vector = clusters.get(i).getCenterVector();
-                centers.set(i,vector);
+                centers.set(i, vector);
             }
 
             converged = isConverged(lastCenters);
 
-            if (!converged && counter != numberOfIteration){
+            if (!converged && counter != numberOfIteration) {
                 initClusters();
             }
 
         }
 
-        System.out.println("聚类完成\n迭代次数"+counter);
+        System.out.println("聚类完成\n迭代次数" + counter);
 
         //printClusters();
 
@@ -117,30 +118,31 @@ public class KMeans {
 
     /**
      * 检测是否收敛(中心点和上次比是否变化)
+     *
      * @param lastCenters
      * @return
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    private boolean isConverged(List<MyVector> lastCenters){
+    private boolean isConverged(List<MyVector> lastCenters) {
 
-        if (lastCenters.size() != numberOfCluster){
+        if (lastCenters.size() != numberOfCluster) {
             return false;
         }
 
         boolean converge = true;
 
-        for (int i=0;i<this.centers.size();i++){
+        for (int i = 0; i < this.centers.size(); i++) {
 
             MyVector thisVector = this.centers.get(i);
             MyVector thatVector = lastCenters.get(i);
 
-            if (!thisVector.isSameVector(thatVector)){
+            if (!thisVector.isSameVector(thatVector)) {
                 converge = false;
             }
 
         }
 
-        if (converge){
+        if (converge) {
             System.out.println("检测到收敛");
         }
 
@@ -150,15 +152,16 @@ public class KMeans {
 
     /**
      * 得到数组中最小值的下标
+     *
      * @param arr
      * @return
      */
-    private int getMinDistanceIndex(double[] arr){
+    private int getMinDistanceIndex(double[] arr) {
 
         double min = 99999999999999999999999.0;
         int index = 0;
-        for (int i=0;i<arr.length;i++){
-            if (arr[i] < min){
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < min) {
                 index = i;
                 min = arr[i];
             }
@@ -169,15 +172,16 @@ public class KMeans {
 
     /**
      * 打印二维数组
+     *
      * @param mat
      */
-    private void printMatrix(double[][] mat){
+    private void printMatrix(double[][] mat) {
 
         int height = mat.length;
         int width = mat[0].length;
 
-        for (int i= 0;i< height;i++){
-            for (int j=0;j<width;j++){
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
                 System.out.print(mat[i][j] + "\t");
             }
             System.out.println();
@@ -187,9 +191,9 @@ public class KMeans {
     /**
      * 打印中心点
      */
-    private void printCenters(){
+    private void printCenters() {
         System.out.println("Printing Centers");
-        for (MyVector vector:centers){
+        for (MyVector vector : centers) {
             vector.printVector();
         }
     }
@@ -197,8 +201,8 @@ public class KMeans {
     /**
      * 打印所有聚类
      */
-    private void printClusters(){
-        for (Cluster cluster:clusters){
+    private void printClusters() {
+        for (Cluster cluster : clusters) {
             cluster.printCluster(false);
             System.out.println();
         }
@@ -209,12 +213,15 @@ public class KMeans {
      * 初始质心
      * 从所有的向量中挑选 numberOfCluster 个
      */
-    private void initCenters(){
+    private void initCenters() {
 
         int sizeOfVectors = vectors.size();
-
-        for (int i=0;i<numberOfCluster;i++){
-            int index= (int)(Math.random()*sizeOfVectors);
+        int size = sizeOfVectors / numberOfCluster;
+        //其他点要远离这个点
+        for (int i = 0; i < numberOfCluster; i++) {
+            //初始点,随机值优化，分段进行区域选择，避免随机点都在一个区域
+            int index = (int) (Math.random() * size) + size * i;
+            Log.i("123", "initCenters: " + index + "all:" + sizeOfVectors);
             centers.add(vectors.get(index));
         }
 

@@ -33,7 +33,7 @@ public class ThemeColorPicker {
         BitmapFactory.Options opt = new BitmapFactory.Options();
         opt.inJustDecodeBounds = true;
         mBitmap = BitmapFactory.decodeFile(path, opt);
-        opt.inSampleSize = calSampleSize(opt, 100, 100);
+        opt.inSampleSize = calSampleSize(opt, 36, 36);
         opt.inJustDecodeBounds = false;
         mBitmap = BitmapFactory.decodeFile(path, opt);
 
@@ -71,13 +71,28 @@ public class ThemeColorPicker {
 
         for (Cluster cluster : clusters) {
             MyVector vector = cluster.getCenterVector();
-            vectors.add(vector);
+//            vectors.add(vector);
             //size为0，因为当单色图片时，rgb三维向量完全一致，聚类也就只有一个，另一个为空。
             if (vector.size() != 0) {
 
                 System.out.println(rgbToHex(vector));
             }
         }
+
+        /**
+         * 获取像素最多的值
+         */
+        int maxNum = 0;
+        int index = 0;
+        for (int i = 0; i < clusters.size(); i++) {
+            int temp = clusters.get(i).size();
+            if (temp > maxNum) {
+                maxNum = temp;
+                index = i;
+            }
+        }
+        //获取像素最多的值
+        vectors.add(clusters.get(index).getCenterVector());
 
 //        new PaletteGUI(vectors,path);
 

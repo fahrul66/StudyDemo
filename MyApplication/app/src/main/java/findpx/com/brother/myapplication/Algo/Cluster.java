@@ -63,6 +63,13 @@ public class Cluster {
         return vector;
     }
 
+    /**
+     * 返回一个聚类中的颜色值
+     * @return
+     */
+    public int size(){
+        return vectors.size();
+    }
 
 
 //    public static void main(String[] args){

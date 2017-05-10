@@ -21,29 +21,49 @@
         android:src="@mipmap/ic_launcher"
         android:layout_width="150dp"
         android:layout_height="200dp" />
+    <Button
+        android:layout_margin="2dp"
+        android:id="@+id/btn"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择图片" />
     <LinearLayout
         android:gravity="center"
-        android:layout_centerInParent="true"
+        android:layout_below="@id/btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <Button
-            android:layout_margin="2dp"
-            android:id="@+id/btn"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="1" />
         <Button
-            android:layout_margin="2dp"
-            android:id="@+id/btn1"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="2" />
         <Button
-            android:layout_margin="2dp"
-            android:id="@+id/btn2"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn3"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="3" />
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="4" />
+        <Button
+            android:id="@+id/btn5"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="5" />
     </LinearLayout>
 
 </RelativeLayout>
