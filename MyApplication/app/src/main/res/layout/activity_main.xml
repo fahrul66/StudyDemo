@@ -14,7 +14,7 @@
         android:id="@+id/sample_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="main color" />
     <ImageView
         android:id="@+id/imge_bit"
         android:layout_centerHorizontal="true"
@@ -27,7 +27,8 @@
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="选择图片" />
+        android:textAllCaps="false"
+        android:text="Select Picture" />
     <LinearLayout
         android:gravity="center"
         android:layout_below="@id/btn"

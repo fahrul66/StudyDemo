@@ -16,25 +16,24 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import findpx.com.brother.myapplication.Algo.MyVector;
-import findpx.com.brother.myapplication.ColorPicker.ThemeColorPicker;
-
 
 public class MainActivity extends AppCompatActivity {
     Button mBtn;
-    Button mBtn1, mBtn2,mBtn3,mBtn4,mBtn5;
-
+    Button mBtn1, mBtn2, mBtn3, mBtn4, mBtn5;
+    RelativeLayout relativeLayout;
+    public static final int REQUEST_CODE = 1;
 
     private TextView tv;
     private Bitmap bitM;
@@ -53,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         mBtn3 = (Button) findViewById(R.id.btn3);
         mBtn4 = (Button) findViewById(R.id.btn4);
         mBtn5 = (Button) findViewById(R.id.btn5);
+        relativeLayout = (RelativeLayout) findViewById(R.id.activity_main);
 
         //init
         mBtn = (Button) findViewById(R.id.btn);
@@ -62,10 +62,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //权限获取
                 if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-                    requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+                    requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE);
+                } else {
+                    //图片处理
+                    cvtImg();
                 }
-                //图片处理
-                cvtImg();
 
             }
         });
@@ -74,26 +75,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * android 6.0权限获取
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                cvtImg();
+            }
+        }
+    }
+
+    /**
      * 图片的处理
      */
     private void cvtImg() {
-
-
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setData(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
         startActivityForResult(intent, 1);
-
-
     }
 
     /**
      * 清除btn的背景色
      */
     private void clearBtnBg() {
-//        mBtn.setBackgroundColor(Color.parseColor("#ffffff"));
         mBtn1.setBackgroundColor(Color.parseColor("#ffffff"));
         mBtn2.setBackgroundColor(Color.parseColor("#ffffff"));
         mBtn3.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -112,9 +124,6 @@ public class MainActivity extends AppCompatActivity {
 
             Uri uri = data.getData();
             final String path = getPath(this, uri);
-            //rgb
-//            double[] rgb = colorFromJNI(path);
-//            tv.setText(stringFromJNI());
 
             final ProgressDialog p = new ProgressDialog(this);
             p.setMessage("loading..");
@@ -136,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
                             int r = vector.get(0).intValue();
                             int g = vector.get(1).intValue();
                             int b = vector.get(2).intValue();
+
                             colors.add(Color.rgb(r, g, b));
                         }
                     }
@@ -144,12 +154,9 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             p.dismiss();
-                            for (Integer integer : colors) {
-                                Log.i("123", "onActivityResult: color" + integer);
 
-                                mBtn1.setBackgroundColor(integer);
-                            }
                             for (int i = 0; i < colors.size(); i++) {
+                                relativeLayout.setBackgroundColor(colors.get(0));
                                 mBtn1.setBackgroundColor(colors.get(0));
                                 if (colors.size() >= 2) {
 
@@ -175,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }).start();
 
-           //压缩显示图片
+            //压缩显示图片
             BitmapFactory.Options opt = new BitmapFactory.Options();
             opt.inJustDecodeBounds = true;
             bitM = BitmapFactory.decodeFile(path, opt);
@@ -278,6 +285,8 @@ public class MainActivity extends AppCompatActivity {
         // File
         else if ("file".equalsIgnoreCase(uri.getScheme())) {
             return uri.getPath();
+
+
         }
 
         return null;
