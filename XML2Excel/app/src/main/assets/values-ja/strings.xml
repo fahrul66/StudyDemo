@@ -1,0 +1,634 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="msg_share_print_preview_locked">現在選択中製品がロックされています。他のデバイスを選択してください。ロックを解除するに管理者にお問い合わせください。</string>
+    <string name="common_btn_print">プリント</string>
+    <string name="common_btn_scan">スキャン</string>
+    <string name="common_btn_print_preview">@string/v1_browser_btn_print_preview</string>
+    <string name="common_title_print_setting">プリント設定</string>
+    <string name="common_title_fax_setting">ファクス設定</string>
+<!--    <string name="common_print_title_preview_empty">プリントプレビュー 処理中&#8230;</string>
+    <string name="common_dlg_title_scanning">原稿を追加読み取りしています&#8230;</string>-->
+    <string name="common_dlg_btn_ng_scanning">キャンセル</string>
+    <string name="common_dlg_title_printing">印刷中&#8230;</string>
+    <string name="common_dlg_msg_printing">処理中&#8230;</string>
+    <string name="common_dlg_title_processing">処理中</string>
+    <string name="common_dlg_msg_downloading">@string/v1_cloud_msg_downloading</string>
+    <string name="common_dlg_btn_printing_cancel">キャンセル</string>
+    <string name="common_dlg_msg_processing">しばらくお待ちください&#8230;</string>
+    <string name="common_dlg_title_searching">検索中</string>
+    <string name="common_dlg_msg_searching">@string/v1_generic_msg_printer_search_now</string>
+    <string name="common_dlg_title_print_error">印刷エラー</string>
+    <!--<string name="common_dlg_msg_page_not_selected">ページが選択されていません</string>-->
+    <!--<string name="common_toast_msg_task_cancelled">処理が中断されました</string>-->
+    <string name="common_ab_menu_toggle_panel">トグルパネル開閉</string>
+    <string name="common_ab_menu_edit">編集</string>
+    <!--<string name="common_dlg_msg_nodevice_topselectplz">トップ画面で製品を選択してください。</string>-->
+
+    <string name="func_name_print">プリント</string>
+    <string name="func_name_copy">コピー\nプレビュー</string>
+    <string name="func_name_fax">ファクス</string>
+    <string name="func_name_fax_tx">ファクス送信</string>
+    <string name="func_name_fax_rx">みるだけ受信</string>
+    <string name="func_name_scan">スキャン</string>
+    <string name="func_name_setting">ステータス</string>
+<!--    <string name="func_name_status">ステータス</string>-->
+
+    <string name="top_devname_nodevice">製品が未選択です</string>
+    <string name="top_dlg_msg_do_you_select_device">このアプリケーションを使用するにはトップ画面で製品を選択する必要があります。</string>
+    <string name="top_dlg_btn_select_device">製品選択</string>
+    <string name="top_dlg_btn_select_later">後で</string>
+
+    <string name="status_name_volume">インク残量</string>
+    <string name="status_name_laser_life">トナー残量</string>
+    <string name="status_name_ip">IPアドレス</string>
+<!--    <string name="status_name_network">ネットワーク</string>-->
+    <string name="status_name_memory">ファクス 受信メモリ</string>
+    <string name="status_name_memory_full">メモリがいっぱいです</string>
+    <string name="status_name_machine_sn">シリアル番号</string>
+    <string name="status_msg_no_data">データがありません</string>
+    <!--<string name="status_msg_no_msg"></string>-->
+    <!--<string name="status_iconstr_maru">●</string>-->
+    <string name="status_name_firm_ver">ファームウエアバージョン</string>
+    <string name="status_name_error">エラー</string>
+    <string name="status_name_warning">注意</string>
+    <!--<string name="status_iconstr_sankaku">▲</string>-->
+	<string name="status_network_online">オンライン（利用できます）</string>
+    <string name="status_network_offline">オフライン（利用できません）</string>
+    <string name="status_name_status"></string>
+    <string name="status_name_cartridge_num">インクカートリッジ型番</string>
+    <string name="status_name_buy_cartridge">購入する</string>
+    <string name="status_name_laser_cartridge_model">トナーカートリッジ型番</string>
+
+    <!--<string name="status_name_cyan">シアン</string>-->
+    <!--<string name="status_name_magenta">マゼンタ</string>-->
+    <!--<string name="status_name_yellow">イエロー</string>-->
+    <!--<string name="status_name_black">ブラック</string>-->
+    <string name="status_name_unknown">不明</string>
+
+    <string name="fax_subfunc">@string/func_name_fax</string>
+    <string name="fax_rx_btn_print">@string/common_btn_print</string>
+    <!--<string name="fax_rx_btn_print_preview">@string/common_btn_print_preview</string>-->
+    <string name="fax_rx_title_received_fax">@string/func_name_fax_rx</string>
+    <string name="fax_rx_tab_date">受信日</string>
+    <string name="fax_rx_tab_sender">送信者</string>
+    <!--<string name="fax_rx_unknown_field">(NO STRING)</string>-->
+    <string name="fax_rx_title_print_preview">@string/common_btn_print_preview</string>
+	<string name="fax_rx_please_wait">@string/common_dlg_msg_processing</string>
+	<!--<string name="fax_rx_no_fax_found">FAXがありません</string>-->
+	<string name="fax_rx_task_cancelled">@string/common_toast_msg_task_cancelled</string>
+	<!--<string name="fax_rx_toast_saved">保存されました</string>-->
+	<!--<string name="fax_rx_share_as">共有</string>-->
+	<string name="fax_rx_url_supportcenter">http://support.brother.co.jp/j/d/b7fa/</string>
+
+
+    <string name="faxtx_start_button">送信</string>
+    <!--<string name="faxtx_choose_fax_num">ファクス番号を選択してください</string>-->
+    <!--<string name="faxtx_btn_scan">@string/common_btn_scan</string>-->
+    <string name="faxtx_dlg_title_scanning">@string/common_dlg_title_scanning</string>
+    <string name="faxtx_dlg_btn_ng_scanning">@string/common_dlg_btn_ng_scanning</string>
+    <!--<string name="faxtx_tab_mobile">モバイル端末の電話帳</string>-->
+    <!--<string name="faxtx_tab_device">製品本体の電話帳</string>-->
+    <string name="faxtx_address_in_device">製品本体の電話帳</string>
+    <string name="faxtx_address_in_mobile">モバイル端末の電話帳</string>
+    <string name="faxtx_back_key_title">プレビュー画像はまだ送信されていません</string>
+    <string name="faxtx_back_key_msg">続行すると画像が削除されます。続行しますか？</string>
+    <string name="faxtx_back_key_yes">はい</string>
+    <string name="faxtx_back_key_no">いいえ</string>
+    <!--<string name="faxtx_alert_msg_title">警告</string>-->
+    <!--<string name="faxtx_alert_msg_ok_button">OK</string>-->
+    <string name="faxtx_title_phonebook_mobile">電話帳</string>
+    <string name="faxtx_title_phonebook_device">電話帳</string>
+	<string name="faxtx_button_scan">スキャン</string>
+	<string name="faxtx_hint_search_phone">番号を検索</string>
+	<string name="faxtx_please_wait">@string/common_dlg_msg_processing</string>
+	<string name="faxtx_add_image_hint_device">製品本体で\n原稿をスキャンして送る</string>
+	<string name="faxtx_add_image_hint_mobile">モバイル端末内\nのファイルを送る</string>
+	<string name="faxtx_add_phone_num_hint">宛先を入力</string>
+	<string name="faxtx_btn_done">完了</string>
+	<!--<string name="faxtx_dev_msg">開発中</string>-->
+	<string name="faxtx_index_phonebook_other">@string/info_item_label_other_app</string>
+	<string name="faxtx_cannot_access_device_phonebook">このデバイスは対応しておりません</string>
+	<!--<string name="faxtx_failed_to_access_device_phonebool">電話帳の取得に失敗しました</string>-->
+	<!--<string name="faxtx_cloud_image_convertion_title">クラウド画像変換</string>-->
+	<!--<string name="faxtx_cloud_image_convertion_msg">ダウンロード中</string>-->
+	<string name="faxtx_contain_unsendable_nums_msg">送信できない文字が含まれています</string>
+    <!--<string name="faxtx_contain_no_nums_msg">数字が含まれていません</string>-->
+    <string name="faxtx_send_fax_data_title">送信中</string>
+
+    <string name="copy_title_preview_empty">@string/common_print_title_preview_empty</string>
+    <!--<string name="copy_description_main">原稿をプレビューで確認してからコピーができます</string>-->
+    <string name="copy_description_main_item_1">原稿を原稿台ガラスもしくは自動原稿送り装置にセットしてください。</string>
+    <string name="copy_description_main_item_1_footer">（印刷には普通紙をご使用ください。）</string>
+    <string name="copy_description_main_item_2">②コピーミスを防ぐためにプレビューを確認し、必要に応じてその場で編集（拡大/縮小、傾き補正、切り抜き）を行うことができます。</string>
+    <string name="copy_preview_options">プレビューオプション</string>
+    <string name="copy_btn_scan">スタート</string>
+    <string name="copy_btn_print">コピー</string>
+    <string name="copy_dlg_title_scanning">@string/common_dlg_title_scanning</string>
+    <string name="copy_dlg_btn_ng_scanning">@string/common_dlg_btn_ng_scanning</string>
+    <string name="copy_dlg_msg_nextscan">次の原稿はありますか？ある場合はその原稿をセットしてから「スキャン」を、ない場合は「完了」をタップしてください。</string>
+
+
+    <!--<string name="setting_dialog_title_size">用紙サイズを選択してください</string>-->
+
+    <!--<string name="setting_item_size_4x6">4x6</string>-->
+    <string name="setting_item_size_a4">A4</string>
+    <string name="setting_item_size_b4">B4</string>
+    <!--<string name="setting_item_size_card">名刺</string>-->
+    <!--<string name="setting_item_size_l">3.5"x5"(9x13cm)</string>-->
+    <!--<string name="setting_item_size_2l">5"x7"(13x18cm)</string>-->
+    <string name="setting_item_size_2_4x3_5">2.4"x3.5"(60x90mm)</string>
+    <string name="setting_item_size_ledger">Ledger</string>
+    <string name="setting_item_size_letter">Letter</string>
+    <string name="setting_item_size_a3">A3</string>
+
+    <!--<string name="setting_item_size_legal">Legal</string>-->
+    <!--<string name="setting_item_size_hagaki">ハガキ</string>-->
+    <string name="setting_item_size_b5">B5</string>
+    <string name="setting_item_size_auto">自動</string>
+    <string name="setting_title_cdlabel_copy">CDレーベルコピー</string>
+    <string name="setting_item_size_cdlabel">CDレーベル</string>
+    <string name="setting_item_size_cdjacket">CDジャケット</string>
+
+    <string name="setting_label_tray_options">トレイオプション</string>
+    <string name="setting_title_inputtray_unit">給紙方法</string>
+    <string name="setting_item_input_tray_auto">自動選択</string>
+    <string name="setting_item_input_tray_mp">多目的トレイ</string>
+    <string name="setting_item_input_tray_1">トレイ 1</string>
+    <string name="setting_item_input_tray_2">トレイ 2</string>
+    <string name="setting_item_input_tray_3">トレイ 3</string>
+    <string name="setting_item_input_tray_4">トレイ 4</string>
+    <string name="setting_item_input_tray_5">トレイ 5</string>
+
+    <string name="setting_title_output_bin_unit">排紙トレイ設定</string>
+    <string name="setting_item_output_bin_auto">自動選択</string>
+    <string name="setting_item_output_bin_nomal">標準排紙トレイ</string>
+    <string name="setting_item_output_bin_1">ビン 1</string>
+    <string name="setting_item_output_bin_2">ビン 2</string>
+    <string name="setting_item_output_bin_3">ビン 3</string>
+    <string name="setting_item_output_bin_4">ビン 4</string>
+    <string name="setting_item_output_bin_stacker">スタッカモード</string>
+    <string name="setting_item_output_bin_sorter">ソーターモード</string>
+
+    <string name="setting_title_use_standard_tray_when_full">標準排紙トレイ使用\n（指定ビンの満載時）</string>
+
+    <string name="setting_label_roll_printer_case">ロールプリンターケース</string>
+    <string name="setting_item_roll_printer_case_none">なし</string>
+    <string name="setting_item_roll_printer_case_pa_rc">PA-RC-001</string>
+    <string name="setting_item_roll_printer_case_pa_rc_without_anti">PA-RC-001 (アンチカールなし)</string>
+
+    <!--<string name="setting_title_duplex">両面プレビュー</string>-->
+    <!--<string name="setting_dialog_title_duplex">片面/両面を選択してください</string>-->
+
+    <!--<string name="setting_item_duplex_simplex">片面</string>-->
+    <!--<string name="setting_item_duplex_longedge">両面 (長辺綴じ)</string>-->
+    <!--<string name="setting_item_duplex_shortedge">両面 (短辺綴じ)</string>-->
+
+
+    <!--<string name="setting_title_scantype">スキャンタイプ</string>-->
+    <!--<string name="setting_dialog_title_scantype">スキャンタイプを選択してください</string>-->
+
+    <!--<string name="setting_item_scantype_bw">モノクロ</string>-->
+    <!--<string name="setting_item_scantype_color">カラー</string>-->
+    <!--<string name="setting_item_scantype_fastcolor">カラー(高速)</string>-->
+
+
+    <!--<string name="setting_dialog_title_copies">部数を入力してください</string>-->
+
+
+    <!--<string name="setting_dialog_title_color">モノクロ/カラーを選択してください</string>-->
+
+    <!--<string name="setting_item_color_mono">モノクロ</string>-->
+    <string name="setting_item_color_color">カラー</string>
+
+    <!--<string name="setting_title_quality">画質</string>-->
+    <!--<string name="setting_dialog_title_quality">画質を選択してください</string>-->
+
+    <!--<string name="setting_item_quality_normal">標準</string>-->
+    <!--<string name="setting_item_quality_fine">高画質</string>-->
+
+    <!--<string name="setting_dialog_title_mediatype">用紙タイプを選択してください</string>-->
+
+    <!--<string name="setting_item_mediatype_plain">普通紙</string>-->
+    <!-- <string name="setting_item_mediatype_inkjet">インクジェット紙</string>-->
+    <!--<string name="setting_item_mediatype_glossy">光沢紙</string>-->
+
+    <!--<string name="document_title_doc_select">ドキュメント</string>-->
+
+
+    <string name="edit_title_scaling">拡大/縮小</string>
+    <string name="edit_title_rotate">傾き補正</string>
+
+    <!--<string name="filer_main_select_title_default">プリント</string>-->
+    <string name="filer_main_select_photo_item">フォト</string>
+    <!--<string name="filer_main_select_document_item">ドキュメント</string>-->
+    <!--<string name="filer_main_select_web_item">ウェブページ</string>-->
+    <!--<string name="filer_main_select_cloud_item">クラウド</string>-->
+    <!--<string name="filer_main_select_email_item">Eメール</string>-->
+
+    <!--<string name="filer_photo_button_done">完了</string>-->
+    <!--<string name="filer_photo_title">フォト選択</string>-->
+    <!--<string name="filer_photo_msg_no_images_found">フォトが見つかりません</string>-->
+    <!--    <string name="filer_photo_msg_no_images_selected">フォトが選択されていません</string>
+
+    <string name="filer_document_file_size_KB">KB</string>-->
+    <!--<string name="filer_document_msg_no_matches">一致するものはありませんでした</string>
+    <string name="filer_document_msg_no_doc_found">ドキュメントが見つかりません</string>
+    <string name="filer_document_msg_search">サーチ</string>
+    <string name="filer_document_msg_search_in_this_folder">このフォルダ内を検索</string>
+    <string name="filer_document_title">ドキュメント</string>-->
+
+    <string name="finddevice_main_title">製品選択</string>
+    <!--    <string name="finddevice_change_device_print">プリント</string>
+        <string name="finddevice_change_device_scan">スキャン</string>-->
+    <!--<string name="finddevice_change_device_copy">コピープレビュー</string>-->
+    <!--<string name="finddevice_change_device_faxt">ファックス受信</string>
+    <string name="finddevice_change_device_faxr">ファックス送信</string>
+    <string name="finddevice_change_device_status">ステータス</string>-->
+    <!--<string name="finddevice_change_device_msg">製品が変更されました。選択された製品で利用可能な機能のみ使うことができます。</string>-->
+    <!--<string name="finddevice_change_device_msg_close">閉じる</string>-->
+    <string name="finddevice_change_device_msg_share">製品が変更されました。選択された製品で利用可能な機能のみ使うことができます。</string>
+    <string name="finddevice_change_device_msg">選択された製品では下記の機能が利用可能です。\n</string>
+    <string name="finddevice_change_device_msg_end">\n\n利用できる機能は製品によって異なります。</string>
+    <string name="finddevice_change_device_msg_print">プリント</string>
+    <string name="finddevice_change_device_msg_scan">スキャン</string>
+    <string name="finddevice_change_device_msg_previewcopy">コピープレビュー</string>
+    <string name="finddevice_change_device_msg_faxsend">ファクス送信</string>
+    <string name="finddevice_change_device_faxpreview">みるだけ受信</string>
+    <string name="finddevice_change_device_machinestatus">ステータス</string>
+    <string name="finddevice_change_device_msg_close">閉じる</string>
+<!--    <string name="finddevice_common_searching">検索中&#8230;</string>
+    <string name="finddevice_common_processing">処理中&#8230;</string>  -->
+
+    <string name="finddevice_WiFi_fragment_title">無線LAN</string>
+    <!--<string name="finddevice_wifi_fragment_nodevice_title">対応する製品が見つかりません</string>-->
+    <string name="finddevice_wifi_fragment_nodevice_wifi_off_msg">@string/v1_error_gcp_cannot_connect_msg</string>
+    <!-- <string name="finddevice_wifi_fragment_nodevice_msg_header">以下の点をご確認ください:\n-本体とAndroid端末が同じネットワーク上にあることを確認してください。\n</string>
+	<string name="finddevice_wifi_fragment_nodevice_msg_ssid">お使っているAndroid端末のSSID:%s\n\n</string>
+	<string name="finddevice_wifi_fragment_nodevice_msg_footer">-本体の電源が入っていることと、ネットワーク設定を確認してから操作をやり直してください。\n-ルーターやモバイルWi-Fiルーターのセキュリティ機能（プレイバシーセパレータ）が有効である場合は無効にしてください。</string>
+    <string name="finddevice_wifi_fragment_manually_ipaddress">IP Address</string>-->
+    <string name="finddevice_wifi_fragment_manually_ipaddress_hint">0.0.0.0</string>
+    <string name="finddevice_wifi_fragment_manually_printer">製品</string>
+<!--    <string name="finddevice_wifi_fragment_manually_support">サポート</string>
+    <string name="finddevice_wifi_fragment_manually_setmanually">手動設定</string>-->
+    <!--<string name="finddevice_wifi_fragment_manually_connect">Connect</string>-->
+   　<!-- <string name="finddevice_wifi_fragment_searching">検索中&#8230;</string>-->
+
+    <string name="finddevice_Bluetooth_fragment_title">Bluetooth</string>
+<!--    <string name="finddevice_Bluetooth_addprinter_button">プリンターの追加</string>
+    <string name="finddevice_Bluetooth_bluetooth_error_title">Bluetoothエラー</string>
+    <string name="finddevice_Bluetooth_bluetooth_error_msg">Bluetoothの設定画オフになっています。オンにしますか？</string>
+    <string name="finddevice_Bluetooth_bluetooth_error_yes">はい</string>
+    <string name="finddevice_Bluetooth_bluetooth_error_no">いいえ</string>-->
+    <string name="findevice_Bluetooth_fragment_nodevice_msg">[プリンターの追加]を選択します。\n本体の電源が入っていることを確認して、Bluetooth接続してください。</string>
+    <string name="finddevice_NFC_fragment_title">NFC</string>
+    <string name="finddevice_nfc_use_tip_title">NFCを使用する</string>
+    <!--<string name="finddevice_nfc_use_tip_msg">NFCの機能を使えば目の前の製品でプリントやスキャンが簡単に行えます。（ご使用の際はモバイル端末のNFC機能をONにする必要があります。）</string>-->
+    <string name="finndevice_nfc_use_hint_msg">NFCの機能を使えば目の前の製品でプリントやスキャンが簡単に行えます。（ご使用の際はモバイル端末のNFC機能をONにする必要があります。）</string>
+    <string name="nfc_guidance_lower_p1">1. お使いの製品にこのマークがあるかを確認してください。</string>
+    <string name="nfc_guidance_lower_p2">2. プリントやスキャンを開始する画面を表示させてください。</string>
+    <string name="nfc_guidance_lower_p3">3. モバイル端末をマークにかざしてください。</string>
+
+<!--    <string name="cloudservice_main_title">Online Service</string>
+    <string name="cloudservice_main_default_accountname">アカウントが設定されていません</string>
+    <string name="cloudservice_main_dropbox">DropBox</string>
+	<string name="cloudservice_main_evernote">Evernote</string>
+	<string name="cloudservice_main_googledrive">Google Drive</string>
+	<string name="cloudservice_main_onedrive">OneDrive</string>
+	<string name="cloudservice_sign_in">サインイン</string>
+	<string name="cloudservice_sign_out">サインアウト</string>
+	<string name="cloudservice_sign_in_hint">%1$sからのプリントをご使用になるにはご自身の%2$sアカウントにサインインして頂く必要がございます。</string>
+
+	<string name="cloudservice_fileexplorer_account">アカウント</string>
+	<string name="cloudservice_dlg_title_sign_out">サインアウト</string>
+	<string name="cloudservice_dlg_msg_sign_out">サインアウトすると %1$sからのプリントを使用できなくなります。</string>-->
+	<!--<string name="cloudservice_dlg_pbtn_sign_out">OK</string>-->
+	<!--<string name="cloudservice_dlg_nbtn_sign_out">キャンセル</string>-->
+	<string name="cloudservice_search_hint_root">%1$s内を検索</string>
+    <string name="info_item_label_service_plugin">プリントサービスプラグイン</string>
+    <!-- Information -->
+    <string name="about_ok_button">完了</string>
+    <string name="info_gideance_btn">新しい特徴</string>
+    <string name="info_support_model_btn">対応製品</string>
+    <string name="info_support_btn">サポートページ</string>
+    <string name="info_version_btn">バージョン</string>
+    <string name="info_item_label_other_app">その他</string>
+    <string name="info_item_label_nenga_print">年賀状プリント</string>
+    <string name="info_item_label_map_print">地図プリント</string>
+
+    <string name="info_item_label_firmware">ファームウェアアップデートの通知</string>
+    <string name="info_firmware_text">通知</string>
+    <string name="info_item_label_firmware_text">アプリ起動時に、選択している製品のファームウェアの更新を確認し、新しいファームウェアが見つかった場合、ダイアログによる通知を行います。</string>
+
+
+    <string name="fax_rx_dialog_howtofax_title">「みるだけ受信」を使用するには</string>
+    <string name="fax_rx_dialog_howtofax_message">お使いの製品の待機画面にて、上記のアイコンを押してください。\n「全てのメニュー」 > 「ファクス」 > 「受信設定」 > 「みるだけ受信」と進み、機能を有効にしてください。</string>
+    <string name="common_btn_close">閉じる</string>
+    <!--<string name="common_btn_goto_supportpage">サポートページ</string>-->
+
+    <string name="fax_tx_display_name">%1$s, その他 %2$s 名</string>
+
+    <string name="fax_tx_list_title">確認</string>
+    <string name="fax_tx_list_msg">下記の宛先にファクスを送信します。宛先が正しい場合は「送信」をタップしてください。宛先に間違いがある場合は「キャンセル」をタップして訂正してください。\n</string>
+    <string name="fax_tx_list_send">送信</string>
+
+    <string name="copy_dialog_about_title">コピープレビューとは？</string>
+    <string name="copy_dialog_about_msg">コピーミスを防ぐために、コピー結果をプレビューしてからコピーを行う機能です。プレビューを確認した際に、必要に応じてその場で編集（拡大/縮小、傾き補正、切り抜き）を行うこともできます。</string>
+    <string name="common_dlg_btn_close">閉じる</string>
+
+    <string name="copy_title_print_setting">コピー設定</string>
+    <string name="copy_setting_title_scantype">プレビュー画質</string>
+    <string name="copy_setting_title_scanside">両面プレビュー</string>
+    <string name="copy_setting_title_side">両面コピー</string>
+
+    <string name="generic_msg_nfc_on_operate">モバイル端末をNFCマークにかざしてください。</string>
+
+    <string name="info_gideance_item_1">[1]新デザイン\nより快適にご利用頂くためにデザインを刷新しました。ご利用の際はまずトップ画面でお使いの製品を選択してください。</string>
+    <string name="info_gideance_item_2">[2]新編集ツール\n新しく「拡大/縮小」「傾き補正」「切り抜き」編集ツールを追加しました。</string>
+    <string name="info_gideance_item_3">[3]ファクス送信*\nモバイル端末からファクスを送ることができるようになりました。</string>
+    <string name="info_gideance_item_4">[4]みるだけ受信*\n製品本体で受信したファクスの内容をモバイル端末で確認できるようになりました。</string>
+    <string name="info_gideance_item_5">[5]コピープレビュー*\nコピーする内容をプレビューし、編集してからコピーができる機能です。</string>
+    <string name="info_gideance_item_6">[6]ステータス*\nインク/トナー残量やエラーなど、お使いの製品の状態が確認できます。</string>
+    <string name="info_gideance_item_7">[7]注釈\n*の新しい機能は一部の製品ではご利用できません。トップ画面右上のiをタップして対応製品リストをご確認ください。</string>
+
+    <string name="error_scanautoduplexsize_title">スキャン原稿エラー</string>
+    <string name="error_scanautoduplexsize_msg">両面読取りはA4サイズ以下の原稿のみ可能です。アプリケーションの両面読取り設定を解除するか、原稿サイズ設定を変更してください。</string>
+    <string name="error_printer_status_title">印刷エラー</string>
+    <string name="error_printer_status_msg">本体との通信ができません。本体の状態を確認してください。\n\n印刷を続行しますか？</string>
+    <!--    <string name="error_print_perview_not_printed_title">プレビュー画像はまだ印刷されていません</string>
+    <string name="error_print_perview_not_printed_msg">続行すると画像が削除されます。続行しますか？</string>-->
+    <string name="error_scanned_image_not_saved_title">スキャン画像はまだ保存されていません</string>
+    <string name="error_scanned_image_not_saved_msg">続行すると画像が削除されます。続行しますか？</string>
+    <string name="error_shared_format_title">データ形式が違います</string>
+    <string name="error_shared_format_msg">ウェブページ以外は共有できません。</string>
+    <string name="error_scandevmemful_title">本体のメモリ容量不足です</string>
+    <string name="error_scandevmemful_msg">本体が動作中の場合は、現在の動作が終了するまでお待ちになるか、動作をキャンセルしてからやり直してください。</string>
+    <string name="error_scandevbusy_title">本体が動作中です</string>
+    <string name="error_scandevbusy_msg">現在行っている動作が終了するまで待ってからやり直してください。</string>
+    <string name="error_scancvropen_title">カバーオープン</string>
+    <string name="error_scancvropen_msg">本体のカバーが開いています。\n開いているカバーを閉じてからやり直してください。</string>
+    <string name="error_scantimeout_title">タイムアウト</string>
+    <string name="error_scantimeout_msg">データ転送の制限時間を越えました。</string>
+    <string name="error_scannodoc_title">スキャン原稿エラー</string>
+    <string name="error_scannodoc_msg">ＡＤＦに原稿がセットされていません。\n\nＡＤＦに原稿をセットしてからやり直してください。</string>
+    <string name="error_scandocjam_title">スキャン原稿詰まり</string>
+    <string name="error_scandocjam_msg">ADF カバーを開けて、詰まった原稿を取り除いてからやり直してください。</string>
+    <string name="error_disk_full_title">メモリーカードの空き容量がありません</string>
+    <string name="error_disk_full_msg">不要なデータを削除してください。</string>
+    <string name="error_internal_title">内部エラー</string>
+    <string name="error_internal_msg">続行できません。</string>
+    <string name="error_web_extended_title">内部エラー</string>
+    <string name="error_web_extended_msg">続行できません。</string>
+    <string name="error_no_disk_title">メモリーカードが見つかりません</string>
+    <string name="error_no_disk_msg">メモリーカードを挿入してください。</string>
+    <string name="error_print_cancel_title">印刷キャンセル</string>
+    <string name="error_print_cancel_msg">応答がありません。Brother iPrint&amp;Scan を強制終了します。</string>
+    <string name="error_scanfailed_title">スキャンが失敗しました</string>
+    <string name="error_scanwritefailed_title">スキャン画像書き込みエラー</string>
+    <string name="error_scanwritefailed_msg">スキャンデータの書き込みに失敗しました。メモリーカードの状態を確認してください。</string>
+    <string name="error_doc_not_supported_format_title">ドキュメントフォーマットエラー</string>
+    <string name="error_doc_not_supported_format_msg">このファイルはサポートされていないフォーマットです。</string>
+    <string name="error_doc_cannot_open_title">ドキュメント プリントエラー</string>
+    <string name="error_doc_cannot_open_msg">このドキュメント を開くことができません。</string>
+    <string name="error_doc_size_msg">ドキュメントサイズエラー</string>
+    <string name="error_doc_too_large_msg">このファイルは、印刷できる上限のサイズを越えました。この種類のドキュメントの上限サイズは%sです。</string>
+    <string name="error_doc_too_many_pages_msg">このファイルは、印刷できる上限のページを越えました。この種類のドキュメントの上限ページ数は%dページです。</string>
+    <string name="error_doc_server_down_title">サーバーアクセスエラー</string>
+    <string name="error_doc_server_down_msg">サービスが一時的に利用できません。\n時間をおいて再試行してください。</string>
+    <string name="error_doc_server_internal_title">サーバー内部エラー</string>
+    <string name="error_doc_server_internal_msg">続行できません。</string>
+    <string name="error_browser_clear_history_title">履歴を消去</string>
+    <string name="error_browser_clear_all_history_msg">すべての履歴を消去していいですか？</string>
+    <string name="error_browser_delete_bookmark_title">削除</string>
+    <string name="error_browser_delete_bookmark_msg">このブックマークを削除していいですか？</string>
+    <!--    <string name="error_email_cannot_connect_title">接続できません</string>
+    <string name="error_email_cannot_connect_msg">メールアカウント情報が正しくありません。もう一度入力を確認してください。</string>
+    <string name="error_email_cannot_retrieve_mail_title">サーバーアクセスエラー</string>
+    <string name="error_email_cannot_retrieve_mail_msg">サービスが一時的に利用できません。\n時間をおいて再試行してください。</string>
+    <string name="error_email_cannot_retrieve_account_title">アカウント未設定</string>
+    <string name="error_email_cannot_retrieve_account_msg">Googleのアカウントを設定してください。</string>-->
+    <string name="error_scanadfcvropen_title">カバーオープン</string>
+    <string name="error_scanadfcvropen_msg">ADFカバーを閉じてください。</string>
+    <string name="error_scandocadftray_title">スキャンを開始出来ません</string>
+    <string name="error_scandocadftray_msg">ADF排紙トレイの原稿を取り除いてください。</string>
+    <string name="error_scanmultifeed_title">原稿が重送されました。\nデータを確認してください。</string>
+    <string name="error_scanmultifeed_msg">本体のストップボタンを押してエラーを解除してください。</string>
+    <!--<string name="error_no_paper_feed_title">記録紙を送れません</string>
+    <string name="error_no_paper_feed_msg">印刷用紙をセットしてください。</string>-->
+    <string name="error_nfc_cannot_connect_title">接続できません</string>
+    <string name="error_nfc_cannot_connect_msg">時間をおいて再試行してください。</string>
+    <string name="error_nfc_another_device_connected_title">接続できません</string>
+    <string name="error_nfc_another_device_connected_msg">他の端末が現在接続中です。時間をおいて再試行してください。</string>
+    <string name="error_nfc_wrong_operation_title">やり直してください</string>
+    <string name="error_nfc_wrong_operation_msg">プリントプレビュー/スキャン画面からしか接続できません。また、ドキュメント変換中も接続できません。</string>
+    <!--<string name="error_bluetooth_cannot_connect_title">接続できません</string>
+    <string name="error_bluetooth_cannot_connect_msg">選択されたデバイスは電源がオフまたはサポートされていません。</string>
+    <string name="error_bluetooth_title">Bluetoothエラー</string>
+    <string name="error_bluetooth_msg">Bluetoothの設定がオフになっています。オンにしますか？</string>
+    <string name="error_bluetooth_printer_status_title">印刷エラー</string>
+    <string name="error_bluetooth_printer_status_msg">本体の状態を確認してください。</string>-->
+    <string name="error_sfl_print_title">印刷エラー</string>
+    <string name="error_sfl_print_msg">利用が許可されていません。管理者にセキュリティ機能ロックの設定を確認してください。</string>
+    <!--
+    <string name="error_nfc_wifi_direct_cannot_connect_title">接続できません</string>
+    <string name="error_nfc_wifi_direct_cannot_connect_msg">NFC接続に失敗しました。本体の電源を入れ直してからもう一度かざしてください。また、携帯端末が十分に充電されていることを確認してください。</string>
+    -->
+    <string name="error_nfc_wifi_direct_client_cannot_connect_title">接続できません</string>
+    <string name="error_nfc_wifi_direct_client_cannot_connect_msg">端末がWiFi Directのクライアントに設定されています。設定をオフに変更し、再度NFCでかざしてください。</string>
+    <string name="error_wrong_settings_title">設定が間違っています</string>
+    <string name="error_wrong_settings_msg">現在の印刷/スキャン設定に本体が対応していません。用紙サイズ/原稿サイズ等を確認し、再度かざしてください。</string>
+    <string name="error_email_html_memfull_title">内部エラー</string>
+    <string name="error_email_html_memfull_msg">htmlメールのサイズが大きすぎます。テキストのみ表示します。</string>
+    <string name="error_sfl_scan_title">スキャンエラー</string>
+    <string name="error_sfl_scan_msg">利用が許可されていません。管理者にセキュリティ機能ロックの設定を確認してください。</string>
+    <string name="error_scanner_adf_card_tray_open_title">カード排紙トレイが開いています</string>
+    <string name="error_scanner_adf_card_tray_open_msg">ポストカードより大きい原稿をスキャンする場合、カード排紙トレイが開いているとスキャンできません。カード排紙トレイを閉じてください。</string>
+    <string name="error_scanner_adf_card_tray_close_title">カード排紙トレイが閉じています</string>
+    <string name="error_scanner_adf_card_tray_close_msg">L判やポストカードをスキャンする場合、カード排紙トレイが閉じているとスキャンできません。カード排紙トレイを開けてください。</string>
+    <!--<string name="error_nfc_print_unable_to_send_title">送信できませんでした</string>-->
+    <!--<string name="error_nfc_print_unable_to_send_msg">携帯端末が途中で離れたため、送信できませんでした。\nもう一度、携帯端末をNFCマークに近づけて画像をタッチして、プリントが開始されるまでかざし続けてください。</string>-->
+    <!--<string name="error_nfc_scan_unable_to_send_title">送信できませんでした</string>-->
+    <!--<string name="error_nfc_scan_unable_to_send_msg">携帯端末が途中で離れたため、送信できませんでした。\nもう一度、携帯端末をNFCマークに近づけて画像をタッチして、スキャンが開始されるまでかざし続けてください。</string>-->
+    <string name="error_ms_scan_title">スキャンエラー</string>
+    <string name="error_ms_scan_msg">利用が許可されていません。管理者にセキュリティ機能ロックの設定を確認してください。</string>
+    <string name="error_doc_internet_cannot_connect_title">インターネットに接続できません</string>
+    <string name="error_doc_internet_cannot_connect_msg">PDFやOFFICEファイルを印刷する場合は、インターネットに接続できる環境で行う必要があります。 インターネットに接続できるWi-Fi環境に接続して、もう一度行ってください。 </string>
+    <string name="error_scanner_adf_card_disable_title">スキャン原稿エラー</string>
+    <string name="error_scanner_adf_card_disable_msg">選択された原稿サイズではADFからスキャンできません。原稿台ガラスに原稿をセットしてください。</string>
+    <string name="error_nfc_page_not_selected_title">やり直してください</string>
+    <string name="error_nfc_page_not_selected_msg">ページが選択されていません。ページを選択してもう一度かざしてください</string>
+    <string name="error_scanner_card_top_cover_open_scanning_title">スキャンできません</string>
+    <string name="error_scanner_card_top_cover_open_scanning_msg">カードスキャン中にトップカバーを開かないでください</string>
+    <string name="error_scanner_card_top_cover_open_before_scan_title">スキャンできません</string>
+    <string name="error_scanner_card_top_cover_open_before_scan_msg">トップカバーを閉めてからカードをスキャンしてください</string>
+    <string name="error_scanner_card_slot_insert_title">スキャンできません</string>
+    <string name="error_scanner_card_slot_insert_msg">原稿スキャン中にカードを挿入しないでください</string>
+    <string name="error_scanner_card_slot_empty_title">スキャンできません</string>
+    <string name="error_scanner_card_slot_empty_msg">カードが挿入されていません</string>
+    <string name="error_scanner_card_jam_title">スキャン原稿詰まり</string>
+    <string name="error_scanner_card_jam_msg">カードが詰まりました。\nトップカバーとフロントカバーを開けて詰まったカードを取り除いてください。</string>
+    <!--<string name="error_nfc_print_setting_confirm_title">NFC設定確認</string>-->
+    <!--<string name="error_nfc_print_setting_confirm_msg">@string/v1_error_nfc_print_setting_confirm_msg</string>-->
+    <!--<string name="error_nfc_scan_setting_confirm_title">NFC設定確認</string>-->
+    <string name="error_nfc_scan_setting_confirm_msg">@string/v1_error_nfc_scan_setting_confirm_msg</string>
+    <string name="error_nfc_disable_print_error_title">@string/v1_error_nfc_disable_print_title</string>
+    <string name="error_nfc_disable_print_error_msg">@string/v1_error_nfc_disable_print_msg</string>
+    <string name="error_nfc_disable_scan_error_title">@string/v1_error_nfc_disable_scan_title</string>
+    <string name="error_nfc_disable_scan_error_msg">@string/v1_error_nfc_disable_scan_msg</string>
+    <!--<string name="error_nfc_wrong_setting_duplex_size_error_title">@string/v1_error_wrong_settings_duplex_size_title</string>-->
+    <!--<string name="error_nfc_wrong_setting_duplex_size_error_msg">@string/v1_error_wrong_settings_duplex_size_msg</string>-->
+    <!--<string name="error_gcp_printer_not_registered_title">プリンターが見つかりません</string>-->
+    <string name="error_gcp_printer_not_registered_msg">プリンターをGoogleクラウドプリントに登録する必要があります。\nGoogleクラウドプリントの詳しい情報は、「サポート」をタップして「Googleクラウドプリントガイド」をダウンロードしてご覧ください。 </string>
+    <string name="error_gcp_printer_not_registered_msg_v13">プリンターをGoogleクラウドプリントに登録する必要があります。Googleクラウドプリントの詳しい情報は、「サポート」をタップしてご覧ください。 </string>
+    <!--<string name="error_gcp_printer_offline_title">プリンターがオフラインです</string>-->
+    <!--<string name="error_gcp_printer_offline_msg">本体の電源とネットワーク接続を確認して下さい。\n[続行]を選択した場合、印刷ジョブがGoogleクラウドプリントサーバーに保存されます。プリンターがオンラインになると印刷されます。</string>-->
+    <!--<string name="generic_item_label_dont_ask_again">次回から表示しない。</string>-->
+    <!--<string name="error_gcp_printer_deleted_title">プリンターが削除されています</string>-->
+    <!--<string name="error_gcp_printer_deleted_msg">選択したプリンターはGoogleクラウドプリントから削除されました。他のプリンターを選択してください。</string>-->
+    <!--<string name="error_gcp_cannot_print_title">印刷エラー</string>-->
+    <!--<string name="error_gcp_cannot_print_msg">今はこのプリンターで印刷できません。他のプリンターを選択して印刷してください。</string>-->
+    <!--<string name="error_gcp_cannot_connect_title">接続できません</string>-->
+    <!--<string name="error_gcp_cannot_connect_msg">以下の点をご確認ください。\n-本体の電源が入っていることと、ネットワーク設定を確認してから操作をやり直してください。</string>-->
+    <string name="error_nfc_device_not_supported_title">NFCプリンター/スキャナーに対応していません</string>
+    <string name="error_nfc_device_not_supported_msg">NFCを使った印刷/スキャンに本体が対応していません。</string>
+    <string name="error_widi_connection_failed_title">接続できません</string>
+    <string name="error_widi_connection_failed_msg">Wi-Fi Directの接続に失敗しました。もう一度やり直してください</string>
+    <string name="error_local_storage_full_title">%s のファイルを開けません</string>
+    <string name="error_local_storage_full_msg">ダウンロード容量が上限に達しました。\nモバイル端末の不要なファイルを削除してください。</string>
+    <string name="error_service_data_not_found_title">%s のファイル/フォルダーが見つかりません</string>
+    <string name="error_service_data_not_found_msg">%sへアクセスしファイル/フォルダーを確認してください。</string>
+    <string name="error_service_too_many_data_title">このフォルダは表示できません</string>
+    <string name="error_service_too_many_data_msg">ファイルが多すぎます。サービスへアクセスし不要なファイルを削除してください。</string>
+    <string name="error_service_internal_title">予期しないエラーが発生しました</string>
+    <string name="error_service_internal_msg">もう一度、最初から操作を行ってください。</string>
+    <string name="error_service_internet_cannot_connect_title">インターネットに接続できません</string>
+    <string name="error_service_internet_cannot_connect_msg">利用するためにはインターネットにアクセスできるネットワークに接続されている必要があります。</string>
+    <string name="error_service_logout_title">%s のサインアウトに失敗しました</string>
+    <string name="error_service_logout_msg">再度お試しください。</string>
+    <string name="error_service_limit_title">%s の利用制限を超過しました</string>
+    <string name="error_service_limit_msg">しばらく待ってから再度お試しください。</string>
+    <string name="error_evernote_resource_cannot_download_title">ダウンロードできないコンテンツがありました</string>
+    <string name="error_evernote_resource_cannot_download_msg">ノートの内容を確認して再度お試しください。</string>
+    <string name="error_evernote_rsource_not_found_title">ファイルが見つかりません</string>
+    <string name="error_evernote_rsource_not_found_msg">ファイルを確認してから再度お試しください。</string>
+    <string name="error_evernote_note_cannot_open_title">ノートが開けません</string>
+    <string name="error_evernote_note_cannot_open_msg">ノートの内容にアクセスできません。</string>
+    <string name="error_evernote_internal_title">Evernote 内部エラー</string>
+    <string name="error_evernote_internal_msg">しばらく待ってから再度お試しください。</string>
+    <string name="error_service_not_supported_title">サービスが提供されていません</string>
+    <string name="error_service_not_supported_msg">お使いのモバイル端末にサービスが提供されていないため、この機能は利用できません。</string>
+    <!--<string name="error_can_not_add_another_fax_number_title">宛先を追加できません</string>-->
+    <!--<string name="error_you_can_only_enter_fax_numbers_title">宛先選択の最大は10件です </string>-->
+    <!--<string name="error_fax_preview_failed_title">みるだけ受信に失敗しました</string>-->
+    <!--<string name="error_fax_preview_failed_msg">以下の原因が考えられます\n- ネットワークの状態が悪いため\n- ファクスのデータサイズが大きいため\n\n本体を操作して受信したファクスを確認してください</string>-->
+    <!-- NFC MBeam -->
+    <string name="error_nfc_is_not_available_title">NFCが使用できません</string>
+    <string name="error_nfc_is_not_available_msg">本体のWi-FiダイレクトがONのためNFC機能が利用できません\nWi-Fiダイレクト機能をOFFしてください</string>
+    <string name="error_nfc_cannot_connect_turn_on_title">接続できません</string>
+    <string name="error_nfc_cannot_connect_turn_on_msg">NFC接続に失敗しました。本体の電源をONしてからもう一度かざしてください</string>
+    <string name="error_nfc_printer_is_unsupported_title">NFCプリンターに対応していません</string>
+    <string name="error_nfc_printer_is_unsupported_msg">NFCを使った印刷に本体が対応していません</string>
+    <string name="error_nfc_scanner_is_unsupported_title">NFCスキャナーに対応していません</string>
+    <string name="error_nfc_scanner_is_unsupported_msg">NFCを使ったスキャンに本体が対応していません</string>
+    <!-- NFC HandOverIOException,etc -->
+    <string name="error_nfc_wrong_settings_title">@string/v1_error_wrong_settings_title</string>
+    <string name="error_nfc_wrong_settings_msg">@string/v1_error_wrong_settings_msg</string>
+    <string name="error_nfc_wifi_connection_info_not_found_title">接続できません</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg">NFCを使用する場合は、本体の[無線LAN有効]を「オフ」、または[有線/無線切り替え]を「有線LANにする」に設定してください。 それでも解決しない場合は、本体のWi-Fi Direct設定の、[インターフェース有効]を「オフ」にしてください。</string>
+    <!-- NFC BBeam TLV 0101H,0002H,1..* (PrintError) -->
+    <string name="error_nfc_print_sfl_title">@string/v1_error_sfl_print_title</string>
+    <string name="error_nfc_print_sfl_msg">@string/v1_error_sfl_print_msg</string>
+    <string name="error_nfc_print_sfl_print_max_title">@string/v1_error_sfl_print_max_title</string>
+    <string name="error_nfc_print_sfl_print_max_msg">@string/v1_error_sfl_print_max_msg</string>
+    <string name="error_nfc_print_status_title">@string/v1_error_printer_status_title</string>
+    <string name="error_nfc_print_status_msg">@string/v1_error_printer_status_msg</string>
+    <string name="error_nfc_print_ms_title">@string/v1_error_ms_print_title</string>
+    <string name="error_nfc_print_ms_msg">@string/v1_error_ms_print_msg</string>
+    <!-- NFC BBeam TLV 0102H,0002H,1..* (ScanError) -->
+    <string name="error_nfc_scan_sfl_title">@string/v1_error_sfl_scan_title</string>
+    <string name="error_nfc_scan_sfl_msg">@string/v1_error_sfl_scan_msg</string>
+    <string name="error_nfc_scan_resource_title">@string/v1_error_scandevbusy_title</string>
+    <string name="error_nfc_scan_resource_msg">@string/v1_error_scandevbusy_msg</string>
+    <string name="error_nfc_scan_open_adf_title">@string/v1_error_scanadfcvropen_title</string>
+    <string name="error_nfc_scan_open_adf_msg">@string/v1_error_scanadfcvropen_msg</string>
+    <string name="error_nfc_scan_open_top_cover_title">@string/v1_error_scancvropen_title</string>
+    <string name="error_nfc_scan_open_top_cover_msg">@string/v1_error_scancvropen_msg</string>
+    <string name="error_nfc_scan_ms_title">@string/v1_error_ms_scan_title</string>
+    <string name="error_nfc_scan_ms_msg">@string/v1_error_ms_scan_msg</string>
+    <!-- NFC BBeam TLV 0103H,0002H,1..* (WifiDirectError) -->
+    <string name="error_nfc_wifi_direct_connecting_as_client_title">@string/v1_error_nfc_wifi_direct_client_cannot_connect_title</string>
+    <string name="error_nfc_wifi_direct_connecting_as_client_msg">@string/v1_error_nfc_wifi_direct_client_cannot_connect_msg</string>
+    <string name="error_nfc_wifi_direct_connection_max_title">@string/v1_error_nfc_another_device_connected_title</string>
+    <string name="error_nfc_wifi_direct_connection_max_msg">@string/v1_error_nfc_another_device_connected_msg</string>
+    <string name="error_nfc_wifi_direct_cannot_connect_title">@string/v1_error_nfc_wifi_direct_cannot_connect_title</string>
+    <string name="error_nfc_wifi_direct_cannot_connect_msg">@string/v1_error_nfc_wifi_direct_cannot_connect_msg</string>
+
+    <!--<string name="error_the_preview_image_has_not_been_send_title">プレビュー画像はまだ送信されていません</string>-->
+    <!--<string name="error_the_preview_image_has_not_been_send_msg">続行すると画像が削除されます。続行しますか？</string>-->
+    <!--<string name="error_download_failed_title">ダウンロードできません</string>-->
+    <!--<string name="error_download_failed_msg">以下の原因が考えられます\n- ネットワークの状態が悪いため\n- 本体でエラーが発生している\n- 本体に他の端末からアクセスがあった\n\n本体を確認して、もう一度お試しください</string>-->
+
+    <string name="fax_tx_cannot_add_numbers">宛先を追加できません</string>
+    <string name="fax_tx_over_fax_msg">宛先選択の最大は10件です</string>
+    <string name="error_fax_rx_preview_title">みるだけ受信に失敗しました</string>
+    <string name="error_fax_rx_preview_message">以下の原因が考えられます\n - ネットワークの状態が悪いため\n - ファクスのデータサイズが大きいため\n\n本体を操作して受信したファクスを確認してください</string>
+    <string name="error_fax_rx_connect_message">以下の原因が考えられます\n - ネットワークの状態が悪いため\n - ファクスのデータサイズが大きいため\n - 本体操作パネルがホーム画面になっていないため\n\n本体を操作して受信したファクスを確認してください</string>
+    <string name="E115_title">ダウンロードできません</string>
+    <string name="E115_messag">以下の原因が考えられます\n- ネットワークの状態が悪いため\n- 本体でエラーが発生している\n- 本体に他の端末からアクセスがあった\n\n本体を確認して、もう一度お試しください</string>
+
+    <string name="error_secure_func_locked_title">セキュリティ機能ロックエラー</string>
+    <string name="error_secure_func_locked_msg">この機能はロックされています。管理者にセキュリティ機能ロックの設定を確認してください。</string>
+    <string name="error_ads_print_share_title">印刷機能に対応しておりません</string>
+    <string name="error_ads_print_share_msg">この製品では印刷できません。他の製品を選択してください。</string>
+
+    <!-- EULA -->
+    <string name="generic_btn_Yes">@string/v1_generic_btn_Yes</string>
+    <string name="generic_btn_No">@string/v1_generic_btn_No</string>
+    <string name="generic_title_end_user_lisence_agreement">@string/v1_generic_title_end_user_lisence_agreement</string>
+    <string name="generic_msg_end_user_lisence_agreement">@string/v1_generic_msg_end_user_lisence_agreement</string>
+    <string name="generic_msg_end_user_lisence_agreement2">@string/v1_generic_msg_end_user_lisence_agreement2</string>
+    <string name="generic_msg_license_title">@string/v1_generic_msg_license_title</string>
+    <string name="generic_title_gratitude_for_user">@string/v1_generic_title_gratitude_for_user</string>
+    <string name="generic_btn_privacypolicy">@string/v1_generic_btn_privacypolicy</string>
+    <string name="generic_ckbx_ga_title">@string/v1_generic_ckbx_ga_title</string>
+    <string name="generic_title_analytics">@string/v1_generic_title_analytics</string>
+    <string name="generic_msg_analytics">@string/v1_generic_msg_analytics</string>
+    <string name="generic_msg_analytics_underline">@string/v1_generic_msg_analytics_underline</string>
+
+    <string name="error_fax_tx_too_long_numbers">ファクス番号を%d桁以下で入力してください。</string>
+    <string name="error_tray_option_not_available_title">トレイオプションは無効です</string>
+    <string name="error_tray_option_not_available_msg">iPrint&amp;Scanのトレイオプション機能に本体が対応していません。トレイは自動で選択されます。印刷を続行しますか？</string>
+
+    <string name="common_file_saved">保存されました</string>
+
+    <string name="firmware_update_title">ファームウェアアップデート</string>
+    <string name="firmware_update_content">本製品の新しいファームウェアアップデートが公開されています。機能追加や不具合修正のために、アップデートいただくことをお勧め致します。</string>
+    <string name="firmware_update_positive_button">アップデートする</string>
+    <string name="firmware_update_negative_button">今はしない</string>
+    <string name="firmware_update_status_msg">本製品のファームウェアをアップデートしてください。</string>
+    <string name="firmware_update_avaliable_status">アップデートを行ってください</string>
+    <string name="firmware_update_latest_version">最新バージョンです</string>
+    <string name="firmware_update_faq">>FAQ</string>
+    <string name="firmware_update_prompt_check"><u>上の [アップデートする]をタップし、次ページにて  [最新ファームウェアの確認] をタップすると、ファームウェアのアップデートが開始されます。</u></string>
+    <string name="firmware_update_prompt">機能追加または不具合修正のため、常に最新版にアップデートしてご利用ください。</string>
+    <string name="firmware_update_prompt_faq">ファームウェアのアップデート方法についての詳細は、FAQにて掲載しております。</string>
+
+    <string name ="browser_nobookmark">ブックマークはありません。</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_1">無線LAN</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_2">有線/無線切替え</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_3">有線LAN</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_4">ネットワーク</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_5">インター フェース有効</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_6">Wi-Fi Direct</string>
+
+    <string name="edited_image_delete_dialog_title">プレビュー画像はまだ印刷されていません</string>
+    <string name="edited_image_delete_dialog_msg">続行すると編集内容が破棄されます。続行しますか？</string>
+
+    <string name="error_ssl_certificate_is_invalid_title">警告</string>
+    <string name="error_ssl_certificate_is_invalid_msg">このWebサイトのセキュリティ証明書には問題があります。続行しますか？</string>
+    <string name="info_eula_title">エンドユーザーライセンス契約</string>
+
+</resources>
+

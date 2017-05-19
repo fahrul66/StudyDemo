@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="func_name_setting">Apparaatstatus</string>
+	<string name="top_dlg_msg_do_you_select_device">Om deze applicatie te gebruiken, moet u een apparaat selecteren. </string>
+	<string name="top_dlg_btn_select_later">Later selecteren</string>
+	<string name="top_dlg_btn_select_device">Nu selecteren</string>
+	<string name="finddevice_change_device_msg_share">Het geselecteerde model is gewijzigd en u kunt alleen de functies gebruiken die op dat model beschikbaar zijn.</string>
+	<string name="finddevice_main_title">Selecteer apparaat</string>
+	<string name="finddevice_nfc_use_tip_title">Gebruik NFC</string>
+	<string name="finndevice_nfc_use_hint_msg">Door NFC te gebruiken, kunt u eenvoudig afdrukken of scannen vanaf het apparaat dat voor u staat.  (Zet vóór gebruik NFC op uw Android-apparaat uit.)</string>
+	<string name="finddevice_wifi_fragment_manually_printer">Apparaat</string>
+	<string name="edit_title_scaling">Schaal</string>
+	<string name="edit_title_rotate">Gladstrijken</string>
+	<string name="func_name_fax_tx">Fax Send</string>
+	<string name="func_name_fax_rx">Fax Preview</string>
+	<string name="fax_rx_tab_date">Datum</string>
+	<string name="fax_rx_tab_sender">Afzender</string>
+	<string name="fax_rx_dialog_howtofax_title">Zo gebruikt u Fax Preview</string>
+	<string name="fax_rx_dialog_howtofax_message">Druk op het bovenstaande pictogram op het Startscherm > Alle instell.\nDruk op Fax > Ontvangstmenu > Faxvoorbeeld.\nSelecteer Aan > Ja.</string>
+	<string name="common_btn_close">Sluiten</string>
+	<string name="faxtx_add_phone_num_hint">Nummer invoeren:</string>
+	<string name="faxtx_add_image_hint_device">Fax documenten vanaf uw apparaat</string>
+	<string name="faxtx_add_image_hint_mobile">Selecteer een bestand vanaf dit mobiele toestel</string>
+	<string name="faxtx_title_phonebook_mobile">Adresboek</string>
+	<string name="faxtx_address_in_mobile">Mobiele adresboek</string>
+	<string name="faxtx_address_in_device">Adresboek apparaat</string>
+	<string name="copy_dialog_about_msg">Met deze functie kunt u van afbeeldingen een voorbeeld zien voordat u ze kopieert om kopieerfouten te voorkomen. Bovendien kunt u het voorbeeld desgewenst wijzigen met de functies (schaalgrootte, gladstrijken, verkleinen).  </string>
+	<string name="copy_description_main_item_1">Plaats de documenten op de glasplaat of in de automatische documenteninvoer van het apparaat.</string>
+    <string name="copy_description_main_item_1_footer">(Exemplaren kunnen alleen op normaal papier worden afgedrukt.)</string>
+    <string name="copy_description_main_item_2">[2] U kunt van afbeeldingen een voorbeeld bekijken voordat u ze kopieert om kopieerfouten te voorkomen en kunt u het voorbeeld zo nodig aanpassen met de bewerkingsfuncties.</string>
+	<string name="copy_preview_options">Voorbeeldopties</string>
+	<string name="copy_setting_title_scantype">Type voorbeeld</string>
+	<string name="copy_btn_scan">Starten</string>
+	<string name="copy_btn_print">Kopiëren</string>
+	<string name="copy_title_print_setting">Instelling kopie</string>
+	<string name="status_network_online">Online</string>
+	<string name="status_network_offline">Offline</string>
+	<string name="status_name_volume">Inktvolume</string>
+    <string name="status_name_laser_life">Levensduur toner</string>
+	<string name="status_name_cartridge_num">Model Inktcartridge</string>
+    <string name="status_name_laser_cartridge_model">Model Tonercartridge</string>
+    <string name="status_name_buy_cartridge">Koop online</string>
+
+	<string name="status_name_ip">IP-adres</string>
+	<string name="status_name_machine_sn">Serienummer</string>
+	<string name="status_name_firm_ver">Firmwareversie</string>
+	<string name="status_name_memory">Fax-ontvangstgeheugen</string>
+    <string name="status_name_error">Fout</string>
+    <string name="status_name_warning">Waarschuwing</string>
+
+    <string name="func_name_copy">Kopie voorbeeld</string>
+    <string name="finddevice_change_device_msg">De volgende functies zijn beschikbaar op het geselecteerde apparaat.\n</string>
+    <string name="finddevice_change_device_msg_print">Afdrukken</string>
+    <string name="finddevice_change_device_msg_scan">Scannen</string>
+    <string name="finddevice_change_device_msg_previewcopy">Tekst bekijken</string>
+    <string name="finddevice_change_device_msg_faxsend">Fax verzenden</string>
+    <string name="finddevice_change_device_faxpreview">Fax bekijken</string>
+    <string name="finddevice_change_device_machinestatus">Apparaatstatus</string>
+    <string name="finddevice_change_device_msg_end">\n\nHet hangt van het geselecteerde apparaat af of functies compatibel zijn.</string>
+    <string name="info_gideance_btn">Nieuwe functies</string>
+    <string name="info_support_model_btn">Lijst met ondersteunde modellen</string>
+    <string name="info_support_btn">Ondersteuningspagina</string>
+    <string name="info_item_label_other_app">Andere</string>
+    <string name="info_version_btn">Versie</string>
+    <string name="nfc_guidance_lower_p1">1. Zoek dit merkteken op uw machine.</string>
+    <string name="nfc_guidance_lower_p2">2. In iPrint&amp;Scan maakt u uw document klaar voor afdrukken of scannen.</string>
+    <string name="nfc_guidance_lower_p3">3. Houd uw apparaat boven het teken.</string>
+    <string name="fax_rx_receive_mode_error_support">Ondersteuningspagina</string>
+    <string name="func_name_fax">Fax</string>
+    <string name="copy_dlg_msg_nextscan">Als u meer pagina\'s heeft om te scannen, plaats ze dan op het apparaat en tik op \&quot;Scan\&quot; (scannen).  Zo niet, tik dan op \&quot;Done\&quot; (gereed).</string>
+    <string name="faxtx_hint_search_phone">Zoek een nummer</string>
+    <string name="fax_tx_display_name">%1$s, en nog %2$s</string>
+    <string name="common_title_fax_setting">Instellingen Fax</string>
+    <string name="fax_tx_list_title">Bevestiging</string>
+    <string name="fax_tx_list_msg">De fax wordt naar de volgende adressen verstuurd.  Als de adressen correct zijn, tik dan op \&quot;Send\&quot; (versturen).  Tik bij een vergissing op \&quot;Cancel\&quot; (annuleren) om de fout te herstellen.</string>
+    <string name="fax_tx_list_send">Versturen</string>
+    <string name="copy_dialog_about_title">Wat is Preview Copy?</string>
+    <string name="copy_setting_title_scanside">2-zijdig</string>
+    <string name="copy_setting_title_side">2-zijdig</string>
+    <string name="status_name_memory_full">Volledig</string>
+    <string name="generic_msg_nfc_on_operate">Houd uw apparaat boven het NFC-teken.</string>
+    <string name="info_gideance_item_1">[1] Nieuw ontwerp\nBrother iPrint&amp;Scan heeft een totaal nieuw ontwerp voor een betere ervaring.  Selecteer uw apparaat in het vervolgkeuzemenu voordat u deze app gebruikt. </string>
+    <string name="info_gideance_item_2">[2] Nieuwe bewerkfuncties\nEr zijn drie nieuwe bewerkfuncties toegevoegd (schaalgrootte, Gladstrijken &amp; verkleinen).</string>
+    <string name="info_gideance_item_3">[3] Fax versturen*\nVanaf uw mobiele apparaat kunt u een fax versturen.</string>
+    <string name="info_gideance_item_4">[4] Fax bekijken*\nU kunt vanaf uw mobiele apparaat ontvangen faxen bekijken die op uw apparaat zijn opgeslagen.</string>
+    <string name="info_gideance_item_5">[5] Tekst bekijken*\nBekijk een afbeelding en bewerk deze voordat deze gekopieerd wordt.</string>
+    <string name="info_gideance_item_6">[6] Apparaatstatus*\nU kunt vanaf uw mobiele apparaat de status van het apparaat bekijken, zoals de hoeveelheid inkt/toner en foutmeldingen.</string>
+    <string name="info_gideance_item_7">[7] Opmerkingen\n“*” alleen verkrijgbaar op nieuw modellen.  Tik op \&quot;i\&quot; (rechtsboven) voor een lijst van ondersteunde modellen.</string>
+
+    <string name="info_item_label_firmware">Meldingen voor firmware-updates</string>
+    <string name="info_firmware_text">Meldingen</string>
+    <string name="info_item_label_firmware_text">Toon meldingen wanneer deze app wordt gestart en er nieuwe firmware beschikbaar is voor het geselecteerde apparaat. </string>
+
+    <string name="setting_label_tray_options">Lade-opties</string>
+    <string name="setting_label_roll_printer_case">Rol printerbehuizing</string>
+    <string name="setting_item_roll_printer_case_none">Geen</string>
+    <string name="setting_item_roll_printer_case_pa_rc">PA-RC-001</string>
+    <string name="setting_item_roll_printer_case_pa_rc_without_anti">PA-RC-001 (zonder Anti-krulling)</string>
+
+    <string name="setting_title_inputtray_unit">Papierbron</string>
+    <string name="setting_item_input_tray_auto">Automatisch</string>
+    <string name="setting_item_input_tray_mp">MF lade</string>
+    <string name="setting_item_input_tray_1">Lade1</string>
+    <string name="setting_item_input_tray_2">Lade2</string>
+    <string name="setting_item_input_tray_3">Lade3</string>
+    <string name="setting_item_input_tray_4">Lade4</string>
+    <string name="setting_item_input_tray_5">Lade5</string>
+    <string name="setting_title_output_bin_unit">Uitvoerlade</string>
+    <string name="setting_item_output_bin_auto">Automatisch</string>
+    <string name="setting_item_output_bin_nomal">Standaard uitvoerlade</string>
+    <string name="setting_item_output_bin_1">MX bak 1</string>
+    <string name="setting_item_output_bin_2">MX bak 2</string>
+    <string name="setting_item_output_bin_3">MX bak 3</string>
+    <string name="setting_item_output_bin_4">MX bak 4</string>
+    <string name="setting_item_output_bin_stacker">MX stapelaar</string>
+    <string name="setting_item_output_bin_sorter">MX sorteerder</string>
+    <string name="setting_title_use_standard_tray_when_full">Gebruik std. lade wanneer vol</string>
+    <!-- EULA -->
+    <string name="generic_btn_Yes">@string/v1_generic_btn_Yes</string>
+    <string name="generic_btn_No">@string/v1_generic_btn_No</string>
+    <string name="generic_title_end_user_lisence_agreement">@string/v1_generic_title_end_user_lisence_agreement</string>
+    <string name="generic_msg_end_user_lisence_agreement">@string/v1_generic_msg_end_user_lisence_agreement</string>
+    <string name="generic_msg_end_user_lisence_agreement2">@string/v1_generic_msg_end_user_lisence_agreement2</string>
+    <string name="generic_msg_license_title">@string/v1_generic_msg_license_title</string>
+    <string name="generic_title_gratitude_for_user">@string/v1_generic_title_gratitude_for_user</string>
+    <string name="generic_btn_privacypolicy">@string/v1_generic_btn_privacypolicy</string>
+    <string name="generic_ckbx_ga_title">@string/v1_generic_ckbx_ga_title</string>
+    <string name="generic_title_analytics">@string/v1_generic_title_analytics</string>
+    <string name="generic_msg_analytics">@string/v1_generic_msg_analytics</string>
+    <string name="generic_msg_analytics_underline">@string/v1_generic_msg_analytics_underline</string>
+    <string name="info_item_label_license">@string/v1_info_item_label_license</string>
+    
+    <string name="fax_tx_cannot_add_numbers">Kan geen nieuw faxnummer toevoegen</string>
+    <string name="fax_tx_over_fax_msg">U kunt maximaal %d faxnummers invullen </string>
+	<string name="error_fax_rx_preview_title">\&quot;Fax voorbeeld\&quot; mislukt</string>
+	<string name="error_fax_rx_preview_message">Oorzaak:\n- Geen netwerkverbinding\n- De afbeelding op de fax is te groot\n\nDruk de fax af op uw printer van Brother.</string>
+    <string name="error_fax_rx_connect_message">Oorzaak:\n- Geen netwerkverbinding\n- De afbeelding op de fax is te groot\n\nDruk de fax af op uw printer van Brother.</string>
+	<string name="error_nfc_is_not_available_title">NFC is niet beschikbaar.</string>
+	<string name="error_nfc_is_not_available_msg">Om NFC te gebruiken moet u \&quot;Wi-Fi Direct\&quot; op uw apparaat van Brother uitzetten.</string>
+	<string name="error_nfc_cannot_connect_turn_on_title">Kan niet verbinden</string>
+    <string name="error_nfc_cannot_connect_turn_on_msg">NFC-verbinding mislukt. Zet uw apparaat van Brother aan en probeer het opnieuw.</string>
+	<string name="error_nfc_printer_is_unsupported_title">NFC-printer wordt niet ondersteund</string>
+	<string name="error_nfc_printer_is_unsupported_msg">Dit apparaat van Brother ondersteunt niet het afdrukken via een NFC-verbinding.</string>
+	<string name="error_nfc_scanner_is_unsupported_title">NFC-scanner wordt niet ondersteund</string>
+	<string name="error_nfc_scanner_is_unsupported_msg">Dit apparaat van Brother ondersteunt niet het afdrukken via een NFC-verbinding.</string>
+	<string name="faxtx_back_key_title">De bekeken afbeelding is niet verstuurd.</string>
+	<string name="faxtx_back_key_msg">De bekeken afbeelding wordt verwijderd als u doorgaat.   Doorgaan?</string>
+	<string name="E115_title">Downloaden mislukt</string>
+	<string name="E115_messag">Oorzaak:\n- Geen netwerkverbinding\n- Op het apparaat van Brother is een fout opgetreden.\n- Op dit moment heeft een ander apparaat toegang tot het apparaat van Brother. \n\nBevestig dat dit het apparaat van Brother is en probeer het opnieuw.</string>
+
+    <string name="error_secure_func_locked_title">Fout in Beveiligd functieslot</string>
+    <string name="error_secure_func_locked_msg">Deze functie is vergrendeld via Beveiligd functieslot\nNeem contact op met uw systeembeheerder.</string>
+    <string name="error_ads_print_share_title">Afdrukken wordt niet ondersteund</string>
+    <string name="error_ads_print_share_msg">Dit apparaat ondersteunt geen afdrukken.\nSelecteer een ander apparaat.</string>
+    <!-- NFC HandOverIOException,etc -->
+    <string name="error_nfc_wrong_settings_title">@string/v1_error_wrong_settings_title</string>
+    <string name="error_nfc_wrong_settings_msg">@string/v1_error_wrong_settings_msg</string>
+    <string name="error_nfc_wifi_connection_info_not_found_title">Kan niet verbinden</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg">Om NFC te gebruiken schakelt u [WLAN ] uit of wijzigt u [Netwerk I/F] in [LAN met kabel] in de instellingen voor [Netwerk] in het configuratiescherm op het apparaat. Als u NFC nog steeds niet kunt gebruiken, schakelt u [Verb. insch.] in via de instellingen voor [Wi-Fi Direct] in het configuratiescherm op het apparaat.</string>
+    <!-- NFC BBeam TLV 0101H,0002H,1..* (PrintError) -->
+    <string name="error_nfc_print_sfl_title">@string/v1_error_sfl_print_title</string>
+    <string name="error_nfc_print_sfl_msg">@string/v1_error_sfl_print_msg</string>
+    <string name="error_nfc_print_sfl_print_max_title">@string/v1_error_sfl_print_max_title</string>
+    <string name="error_nfc_print_sfl_print_max_msg">@string/v1_error_sfl_print_max_msg</string>
+    <string name="error_nfc_print_status_title">@string/v1_error_printer_status_title</string>
+    <string name="error_nfc_print_status_msg">@string/v1_error_printer_status_msg</string>
+    <string name="error_nfc_print_ms_title">@string/v1_error_ms_print_title</string>
+    <string name="error_nfc_print_ms_msg">@string/v1_error_ms_print_msg</string>
+    <!-- NFC BBeam TLV 0102H,0002H,1..* (ScanError) -->
+    <string name="error_nfc_scan_sfl_title">@string/v1_error_sfl_scan_title</string>
+    <string name="error_nfc_scan_sfl_msg">@string/v1_error_sfl_scan_msg</string>
+    <string name="error_nfc_scan_resource_title">@string/v1_error_scandevbusy_title</string>
+    <string name="error_nfc_scan_resource_msg">@string/v1_error_scandevbusy_msg</string>
+    <string name="error_nfc_scan_open_adf_title">@string/v1_error_scanadfcvropen_title</string>
+    <string name="error_nfc_scan_open_adf_msg">@string/v1_error_scanadfcvropen_msg</string>
+    <string name="error_nfc_scan_open_top_cover_title">@string/v1_error_scancvropen_title</string>
+    <string name="error_nfc_scan_open_top_cover_msg">@string/v1_error_scancvropen_msg</string>
+    <string name="error_nfc_scan_ms_title">@string/v1_error_ms_scan_title</string>
+    <string name="error_nfc_scan_ms_msg">@string/v1_error_ms_scan_msg</string>
+    <!-- NFC BBeam TLV 0103H,0002H,1..* (WifiDirectError) -->
+    <string name="error_nfc_wifi_direct_connecting_as_client_title">@string/v1_error_nfc_wifi_direct_client_cannot_connect_title</string>
+    <string name="error_nfc_wifi_direct_connecting_as_client_msg">@string/v1_error_nfc_wifi_direct_client_cannot_connect_msg</string>
+    <string name="error_nfc_wifi_direct_connection_max_title">@string/v1_error_nfc_another_device_connected_title</string>
+    <string name="error_nfc_wifi_direct_connection_max_msg">@string/v1_error_nfc_another_device_connected_msg</string>
+    <string name="error_nfc_wifi_direct_cannot_connect_title">@string/v1_error_nfc_wifi_direct_cannot_connect_title</string>
+    <string name="error_nfc_wifi_direct_cannot_connect_msg">@string/v1_error_nfc_wifi_direct_cannot_connect_msg</string>
+    <string name="finddevice_WiFi_fragment_title">Wi-Fi</string>
+    <string name="finddevice_Bluetooth_fragment_title">Bluetooth</string>
+    <string name="findevice_Bluetooth_fragment_nodevice_msg">Selecteer [Voeg printer toe].\nSchakel de printer in en breng de Bluetooth-verbinding tot stand.</string>
+    <string name="finddevice_NFC_fragment_title">NFC</string>
+
+    <string name="faxtx_start_button">Fax</string>
+    <string name="error_fax_tx_too_long_numbers">A.u.b. het Faxnummer invoeren door %d cijfers of minder te gebruiken.</string>
+
+    <string name="error_tray_option_not_available_title">Lade-opties zijn niet beschikbaar</string>
+    <string name="error_tray_option_not_available_msg">Dit apparaat biedt geen ondersteuning voor lade-opties op iPrint&amp;Scan.De lade wordt automatisch geselecteerd.Wilt u doorgaan?</string>
+
+    <string name="common_file_saved">Opgeslagen</string>
+
+
+    <string name ="browser_nobookmark">Browserbladwijzers is leeg.</string>
+    <string name="firmware_update_avaliable_status">Nieuwe versie beschikbaar  </string>
+    <string name="firmware_update_content">Er is nu een nieuwe firmware-update beschikbaar voor dit apparaat.  We bevelen u sterk aan om deze update op uw apparaat te installeren. Er worden dan nieuwe functies toegevoegd en bugfixes toegepast.                        </string>
+    <string name="firmware_update_faq">>Veelgestelde vragen</string>
+    <string name="firmware_update_latest_version">Laatste versie </string>
+    <string name="firmware_update_negative_button">Niet nu</string>
+    <string name="firmware_update_positive_button">Updaten</string>
+    <string name="firmware_update_prompt">Als u de firmware updatet, worden nieuwe functies toegevoegd en bugfixes toegepast. We bevelen u sterk aan om deze update uit te voeren op uw Brother-apparaat. </string>
+    <string name="firmware_update_prompt_check"><u>Om de firmware bij te werken tikt u hierboven op [Update] en vervolgens tikt u op het volgende scherm op [Controleren op update].</u></string>
+    <string name="firmware_update_prompt_faq">Raadpleeg de pagina met Veelgestelde vragen voor gedetailleerde instructies over het updaten van de firmware.</string>
+    <string name="firmware_update_status_msg">Update de firmware van uw Brother-apparaat.  </string>
+    <string name="firmware_update_title">Firmware-update</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_1">WLAN</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_2">Netwerk I/F</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_3">LAN met kabel</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_4">Netwerk</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_5">Verb. insch.</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_6">Wi-Fi Direct</string>
+	<string name="setting_label_converter_mode">Geavanceerde instellingen</string>
+	<string name="v1_print_convert_mode">PDF-bestanden omzetten</string>
+	<string name="v1_print_convert_mode_id_0">Cloud (standaard)</string>
+	<string name="v1_print_convert_mode_id_1">Lokaal</string>
+
+    <string name="edited_image_delete_dialog_title">De weergegeven afbeelding is niet afgedrukt</string>
+    <string name="edited_image_delete_dialog_msg">Als u doorgaat, wordt de afbeelding verwijderd. Wilt u doorgaan?</string>
+
+    <string name="error_ssl_certificate_is_invalid_title">Waarschuwing</string>
+    <string name="error_ssl_certificate_is_invalid_msg">Er is een probleem met het veiligheidscertificaat van deze website. Wilt u doorgaan?</string>
+    <string name="info_eula_title">Gebruiksrechtovereenkomst</string>
+
+</resources>

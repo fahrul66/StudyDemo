@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="func_name_copy">Vis kopi</string>
+    <string name="finddevice_change_device_msg">Følgende funktioner er tilgængelige på den valgte enhed.  \n</string>
+    <string name="finddevice_change_device_msg_print">Udskrivning</string>
+    <string name="finddevice_change_device_msg_scan">Scanning</string>
+    <string name="finddevice_change_device_msg_previewcopy">Vis kopi</string>
+    <string name="finddevice_change_device_msg_faxsend">Faxafsendelse</string>
+    <string name="finddevice_change_device_faxpreview">Vis fax</string>
+    <string name="finddevice_change_device_machinestatus">Maskinstatus</string>
+	<string name="finddevice_change_device_msg_end">\n\nKompatible funktioner vil være afhængig af den valgte enhed.</string>
+    <string name="info_gideance_btn">Nye funktioner</string>
+    <string name="info_support_model_btn">Liste med understøttede modeller</string>
+    <string name="info_support_btn">Supportside</string>
+    <string name="info_item_label_other_app">Andre</string>
+    <string name="info_version_btn">Version</string>
+    <string name="nfc_guidance_lower_p1">1. Find dette mærke på din maskine.</string>
+    <string name="nfc_guidance_lower_p2">2. Forbered dit dokument til udskrivning eller scanning i iPrint&amp;Scan.</string>
+    <string name="nfc_guidance_lower_p3">3. Hold din enhed over mærket.</string>
+    <string name="fax_rx_receive_mode_error_support">Supportside</string>
+    <string name="func_name_fax">Fax</string>
+    <string name="func_name_setting">Maskinstatus</string>
+    <string name="top_dlg_msg_do_you_select_device">For at anvende dette program, skal du vælge en enhed</string>
+    <string name="top_dlg_btn_select_later">Vælg senere</string>
+    <string name="top_dlg_btn_select_device">Vælg nu</string>
+    <string name="finddevice_change_device_msg_share">Den valgte model er blevet ændret, og du kan kun bruge de funktioner, der findes på den model.</string>
+    <string name="finddevice_main_title">Vælg enhed</string>
+    <string name="finddevice_nfc_use_tip_title">Brug NFC</string>
+    <string name="finndevice_nfc_use_hint_msg">Ved hjælp af NFC, kan du nemt udskrive eller scanne på maskinen foran dig.  (Aktiver NFC på din Android-enhed inden brug.)</string>
+    <string name="finddevice_wifi_fragment_manually_printer">Enhed</string>
+    <string name="edit_title_scaling">Skalering</string>
+    <string name="edit_title_rotate">Rette ud</string>
+    <string name="func_name_fax_tx">Send FAX</string>
+    <string name="func_name_fax_rx">Fax-eksempelvisning</string>
+    <string name="fax_rx_tab_date">Dato</string>
+    <string name="fax_rx_tab_sender">Afsender</string>
+    <string name="fax_rx_dialog_howtofax_title">Sådan bruges FAX-eksempelvisning</string>
+    <string name="fax_rx_dialog_howtofax_message">Tryk på ikonet ovenfor på startskærmen > Alle indst.\nTryk på Fax > Modtageindst > Faxvisning.\nVælg Til > Ja.</string>
+    <string name="common_btn_close">Luk</string>
+    <string name="faxtx_add_phone_num_hint">Indtast nummer</string>
+    <string name="faxtx_add_image_hint_device">Fax-dokumenter fra din maskine</string>
+    <string name="faxtx_add_image_hint_mobile">Vælg en fil fra denne mobilenhed</string>
+    <string name="faxtx_title_phonebook_mobile">Adressebog</string>
+    <string name="faxtx_address_in_mobile">Adressebog til mobilenhed</string>
+    <string name="faxtx_address_in_device">Adressebog til enheden</string>
+    <string name="faxtx_hint_search_phone">Søg efter et nummer</string>
+    <string name="copy_dialog_about_msg">Med denne funktion kan du få en eksempelvisning inden kopiering, for at undgå kopieringsfejl. Du kan også redigere eksempelvisningen (skalering, rette ud, beskære) om nødvendigt.  </string>
+    <string name="copy_description_main_item_1">Placer dokumenterne på scannerglasset eller i maskinens ADF (dokumentføder).</string>
+    <string name="copy_description_main_item_1_footer">(Kopier kan kun udskrives på almindeligt papir.)</string>
+    <string name="copy_description_main_item_2">[2] Du kan se eksempelvisning af billederne for at undgå kopieringsfejl, og du kan redigere eksempelvisningen, om nødvendigt, med redigeringsværktøjerne.</string>
+    <string name="copy_preview_options">Eksempelvisningsindstillinger</string>
+    <string name="copy_setting_title_scantype">Eksempelvisningstype</string>
+    <string name="copy_btn_scan">Start</string>
+    <string name="copy_btn_print">Kopi</string>
+    <string name="copy_title_print_setting">Kopieringsindstillinger</string>
+    <string name="status_network_online">Online</string>
+    <string name="status_network_offline">Offline</string>
+    <string name="status_name_volume">Blækvolume</string>
+    <string name="status_name_laser_life">Tonerlevetid</string>
+    <string name="status_name_cartridge_num">Blækpatronmodel</string>
+    <string name="status_name_laser_cartridge_model">Tonerpatronmodel</string>
+    <string name="status_name_buy_cartridge">Køb online</string>
+
+    <string name="status_name_ip">IP-adresse</string>
+    <string name="status_name_machine_sn">Serienummer</string>
+    <string name="status_name_firm_ver">Firmwareversion</string>
+    <string name="status_name_memory">Faxmodtagelseshukommelse</string>
+    <string name="status_name_error">Fejl</string>
+    <string name="status_name_warning">Advarsel</string>
+
+
+    <string name="copy_dlg_msg_nextscan">Hvis du har flere sider der skal scannes, skal du placere dem på scannerglasset og trykke på \&quot;Scan\&quot;.  Hvis ikke, skal du trykke på \&quot;Done\&quot; (Udført)</string>
+    <string name="fax_tx_display_name">%1$s, og %2$s mere</string>
+    <string name="common_title_fax_setting">Fax-indstillinger</string>
+    <string name="fax_tx_list_title">Bekræftelse</string>
+    <string name="fax_tx_list_msg">Faxen vil blive sendt til følgende adresser.  Hvis adressene er korrekt, skal du trykke på \&quot;Send\&quot;.  Hvis der er en fejl, skal du trykke på \&quot;Cancel\&quot; (Annuller) for at rette fejlen.</string>
+    <string name="fax_tx_list_send">Send</string>
+    <string name="copy_dialog_about_title">Hvad er Vis kopi?</string>
+    <string name="copy_setting_title_scanside">Dobbeltsidet</string>
+    <string name="copy_setting_title_side">Dobbeltsidet</string>
+    <string name="status_name_memory_full">Fuld</string>
+    <string name="generic_msg_nfc_on_operate">Hold din enhed over NFC-mærket.</string>
+    <string name="info_gideance_item_1">[1] Nyt design\n
+Brother iPrint&amp;Scan har et helt nyt design, der giver en bedre oplevelse.  Inden du bruger denne app, skal du vælge din enhed fra topmenuen. </string>
+    <string name="info_gideance_item_2">[2] Nye redigeringsværktøjer\n
+Der er tilføjet tre nye redigeringsværktøjer (Skalering, Ret ud &amp; Beskæring).</string>
+    <string name="info_gideance_item_3">[3] Send fax*\n
+Du kan sende en fax fra din mobilenhed.</string>
+    <string name="info_gideance_item_4">[4] Vis fax*\n
+Du kan se modtagne faxer gemt på din maskine fra din mobilenhed.</string>
+    <string name="info_gideance_item_5">[5] Vis kopi*\n
+Få forhåndsvist et billede og rediger det inden kopiering.</string>
+    <string name="info_gideance_item_6">[6] Maskinstatus*\n
+Du kan se status for din maskine, som f.eks. mængden af blæk/toner og fejlmeddelelser fra din mobilenhed.</string>
+    <string name="info_gideance_item_7">[7] Bemærk\n
+“*” kun tilgængelig på nye modeller.  Tryk på \&quot;i\&quot; (øverst til højre) for en liste med understøttede modeller.</string>
+
+    <string name="info_item_label_firmware">Meddelelser om firmwareopdatering</string>
+    <string name="info_firmware_text">Meddelelser</string>
+    <string name="info_item_label_firmware_text">Vis meddelelse, når du starter denne App. hvis ny firmware til den valgte enhed er tilgængelig. </string>
+
+    <string name="setting_label_tray_options">Bakkeindstillinger</string>
+    <string name="setting_label_roll_printer_case">Rulleprinterdæksel</string>
+    <string name="setting_item_roll_printer_case_none">Ingen</string>
+    <string name="setting_item_roll_printer_case_pa_rc">PA-RC-001</string>
+    <string name="setting_item_roll_printer_case_pa_rc_without_anti">PA-RC-001 (uden anti-krøl)</string>
+
+    <string name="setting_title_inputtray_unit">Papirkilde</string>
+    <string name="setting_item_input_tray_auto">Vælg automatisk</string>
+    <string name="setting_item_input_tray_mp">MP-bakke</string>
+    <string name="setting_item_input_tray_1">Bakke 1</string>
+    <string name="setting_item_input_tray_2">Bakke 2</string>
+    <string name="setting_item_input_tray_3">Bakke 3</string>
+    <string name="setting_item_input_tray_4">Bakke 4</string>
+    <string name="setting_item_input_tray_5">Bakke 5</string>
+    <string name="setting_title_output_bin_unit">Outputbakke</string>
+    <string name="setting_item_output_bin_auto">Vælg automatisk</string>
+    <string name="setting_item_output_bin_nomal">Standard Outputbakke</string>
+    <string name="setting_item_output_bin_1">MX-papirbakke 1</string>
+    <string name="setting_item_output_bin_2">MX-papirbakke 2</string>
+    <string name="setting_item_output_bin_3">MX-papirbakke 3</string>
+    <string name="setting_item_output_bin_4">MX-papirbakke 4</string>
+    <string name="setting_item_output_bin_stacker">MX-stabler</string>
+    <string name="setting_item_output_bin_sorter">MX-sorteringsenhed</string>
+    <string name="setting_title_use_standard_tray_when_full">Brug std. Bakke når fuld</string>
+
+    <!-- EULA -->
+    <string name="generic_btn_Yes">@string/v1_generic_btn_Yes</string>
+    <string name="generic_btn_No">@string/v1_generic_btn_No</string>
+    <string name="generic_title_end_user_lisence_agreement">@string/v1_generic_title_end_user_lisence_agreement</string>
+    <string name="generic_msg_end_user_lisence_agreement">@string/v1_generic_msg_end_user_lisence_agreement</string>
+    <string name="generic_msg_end_user_lisence_agreement2">@string/v1_generic_msg_end_user_lisence_agreement2</string>
+    <string name="generic_msg_license_title">@string/v1_generic_msg_license_title</string>
+    <string name="generic_title_gratitude_for_user">@string/v1_generic_title_gratitude_for_user</string>
+    <string name="generic_btn_privacypolicy">@string/v1_generic_btn_privacypolicy</string>
+    <string name="generic_ckbx_ga_title">@string/v1_generic_ckbx_ga_title</string>
+    <string name="generic_title_analytics">@string/v1_generic_title_analytics</string>
+    <string name="generic_msg_analytics">@string/v1_generic_msg_analytics</string>
+    <string name="generic_msg_analytics_underline">@string/v1_generic_msg_analytics_underline</string>
+    <string name="info_item_label_license">@string/v1_info_item_label_license</string>
+
+    <string name="fax_tx_cannot_add_numbers">Kan ikke tilføje et nyt faxnummer.</string>
+    <string name="fax_tx_over_fax_msg">Du kan kun indtaste %d faxnumre </string>
+    <string name="error_fax_rx_preview_title">\&quot;Vis fax\&quot; mislykkedes</string>
+	<string name="error_fax_rx_preview_message">Årsag:\n- Ingen netværksforbindelse\n- Fax-billedet er for stort\n\nUdskriv faxen fra din Brother-maskine.</string>
+    <string name="error_fax_rx_connect_message">Årsag:\n- Ingen netværksforbindelse\n- Fax-billedet er for stort\n\nUdskriv faxen fra din Brother-maskine.</string>
+    <string name="error_nfc_is_not_available_title">NFC ikke tilgængelig</string>
+    <string name="error_nfc_is_not_available_msg">Slå \&quot;Wi-Fi Direct\&quot; fra for at bruge NFC på din Brother-maskine.</string>
+    <string name="error_nfc_cannot_connect_turn_on_title">Kan ikke oprette forbindelse</string>
+    <string name="error_nfc_cannot_connect_turn_on_msg">NFC-forbindelse mislykkedes. Tænd for din Brother-maskine, og prøv igen.</string>
+    <string name="error_nfc_printer_is_unsupported_title">NFC-printer understøttes ikke</string>
+    <string name="error_nfc_printer_is_unsupported_msg">Denne Brother-maskine understøtter ikke udskrivning med NFC-forbindelse.</string>
+    <string name="error_nfc_scanner_is_unsupported_title">NFC-scanner understøttes ikke</string>
+    <string name="error_nfc_scanner_is_unsupported_msg">Denne Brother-maskine understøtter ikke scanning med NFC-forbindelse.</string>
+    <string name="faxtx_back_key_title">Det forhåndsviste billede blev ikke sendt.</string>
+    <string name="faxtx_back_key_msg">Det forhåndsviste billede vil blive slettet, hvis du fortsætter.   fortsæt?</string>
+    <string name="E115_title">Download mislykkedes</string>
+	<string name="E115_messag">Årsag:\n- Ingen netværksforbindelse\n
+- Der er opstået en fejl i Brother-maskinen.\n
+- Brother-maskinen er aktiveret af en anden enhed. \n\nBekræft Brother-maskinen, og prøv så igen.</string>
+
+    <string name="error_secure_func_locked_title">Fejl ved Secure Function Lock (Sikker funktionslås)</string>
+    <string name="error_secure_func_locked_msg">Denne indstilling er låst via Secure Function Lock.\nKontakt din systemadministrator.</string>
+    <string name="error_ads_print_share_title">Udskrivning understøttes ikke</string>
+    <string name="error_ads_print_share_msg">Denne maskine understøtter ikke udskrivning.\nVælg en anden maskine.</string>
+    <!-- NFC HandOverIOException,etc -->
+    <string name="error_nfc_wrong_settings_title">@string/v1_error_wrong_settings_title</string>
+    <string name="error_nfc_wrong_settings_msg">@string/v1_error_wrong_settings_msg</string>
+    <string name="error_nfc_wifi_connection_info_not_found_title">Kan ikke oprette forbindelse</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg">For at bruge NFC, slukke [WLAN ] eller skifte [Netværks I/F] til [Kablet LAN] i indstillingerne [Netværk] på maskinens kontrolpanel. Hvis du stadigt ikke kan bruge NFC, skal du slukke [Aktiver I/F] i indstillingerne [Wi-Fi Direct] på maskinens kontrolpanel.</string>
+    <!-- NFC BBeam TLV 0101H,0002H,1..* (PrintError) -->
+    <string name="error_nfc_print_sfl_title">@string/v1_error_sfl_print_title</string>
+    <string name="error_nfc_print_sfl_msg">@string/v1_error_sfl_print_msg</string>
+    <string name="error_nfc_print_sfl_print_max_title">@string/v1_error_sfl_print_max_title</string>
+    <string name="error_nfc_print_sfl_print_max_msg">@string/v1_error_sfl_print_max_msg</string>
+    <string name="error_nfc_print_status_title">@string/v1_error_printer_status_title</string>
+    <string name="error_nfc_print_status_msg">@string/v1_error_printer_status_msg</string>
+    <string name="error_nfc_print_ms_title">@string/v1_error_ms_print_title</string>
+    <string name="error_nfc_print_ms_msg">@string/v1_error_ms_print_msg</string>
+    <!-- NFC BBeam TLV 0102H,0002H,1..* (ScanError) -->
+    <string name="error_nfc_scan_sfl_title">@string/v1_error_sfl_scan_title</string>
+    <string name="error_nfc_scan_sfl_msg">@string/v1_error_sfl_scan_msg</string>
+    <string name="error_nfc_scan_resource_title">@string/v1_error_scandevbusy_title</string>
+    <string name="error_nfc_scan_resource_msg">@string/v1_error_scandevbusy_msg</string>
+    <string name="error_nfc_scan_open_adf_title">@string/v1_error_scanadfcvropen_title</string>
+    <string name="error_nfc_scan_open_adf_msg">@string/v1_error_scanadfcvropen_msg</string>
+    <string name="error_nfc_scan_open_top_cover_title">@string/v1_error_scancvropen_title</string>
+    <string name="error_nfc_scan_open_top_cover_msg">@string/v1_error_scancvropen_msg</string>
+    <string name="error_nfc_scan_ms_title">@string/v1_error_ms_scan_title</string>
+    <string name="error_nfc_scan_ms_msg">@string/v1_error_ms_scan_msg</string>
+    <!-- NFC BBeam TLV 0103H,0002H,1..* (WifiDirectError) -->
+    <string name="error_nfc_wifi_direct_connecting_as_client_title">@string/v1_error_nfc_wifi_direct_client_cannot_connect_title</string>
+    <string name="error_nfc_wifi_direct_connecting_as_client_msg">@string/v1_error_nfc_wifi_direct_client_cannot_connect_msg</string>
+    <string name="error_nfc_wifi_direct_connection_max_title">@string/v1_error_nfc_another_device_connected_title</string>
+    <string name="error_nfc_wifi_direct_connection_max_msg">@string/v1_error_nfc_another_device_connected_msg</string>
+    <string name="error_nfc_wifi_direct_cannot_connect_title">@string/v1_error_nfc_wifi_direct_cannot_connect_title</string>
+    <string name="error_nfc_wifi_direct_cannot_connect_msg">@string/v1_error_nfc_wifi_direct_cannot_connect_msg</string>
+    <string name="finddevice_WiFi_fragment_title">Wi-Fi</string>
+    <string name="finddevice_Bluetooth_fragment_title">Bluetooth</string>
+    <string name="findevice_Bluetooth_fragment_nodevice_msg">Vælg [Tilføj printer].\nTænd for printeren og opret forbindelse til Bluetooth.</string>
+    <string name="finddevice_NFC_fragment_title">NFC</string>
+
+    <string name="faxtx_start_button">Fax</string>
+
+    <string name="error_fax_tx_too_long_numbers">Indtast venligst et faxnummer på %d eller færre cifre.</string>
+
+    <string name="error_tray_option_not_available_title">Bakkeindstillinger er ikke tilgængelige</string>
+    <string name="error_tray_option_not_available_msg">Denne maskine understøtter ikke bakkeindstillinger for iPrint&amp;Scan.Bakken vælges automatisk.Vil du fortsætte?</string>
+
+    <string name="common_file_saved">Gemt</string>
+
+
+    <string name ="browser_nobookmark">Browser-bogmærker er tom.</string>
+    <string name="firmware_update_title">Firmwareopdatering </string>
+    <string name="firmware_update_content">En ny firmwareopdatering er tilgængelig på denne maskine. Vi anbefaler, at du udfører denne opdatering på din maskine for at tilføje nye funktioner og anvende fejlrettelser.</string>
+    <string name="firmware_update_negative_button">Ikke nu</string>
+    <string name="firmware_update_positive_button">Opdater</string>
+    <string name="firmware_update_status_msg">Opdater din Brother-maskines firmware..  </string>
+    <string name="firmware_update_avaliable_status">Ny version tilgængelig </string>
+    <string name="firmware_update_latest_version">Seneste version </string>
+    <string name="firmware_update_prompt_check"><u>For at opdatere firmwaren, tryk på [Opdater] oven for, og tryk derefter på [Søg efter opdateringer] på den næste skærm.</u></string>
+    <string name="firmware_update_prompt_faq">Du kan finde flere oplysninger om at opdatere firmwaren på siden med ofte stillede spørgsmål.</string>
+    <string name="firmware_update_prompt">Opdatering af firmwaren tilføjer nye funktioner og anvender fejlrettelser. Vi anbefaler, at du udfører denne opdatering på din Brother-maskine.</string>
+    <string name="firmware_update_faq">Ofte stillede spørgsmål</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_1">WLAN</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_2">Netværks I/F</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_3">Kablet LAN</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_4">Netværk</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_5">Aktiver I/F</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_6">Wi-Fi Direct</string>
+	<string name="setting_label_converter_mode">Avancerede indstillinger</string>
+	<string name="v1_print_convert_mode">PDF-filkonverter</string>
+	<string name="v1_print_convert_mode_id_0">Cloud (Standard)</string>
+	<string name="v1_print_convert_mode_id_1">Lokal</string>
+
+    <string name="edited_image_delete_dialog_title">Eksempelbilledet er ikke blevet udskrevet</string>
+    <string name="edited_image_delete_dialog_msg">Billedet slettes, hvis du fortsætter. Vil du fortsætte?</string>
+
+    <string name="error_ssl_certificate_is_invalid_title">Advarsel</string>
+    <string name="error_ssl_certificate_is_invalid_msg">Der er et problem med dette websteds sikkerhedscertifikat. Vil du fortsætte?</string>
+    <string name="info_eula_title">Slutbrugerlicensaftale</string>
+
+</resources>

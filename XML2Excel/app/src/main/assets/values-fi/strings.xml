@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="func_name_setting">Laitteen tila</string>
+	<string name="top_dlg_msg_do_you_select_device">Sinun on valittava laite, jotta voit käyttää tätä sovellusta. </string>
+	<string name="top_dlg_btn_select_later">Valitse myöhemmin</string>
+	<string name="top_dlg_btn_select_device">Valitse heti</string>
+	<string name="finddevice_change_device_msg_share">Valittu malli on vaihdettu, ja voit käyttää vain tämän mallin tukemia toimintoja.</string>
+	<string name="finddevice_main_title">Valitse laite</string>
+	<string name="finddevice_nfc_use_tip_title">Käytä NFC:tä</string>
+	<string name="finndevice_nfc_use_hint_msg">NFC:llä voit helposti tulostaa tai skannata laitteestasi.  (Kytke Android-laitteesi NFC päälle ennen käyttöä.)</string>
+	<string name="finddevice_wifi_fragment_manually_printer">Laite</string>
+	<string name="edit_title_scaling">Skaalaa</string>
+	<string name="edit_title_rotate">Suorista</string>
+	<string name="func_name_fax_tx">Faksin lähettäminen</string>
+	<string name="func_name_fax_rx">Faksin esikatselu</string>
+	<string name="fax_rx_tab_date">Päivämäärä</string>
+	<string name="fax_rx_tab_sender">Lähettäjä</string>
+	<string name="fax_rx_dialog_howtofax_title">Miten faksin esikatselua käytetään</string>
+	<string name="fax_rx_dialog_howtofax_message">Paina yllä esitettyä kuvaketta aloitusnäytössä > Kaikki aset.\nPaina Faksaus > Vastaanottoas. > Faks. esikats.\nValitse Päällä > Kyllä.</string>
+	<string name="common_btn_close">Sulje</string>
+	<string name="faxtx_add_phone_num_hint">Syötä numero</string>
+	<string name="faxtx_add_image_hint_device">Faksaa asiakirja laitteeltasi</string>
+	<string name="faxtx_add_image_hint_mobile">Valitse tiedosto tältä mobiililaitteelta</string>
+	<string name="faxtx_title_phonebook_mobile">Osoitekirja</string>
+	<string name="faxtx_address_in_mobile">Mobiililaitteen osoitekirja</string>
+	<string name="faxtx_address_in_device">Laitteen osoitekirja</string>
+	<string name="copy_dialog_about_msg">Tällä ominaisuudella voit esikatsella kuvia ennen kopiointia välttyäksesi kopiointivirheiltä. Voit myös tarvittaessa muokata esikatselua työkaluilla (skaalaa, suorista, rajaa).  </string>
+	<string name="copy_description_main_item_1">Aseta asiakirjat valotustasolle tai laitteen automaattiseen dokumentinsyöttölaitteeseen.</string>
+    <string name="copy_description_main_item_1_footer">(Kopiot voidaan tulostaa ainoastaan tavalliselle paperille.)</string>
+    <string name="copy_description_main_item_2">[2] Voit esikatsella kuvat ennen kopioimista välttääksesi kopiointivirheet sekä muokata esikatselua tarvittaessa muokkaustyökaluilla.</string>
+	<string name="copy_preview_options">Esikatseluvaihtoehdot</string>
+	<string name="copy_setting_title_scantype">Esikatselutyyppi</string>
+	<string name="copy_btn_scan">Aloita</string>
+	<string name="copy_btn_print">Kopioi</string>
+	<string name="copy_title_print_setting">Kopiointiasetukset</string>
+	<string name="status_network_online">Online</string>
+	<string name="status_network_offline">Offline</string>
+	<string name="status_name_volume">Mustetta jäljellä</string>
+    <string name="status_name_laser_life">Väriä jäljellä</string>
+	<string name="status_name_cartridge_num">Mustekasetin malli</string>
+    <string name="status_name_laser_cartridge_model">Värikasetin malli</string>
+    <string name="status_name_buy_cartridge">Osta verkossa</string>
+
+	<string name="status_name_ip">IP-osoite</string>
+	<string name="status_name_machine_sn">Sarjanumero</string>
+	<string name="status_name_firm_ver">Laiteohjelmaversio</string>
+	<string name="status_name_memory">Faksin vastaanottomuisti</string>
+    <string name="status_name_error">Virhe</string>
+    <string name="status_name_warning">Varoitus</string>
+
+    <string name="func_name_copy">Kopion esikatselu</string>
+    <string name="finddevice_change_device_msg">Seuraavat toiminnot ovat käytettävissä valitussa laitteessa. \n</string>
+    <string name="finddevice_change_device_msg_print">Tulostus</string>
+    <string name="finddevice_change_device_msg_scan">Skannaus</string>
+    <string name="finddevice_change_device_msg_previewcopy">Kopion esikatselu</string>
+    <string name="finddevice_change_device_msg_faxsend">Faksin lähettäminen</string>
+    <string name="finddevice_change_device_faxpreview">Faksin esikatselu</string>
+    <string name="finddevice_change_device_machinestatus">Laitteen tila</string>
+    <string name="finddevice_change_device_msg_end">\n\nYhteensopivat toiminnot riippuvat valitusta laitteesta.</string>
+    <string name="info_gideance_btn">Uudet ominaisuudet</string>
+    <string name="info_support_model_btn">Tuettujen mallien luettelo</string>
+    <string name="info_support_btn">Tukisivu</string>
+    <string name="info_item_label_other_app">Muut</string>
+    <string name="info_version_btn">Versio</string>
+    <string name="nfc_guidance_lower_p1">1. Paikanna tämä merkki laitteessasi.</string>
+    <string name="nfc_guidance_lower_p2">2. Valmistele asiakirjasi tulostusta tai skannausta varten iPrint&amp;Scan-ohjelmassa.</string>
+    <string name="nfc_guidance_lower_p3">3. Pitele laitetta merkin päällä.</string>
+    <string name="fax_rx_receive_mode_error_support">Tukisivu</string>
+    <string name="func_name_fax">Faksi</string>
+    <string name="copy_dlg_msg_nextscan">Jos skannattavia sivuja on lisää, laita ne laitteen päälle ja napauta \&quot;Skannaa\&quot;.  Jos ei ole, napauta \&quot;Valmis\&quot;.</string>
+    <string name="faxtx_hint_search_phone">Etsi numeroa</string>
+    <string name="fax_tx_display_name">%1$s ja %2$s muuta</string>
+    <string name="common_title_fax_setting">Faksiasetukset</string>
+    <string name="fax_tx_list_title">Vahvistus</string>
+    <string name="fax_tx_list_msg">Faksi lähetetään seuraaviin osoitteisiin.  Jos osoitteet ovat oikein, napauta \&quot;Lähetä\&quot;.  Jos niissä on virhe, napauta \&quot;Peruuta\&quot; ja korjaa se.</string>
+    <string name="fax_tx_list_send">Lähetä</string>
+    <string name="copy_dialog_about_title">Mikä on esikatseluversio?</string>
+    <string name="copy_setting_title_scanside">2-puolinen</string>
+    <string name="copy_setting_title_side">2-puolinen</string>
+    <string name="status_name_memory_full">Täysi</string>
+    <string name="generic_msg_nfc_on_operate">Pitele laitetta NFC-merkin päällä.</string>
+    <string name="info_gideance_item_1">[1] Uusi muotoilu\nBrother iPrint&amp;Scan -sovellus on muotoiltu uudelleen tarjoamaan paremman kokemuksen.  Ennen kuin käytät tätä sovellusta, valitse laitteesi ylävalikosta. </string>
+    <string name="info_gideance_item_2">[2] Uusia muokkaustyökaluja\nSovellukseen on lisätty kolme uutta muokkaustyökalua (Skaalaa, Suorista ja Rajaa).</string>
+    <string name="info_gideance_item_3">[3] Faksin lähettäminen*\nVoit lähettää faksin mobiililaitteestasi.</string>
+    <string name="info_gideance_item_4">[4] Faksin esikatselu*\nVoit näyttää laitteeseesi tallennetut vastaanotetut faksit mobiililaitteella.</string>
+    <string name="info_gideance_item_5">[5] Kopion esikatselu*\nEsikatsele kuva ja muokkaa sitä ennen kopioimista.</string>
+    <string name="info_gideance_item_6">[6] Laitteen tila*\nVoit tarkistaa laitteen tilan, kuten musteen/väriaineen määrän ja virheilmoitukset, mobiililaitteellasi.</string>
+    <string name="info_gideance_item_7">[7] Huom.\n\&quot;*\&quot; saatavilla vain uusissa malleissa  Napauta \&quot;i\&quot; (oikea yläkulma) nähdäksesi luettelon tuetuista malleista.</string>
+
+    <string name="info_item_label_firmware">Laiteohjelmiston päivitysilmoitukset</string>
+    <string name="info_firmware_text">Ilmoitukset</string>
+    <string name="info_item_label_firmware_text">Näytä ilmoitus tämän sovelluksen käynnistyessä, jos valitsemallesi laitteelle on saatavilla uusi laiteohjelmisto. </string>
+
+    <string name="setting_label_tray_options">Kasettivaihtoehdot</string>
+    <string name="setting_label_roll_printer_case">Rullatulostimen kotelo</string>
+    <string name="setting_item_roll_printer_case_none">Ei mitään</string>
+    <string name="setting_item_roll_printer_case_pa_rc">PA-RC-001</string>
+    <string name="setting_item_roll_printer_case_pa_rc_without_anti">PA-RC-001 (ilman käpristymisen estoa)</string>
+
+    <string name="setting_title_inputtray_unit">Paperilähde</string>
+    <string name="setting_item_input_tray_auto">Automaattinen valinta</string>
+    <string name="setting_item_input_tray_mp">MT-alusta</string>
+    <string name="setting_item_input_tray_1">Kasetti1</string>
+    <string name="setting_item_input_tray_2">Kasetti2</string>
+    <string name="setting_item_input_tray_3">Kasetti3</string>
+    <string name="setting_item_input_tray_4">Kasetti4</string>
+    <string name="setting_item_input_tray_5">Kasetti5</string>
+    <string name="setting_title_output_bin_unit">Luovutusalusta</string>
+    <string name="setting_item_output_bin_auto">Automaattinen valinta</string>
+    <string name="setting_item_output_bin_nomal">vakioluovutusalustalle</string>
+    <string name="setting_item_output_bin_1">MX-alusta 1</string>
+    <string name="setting_item_output_bin_2">MX-alusta 2</string>
+    <string name="setting_item_output_bin_3">MX-alusta 3</string>
+    <string name="setting_item_output_bin_4">MX-alusta 4</string>
+    <string name="setting_item_output_bin_stacker">MX-pinoaja</string>
+    <string name="setting_item_output_bin_sorter">MX-lajittelija</string>
+    <string name="setting_title_use_standard_tray_when_full">Käytä vakioalustaa kun täynnä</string>
+    <!-- EULA -->
+    <string name="generic_btn_Yes">@string/v1_generic_btn_Yes</string>
+    <string name="generic_btn_No">@string/v1_generic_btn_No</string>
+    <string name="generic_title_end_user_lisence_agreement">@string/v1_generic_title_end_user_lisence_agreement</string>
+    <string name="generic_msg_end_user_lisence_agreement">@string/v1_generic_msg_end_user_lisence_agreement</string>
+    <string name="generic_msg_end_user_lisence_agreement2">@string/v1_generic_msg_end_user_lisence_agreement2</string>
+    <string name="generic_msg_license_title">@string/v1_generic_msg_license_title</string>
+    <string name="generic_title_gratitude_for_user">@string/v1_generic_title_gratitude_for_user</string>
+    <string name="generic_btn_privacypolicy">@string/v1_generic_btn_privacypolicy</string>
+    <string name="generic_ckbx_ga_title">@string/v1_generic_ckbx_ga_title</string>
+    <string name="generic_title_analytics">@string/v1_generic_title_analytics</string>
+    <string name="generic_msg_analytics">@string/v1_generic_msg_analytics</string>
+    <string name="generic_msg_analytics_underline">@string/v1_generic_msg_analytics_underline</string>
+    <string name="info_item_label_license">@string/v1_info_item_label_license</string>
+    
+    <string name="fax_tx_cannot_add_numbers">Uutta faksinumeroa ei voi lisätä</string>
+    <string name="fax_tx_over_fax_msg">Voit syöttää vain %d faksinumeroa </string>
+	<string name="error_fax_rx_preview_title">\&quot;Faksin esikatselu\&quot; epäonnistui</string>
+	<string name="error_fax_rx_preview_message">Syy:\n- Ei verkkoyhteyttä\n- Faksin kuvakoko on liian suuri\n\nTulosta faksi Brother-laitteeltasi.</string>
+    <string name="error_fax_rx_connect_message">Syy:\n- Ei verkkoyhteyttä\n- Faksin kuvakoko on liian suuri\n\nTulosta faksi Brother-laitteeltasi.</string>
+	<string name="error_nfc_is_not_available_title">NFC ei ole käytettävissä</string>
+	<string name="error_nfc_is_not_available_msg">Poista Brother-laitteen \&quot;Wi-Fi Direct\&quot; käytöstä, jotta voit käyttää NFC:tä.</string>
+    <string name="error_nfc_cannot_connect_turn_on_title">Yhdistäminen ei onnistu</string>
+    <string name="error_nfc_cannot_connect_turn_on_msg">NFC-yhteys epäonnistui. Käynnistä Brother-laite ja yritä uudelleen.</string>
+	<string name="error_nfc_printer_is_unsupported_title">NFC-tulostinta ei tueta</string>
+	<string name="error_nfc_printer_is_unsupported_msg">Tämä Brother-laite ei tue tulostusta NFC-yhteydellä.</string>
+	<string name="error_nfc_scanner_is_unsupported_title">NFC-skanneria ei tueta</string>
+	<string name="error_nfc_scanner_is_unsupported_msg">Tämä Brother-laite ei tue skannausta NFC-yhteydellä.</string>
+	<string name="faxtx_back_key_title">Esikatseltua kuvaa ei ole lähetetty.</string>
+	<string name="faxtx_back_key_msg">Esikatseltu kuva poistetaan, jos jatkat.   haluatko jatkaa?</string>
+	<string name="E115_title">Lataus epäonnistui</string>
+
+	<string name="E115_messag">Syy:\n- Ei verkkoyhteyttä\n- Brother-laitteessa esiintyi virhe.\n- Toinen laite käyttää Brother-laitetta. \n\nVahvista Brother-laite ja yritä uudelleen.</string>
+
+    <string name="error_secure_func_locked_title">Suojattu toimintolukko -virhe</string>
+    <string name="error_secure_func_locked_msg">Tämä toiminto on lukittu suojatulla toimintolukolla.\nOta yhteys järjestelmänvalvojaan.</string>
+    <string name="error_ads_print_share_title">Tulostusta ei tueta</string>
+    <string name="error_ads_print_share_msg">Tämä laite ei tue tulostamista.\nValitse toinen laite.</string>
+    <!-- NFC HandOverIOException,etc -->
+    <string name="error_nfc_wrong_settings_title">@string/v1_error_wrong_settings_title</string>
+    <string name="error_nfc_wrong_settings_msg">@string/v1_error_wrong_settings_msg</string>
+    <string name="error_nfc_wifi_connection_info_not_found_title">Yhdistäminen ei onnistu</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg">Jotta voit käyttää NFC:tä, kytke [WLAN] pois päältä tai vaihda asetukseksi [Verkkoliitäntä] asetus [Kiinteä verkko] laitteen ohjauspaneelin [Verkko]-asetuksissa. Jos NFC ei toimi, kytke [Liitänät käytössä] pois käytöstä laitteen ohjauspaneelin [Wi-Fi Direct] -asetuksissa.</string>
+    <!-- NFC BBeam TLV 0101H,0002H,1..* (PrintError) -->
+    <string name="error_nfc_print_sfl_title">@string/v1_error_sfl_print_title</string>
+    <string name="error_nfc_print_sfl_msg">@string/v1_error_sfl_print_msg</string>
+    <string name="error_nfc_print_sfl_print_max_title">@string/v1_error_sfl_print_max_title</string>
+    <string name="error_nfc_print_sfl_print_max_msg">@string/v1_error_sfl_print_max_msg</string>
+    <string name="error_nfc_print_status_title">@string/v1_error_printer_status_title</string>
+    <string name="error_nfc_print_status_msg">@string/v1_error_printer_status_msg</string>
+    <string name="error_nfc_print_ms_title">@string/v1_error_ms_print_title</string>
+    <string name="error_nfc_print_ms_msg">@string/v1_error_ms_print_msg</string>
+    <!-- NFC BBeam TLV 0102H,0002H,1..* (ScanError) -->
+    <string name="error_nfc_scan_sfl_title">@string/v1_error_sfl_scan_title</string>
+    <string name="error_nfc_scan_sfl_msg">@string/v1_error_sfl_scan_msg</string>
+    <string name="error_nfc_scan_resource_title">@string/v1_error_scandevbusy_title</string>
+    <string name="error_nfc_scan_resource_msg">@string/v1_error_scandevbusy_msg</string>
+    <string name="error_nfc_scan_open_adf_title">@string/v1_error_scanadfcvropen_title</string>
+    <string name="error_nfc_scan_open_adf_msg">@string/v1_error_scanadfcvropen_msg</string>
+    <string name="error_nfc_scan_open_top_cover_title">@string/v1_error_scancvropen_title</string>
+    <string name="error_nfc_scan_open_top_cover_msg">@string/v1_error_scancvropen_msg</string>
+    <string name="error_nfc_scan_ms_title">@string/v1_error_ms_scan_title</string>
+    <string name="error_nfc_scan_ms_msg">@string/v1_error_ms_scan_msg</string>
+    <!-- NFC BBeam TLV 0103H,0002H,1..* (WifiDirectError) -->
+    <string name="error_nfc_wifi_direct_connecting_as_client_title">@string/v1_error_nfc_wifi_direct_client_cannot_connect_title</string>
+    <string name="error_nfc_wifi_direct_connecting_as_client_msg">@string/v1_error_nfc_wifi_direct_client_cannot_connect_msg</string>
+    <string name="error_nfc_wifi_direct_connection_max_title">@string/v1_error_nfc_another_device_connected_title</string>
+    <string name="error_nfc_wifi_direct_connection_max_msg">@string/v1_error_nfc_another_device_connected_msg</string>
+    <string name="error_nfc_wifi_direct_cannot_connect_title">@string/v1_error_nfc_wifi_direct_cannot_connect_title</string>
+    <string name="error_nfc_wifi_direct_cannot_connect_msg">@string/v1_error_nfc_wifi_direct_cannot_connect_msg</string>
+    <string name="finddevice_WiFi_fragment_title">Wi-Fi</string>
+    <string name="finddevice_Bluetooth_fragment_title">Bluetooth</string>
+    <string name="findevice_Bluetooth_fragment_nodevice_msg">Valitse [Lisää tulostin].\nKytke virta tulostimeen ja muodosta Bluetooth-yhteys.</string>
+    <string name="finddevice_NFC_fragment_title">NFC</string>
+
+    <string name="faxtx_start_button">Faksi</string>
+
+    <string name="error_fax_tx_too_long_numbers">Anna faksinumero uudelleen käyttämällä %d numeroa tai vähemmän.</string>
+
+    <string name="error_tray_option_not_available_title">Kasettivaihtoehdot eivät ole käytettävissä</string>
+    <string name="error_tray_option_not_available_msg">Tämä laite ei tue kasettivaihtoehtoja iPrint&amp;Scan-ohjelmassa.Kasetti valitaan automaattisesti.Haluatko jatkaa?</string>
+
+    <string name="common_file_saved">Tallennettu</string>
+
+    <string name ="browser_nobookmark">Selaimen kirjanmerkit ovat tyhjät.</string>
+    <string name="firmware_update_avaliable_status">Uusi versio on saatavilla </string>
+    <string name="firmware_update_content">Tälle laitteelle on saatavilla uusi laiteohjelmistopäivitys. Suosittelemme vahvasti, että asennat tämän päivityksen laitteeseesi lisätäksesi uusia ominaisuuksia ja korjataksesi ohjelmistovirheitä.                        </string>
+    <string name="firmware_update_faq">>Usein kysytyt kysymykset</string>
+    <string name="firmware_update_latest_version">Viimeisin versio </string>
+    <string name="firmware_update_negative_button">Ei nyt</string>
+    <string name="firmware_update_positive_button">Päivitä</string>
+    <string name="firmware_update_prompt">Laiteohjelmiston päivittäminen lisää uusia ominaisuuksia ja ottaa käyttöön korjauksia. Suosittelemme vahvasti, että suoritat tämän päivityksen Brother-laitteessasi.</string>
+    <string name="firmware_update_prompt_check"><u>Voit päivittää laiteohjelmiston napauttamalla [Päivitä] yltä ja napauttamalla sitten [Tarkista päivitysten saatavuus] seuraavassa näytössä.</u></string>
+    <string name="firmware_update_prompt_faq">Usein kysytyt kysymykset -sivulla on yksityiskohtaiset ohjeet laiteohjelmiston päivittämisesti.</string>
+    <string name="firmware_update_status_msg">Päivitä Brother-laitteesi laiteohjelmisto.  </string>
+    <string name="firmware_update_title">Laiteohjelmiston päivitys</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_1">WLAN</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_2">Verkkoliitäntä</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_3">Kiinteä verkko</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_4">Verkko</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_5">Liitäntä käytössä</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_6">Wi-Fi Direct</string>
+	<string name="setting_label_converter_mode">Lisäasetukset</string>
+	<string name="v1_print_convert_mode">PDF-tiedostomuunnin</string>
+	<string name="v1_print_convert_mode_id_0">Pilvi (oletus)</string>
+	<string name="v1_print_convert_mode_id_1">Paikallinen</string>
+
+    <string name="edited_image_delete_dialog_title">Esikatseltua kuvaa ei ole tulostettu</string>
+    <string name="edited_image_delete_dialog_msg">Muokattu kuva poistetaan, jos jatkat. Haluatko jatkaa?</string>
+
+    <string name="error_ssl_certificate_is_invalid_title">Varoitus</string>
+    <string name="error_ssl_certificate_is_invalid_msg">Sivuston suojausvarmenteen kanssa ilmeni ongelma. Haluatko jatkaa?</string>
+    <string name="info_eula_title">Käyttöoikeussopimus</string>
+
+</resources>

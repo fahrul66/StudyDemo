@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="func_name_setting">Estado do equip.</string>
+	<string name="top_dlg_msg_do_you_select_device">Para usar esta aplicação tem de selecionar um dispositivo. </string>
+	<string name="top_dlg_btn_select_later">Selecionar depois</string>
+	<string name="top_dlg_btn_select_device">Selecionar agora</string>
+	<string name="finddevice_change_device_msg_share">O modelo selecionado foi alterado e só pode usar as funções disponíveis nesse modelo.</string>
+	<string name="finddevice_main_title">Selec. disposit.</string>
+	<string name="finddevice_nfc_use_tip_title">Usar NFC</string>
+	<string name="finndevice_nfc_use_hint_msg">Através da funcionalidade NFC, pode imprimir ou digitalizar facilmente a partir do equipamento à sua frente.  (Antes de utilizar, ligue a funcionalidade NFC no dispositivo Android.)</string>
+	<string name="finddevice_wifi_fragment_manually_printer">Dispositivo</string>
+	<string name="edit_title_scaling">Ajustar</string>
+	<string name="edit_title_rotate">Endireitar</string>
+	<string name="func_name_fax_tx">Envio de fax</string>
+	<string name="func_name_fax_rx">Pré-vis. fax</string>
+	<string name="fax_rx_tab_date">Data</string>
+	<string name="fax_rx_tab_sender">Remetente</string>
+	<string name="fax_rx_dialog_howtofax_title">Como usar Pré-vis. fax</string>
+	<string name="fax_rx_dialog_howtofax_message">Prima o ícone mostrado em cima no Ecrã Inicial > Defin. Todas.\nPrima Fax > Conf. receção > Pré-vizuali-zação do Fax.\nSelecione Ligado > Sim.</string>
+	<string name="common_btn_close">Fechar</string>
+	<string name="faxtx_add_phone_num_hint">Introduza número</string>
+	<string name="faxtx_add_image_hint_device">Envie documentos por fax a partir do equipamento</string>
+	<string name="faxtx_add_image_hint_mobile">Selecione um ficheiro neste dispositivo móvel</string>
+	<string name="faxtx_title_phonebook_mobile">Livro de endereços</string>
+	<string name="faxtx_address_in_mobile">Livro de ender. móvel</string>
+	<string name="faxtx_address_in_device">Livro de ender. dispositivo</string>
+	<string name="copy_dialog_about_msg">Esta funcionalidade permite-lhe pré-visualizar as imagens antes de copiar, para evitar erros de cópia. Se necessário, pode editar a pré-visualização utilizando as ferramentas (ajustar, endireitar, recortar).  </string>
+	<string name="copy_description_main_item_1">Coloque os documentos no digitalizador plano ou no alimentador de documentos automático do equipamento.</string>
+    <string name="copy_description_main_item_1_footer">(Cópias apenas podem ser impressas em papel simples.)</string>
+    <string name="copy_description_main_item_2">[2] Pode pré-visualizar as imagens antes de copiar, para evitar erros de cópia, e pode editar a pré-visualização utilizando as ferramentas de edição.</string>
+	<string name="copy_preview_options">Opções de pré-visualização</string>
+	<string name="copy_setting_title_scantype">Tipo de pré-visualização</string>
+	<string name="copy_btn_scan">Iniciar</string>
+	<string name="copy_btn_print">Copiar</string>
+	<string name="copy_title_print_setting">Defins. Cópia</string>
+	<string name="status_network_online">Online</string>
+	<string name="status_network_offline">Offline</string>
+	<string name="status_name_volume">Volume de tinta</string>
+    <string name="status_name_laser_life">Duração do toner</string>
+	<string name="status_name_cartridge_num">Modelo do cartucho de tinta</string>
+    <string name="status_name_laser_cartridge_model">Modelo do cartucho de toner</string>
+    <string name="status_name_buy_cartridge">Adicionar ao cesto</string>
+
+	<string name="status_name_ip">Endereço IP</string>
+	<string name="status_name_machine_sn">Número de série</string>
+	<string name="status_name_firm_ver">Versão do firmware</string>
+	<string name="status_name_memory">Memória de receção de faxes</string>
+    <string name="status_name_error">Erro</string>
+    <string name="status_name_warning">Aviso</string>
+
+    <string name="func_name_copy">Pré visualização da cópia</string>
+    <string name="finddevice_change_device_msg">As seguintes funções estão disponíveis no equipamento seleccionado.  \n</string>
+    <string name="finddevice_change_device_msg_print">Impressão</string>
+    <string name="finddevice_change_device_msg_scan">Digitalização</string>
+    <string name="finddevice_change_device_msg_previewcopy">Pré-visualização da cópia</string>
+    <string name="finddevice_change_device_msg_faxsend">Enviar Fax</string>
+    <string name="finddevice_change_device_faxpreview">Pré-visualização do fax</string>
+    <string name="finddevice_change_device_machinestatus">Estado do equipamento</string>
+    <string name="finddevice_change_device_msg_end">\n\nFunções compatíveis irão depender do equipamento seleccionado.</string>
+    <string name="info_gideance_btn">Novas funcionalidades</string>
+    <string name="info_support_model_btn">Lista de modelos suportados</string>
+    <string name="info_support_btn">Página de suporte</string>
+    <string name="info_item_label_other_app">Outros</string>
+    <string name="info_version_btn">Versão</string>
+    <string name="nfc_guidance_lower_p1">1. Procure esta marca no seu equipamento.</string>
+    <string name="nfc_guidance_lower_p2">2. Em iPrint&amp;Scan, prepare o documento para a impressão ou digitalização.</string>
+    <string name="nfc_guidance_lower_p3">3. Segure o dispositivo por cima da marca.</string>
+    <string name="fax_rx_receive_mode_error_support">Página de suporte</string>
+    <string name="func_name_fax">Fax</string>
+    <string name="copy_dlg_msg_nextscan">Se tiver mais folhas para digitalizar, coloque-as no equipamento e toque em \&quot;Digitalizar\&quot;.  Se não tiver, toque em \&quot;Pronto\&quot;.</string>
+    <string name="faxtx_hint_search_phone">Procurar um número</string>
+    <string name="fax_tx_display_name">%1$s, e mais %2$s</string>
+    <string name="common_title_fax_setting">Configurações do Fax</string>
+    <string name="fax_tx_list_title">Confirmar</string>
+    <string name="fax_tx_list_msg">O fax será enviado para os seguintes endereços. Se os endereços estiverem corretos, toque em \&quot;Enviar\&quot;.  Se existirem erros, toque em \&quot;Cancelar\&quot; para corrigir.</string>
+    <string name="fax_tx_list_send">Enviar</string>
+    <string name="copy_dialog_about_title">O que é a Pré-vis. cópia?</string>
+    <string name="copy_setting_title_scanside">frente e verso</string>
+    <string name="copy_setting_title_side">frente e verso</string>
+    <string name="status_name_memory_full">Cheio</string>
+    <string name="generic_msg_nfc_on_operate">Segure o dispositivo por cima da marca NFC.</string>
+    <string name="info_gideance_item_1">[1] Novo design\nA Brother iPrint&amp;Scan tem um design mais novo para uma melhor experiência.  Antes de usar esta aplicação, selecione o seu equipamento no menu acima. </string>
+    <string name="info_gideance_item_2">[2] Novas ferramentas de edição\nTrês novas ferramentas de edição foram adicionadas (Escala, Endireitar e Aparar).</string>
+    <string name="info_gideance_item_3">[3] Enviar fax*\nPode enviar um fax a partir do dispositivo móvel.</string>
+    <string name="info_gideance_item_4">[4] Pré visualizar fax*\nPode visualizar faxes recebidos e armazenados no seu equipamento a partir do seu dispositivo móvel.</string>
+    <string name="info_gideance_item_5">[5] Pré visualizar Cópia*\nPré-visualize e edite uma imagem antes de a copiar.</string>
+    <string name="info_gideance_item_6">[6] Estado do equipamento*\nPode ver, por exemplo, o volume da tinta/toner e mensagens de erros do seu equipamento a partir do seu dispositivo móvel.</string>
+    <string name="info_gideance_item_7">[7] Nota\n“*” apenas disponível em novos modelos.  Toque em \&quot;i\&quot; (canto superior direito) para uma lista de modelos suportados.</string>
+
+    <string name="info_item_label_firmware">Notificações de atualização de Firmware</string>
+    <string name="info_firmware_text">Notificações</string>
+    <string name="info_item_label_firmware_text">Mostrar notificação quando iniciar esta App. se estiver disponível novo firmware para o dispositivo que seleccionou. </string>
+
+    <string name="setting_label_tray_options">Opções do tabuleiro</string>
+    <string name="setting_label_roll_printer_case">Mala de impressora de rolo </string>
+    <string name="setting_item_roll_printer_case_none">Nenhum</string>
+    <string name="setting_item_roll_printer_case_pa_rc">PA-RC-001</string>
+    <string name="setting_item_roll_printer_case_pa_rc_without_anti">PA-RC-001 (sem antienrolamento)</string>
+
+    <string name="setting_title_inputtray_unit">Origem do papel</string>
+    <string name="setting_item_input_tray_auto">Seleção automática</string>
+    <string name="setting_item_input_tray_mp">Bandeja MF</string>
+    <string name="setting_item_input_tray_1">Bandeja1</string>
+    <string name="setting_item_input_tray_2">Bandeja2</string>
+    <string name="setting_item_input_tray_3">Bandeja3</string>
+    <string name="setting_item_input_tray_4">Bandeja4</string>
+    <string name="setting_item_input_tray_5">Bandeja5</string>
+    <string name="setting_title_output_bin_unit">Bandeja de saída</string>
+    <string name="setting_item_output_bin_auto">Seleção automática</string>
+    <string name="setting_item_output_bin_nomal">Bandeja de saída padrão</string>
+    <string name="setting_item_output_bin_1">MX bandeja 1</string>
+    <string name="setting_item_output_bin_2">MX bandeja 2</string>
+    <string name="setting_item_output_bin_3">MX bandeja 3</string>
+    <string name="setting_item_output_bin_4">MX bandeja 4</string>
+    <string name="setting_item_output_bin_stacker">Empilhador MX</string>
+    <string name="setting_item_output_bin_sorter">Separador MX</string>
+    <string name="setting_title_use_standard_tray_when_full">Usar bandeja padrão quando cheia</string>
+    <!-- EULA -->
+    <string name="generic_btn_Yes">@string/v1_generic_btn_Yes</string>
+    <string name="generic_btn_No">@string/v1_generic_btn_No</string>
+    <string name="generic_title_end_user_lisence_agreement">@string/v1_generic_title_end_user_lisence_agreement</string>
+    <string name="generic_msg_end_user_lisence_agreement">@string/v1_generic_msg_end_user_lisence_agreement</string>
+    <string name="generic_msg_end_user_lisence_agreement2">@string/v1_generic_msg_end_user_lisence_agreement2</string>
+    <string name="generic_msg_license_title">@string/v1_generic_msg_license_title</string>
+    <string name="generic_title_gratitude_for_user">@string/v1_generic_title_gratitude_for_user</string>
+    <string name="generic_btn_privacypolicy">@string/v1_generic_btn_privacypolicy</string>
+    <string name="generic_ckbx_ga_title">@string/v1_generic_ckbx_ga_title</string>
+    <string name="generic_title_analytics">@string/v1_generic_title_analytics</string>
+    <string name="generic_msg_analytics">@string/v1_generic_msg_analytics</string>
+    <string name="generic_msg_analytics_underline">@string/v1_generic_msg_analytics_underline</string>
+    <string name="info_item_label_license">@string/v1_info_item_label_license</string>
+    
+    <string name="fax_tx_cannot_add_numbers">Não é possível adicionar mais números de fax</string>
+    <string name="fax_tx_over_fax_msg">Apenas pode inserir %d números de fax </string>
+	<string name="error_fax_rx_preview_title">A \&quot;pré-visualização do fax\&quot; falhou</string>
+	<string name="error_fax_rx_preview_message">Motivo:\n- Sem ligação de rede\n- Tamanho da imagem muito grande\n\nImprima o fax a partir do seu equipamento Brother.</string>
+    <string name="error_fax_rx_connect_message">Motivo:\n- Sem ligação de rede\n- Tamanho da imagem muito grande\n\nImprima o fax a partir do seu equipamento Brother.</string>
+	<string name="error_nfc_is_not_available_title">NFC não disponível</string>
+	<string name="error_nfc_is_not_available_msg">Para usar NFC, desligue o \&quot;Wi-Fi Direct\&quot; no equipamento Brother.</string>
+	<string name="error_nfc_cannot_connect_turn_on_title">Não pode ligar</string>
+    <string name="error_nfc_cannot_connect_turn_on_msg">Conexão NFC falhou. Ligue o equipamento Brother e tente novamente.</string>
+	<string name="error_nfc_printer_is_unsupported_title">Impressora NFC não suportada</string>
+	<string name="error_nfc_printer_is_unsupported_msg">Este equipamento Brother não suporta impressão por ligação NFC.</string>
+	<string name="error_nfc_scanner_is_unsupported_title">Digitalizador NFC não suportado</string>
+	<string name="error_nfc_scanner_is_unsupported_msg">Este equipamento Brother não suporta digitalização por ligação NFC.</string>
+	<string name="faxtx_back_key_title">A imagem pré-visualizada não foi enviada.</string>
+	<string name="faxtx_back_key_msg">A imagem pré-visualizada será eliminada se continuar.   Continuar?</string>
+	<string name="E115_title">Falha na transferência</string>
+	<string name="E115_messag">Motivo:\n- Sem ligação de rede\n- Ocorreu um erro no equipamento Brother.\n- O equipamento Brother está a ser acedido a partir de outro dispositivo. \n\nConfirme o equipamento Brother e tente novamente.</string>
+
+    <string name="error_secure_func_locked_title">Erro na Função de Bloqueio de Segurança</string>
+    <string name="error_secure_func_locked_msg">Esta função está bloqueada pela Função de Bloqueio de Segurança.\nContacte o administrador de sistema.</string>
+    <string name="error_ads_print_share_title">A impressão não está suportada.</string>
+    <string name="error_ads_print_share_msg">Esta máquina não permite a impressão.\nSeleccione outra máquina.</string>
+    <!-- NFC HandOverIOException,etc -->
+    <string name="error_nfc_wrong_settings_title">@string/v1_error_wrong_settings_title</string>
+    <string name="error_nfc_wrong_settings_msg">@string/v1_error_wrong_settings_msg</string>
+    <string name="error_nfc_wifi_connection_info_not_found_title">Não pode ligar</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg">Para usar NFC, desligue [WLAN ] ou altere [Interface Rede] para [LAN com Fios] nas definições [Rede] no painel de controlo do aparelho. Se continuar a não conseguir usar NFC, desligue [Ativar I/F] nas definições [Wi-Fi Direct] no painel de controlo do aparelho.</string>
+    <!-- NFC BBeam TLV 0101H,0002H,1..* (PrintError) -->
+    <string name="error_nfc_print_sfl_title">@string/v1_error_sfl_print_title</string>
+    <string name="error_nfc_print_sfl_msg">@string/v1_error_sfl_print_msg</string>
+    <string name="error_nfc_print_sfl_print_max_title">@string/v1_error_sfl_print_max_title</string>
+    <string name="error_nfc_print_sfl_print_max_msg">@string/v1_error_sfl_print_max_msg</string>
+    <string name="error_nfc_print_status_title">@string/v1_error_printer_status_title</string>
+    <string name="error_nfc_print_status_msg">@string/v1_error_printer_status_msg</string>
+    <string name="error_nfc_print_ms_title">@string/v1_error_ms_print_title</string>
+    <string name="error_nfc_print_ms_msg">@string/v1_error_ms_print_msg</string>
+    <!-- NFC BBeam TLV 0102H,0002H,1..* (ScanError) -->
+    <string name="error_nfc_scan_sfl_title">@string/v1_error_sfl_scan_title</string>
+    <string name="error_nfc_scan_sfl_msg">@string/v1_error_sfl_scan_msg</string>
+    <string name="error_nfc_scan_resource_title">@string/v1_error_scandevbusy_title</string>
+    <string name="error_nfc_scan_resource_msg">@string/v1_error_scandevbusy_msg</string>
+    <string name="error_nfc_scan_open_adf_title">@string/v1_error_scanadfcvropen_title</string>
+    <string name="error_nfc_scan_open_adf_msg">@string/v1_error_scanadfcvropen_msg</string>
+    <string name="error_nfc_scan_open_top_cover_title">@string/v1_error_scancvropen_title</string>
+    <string name="error_nfc_scan_open_top_cover_msg">@string/v1_error_scancvropen_msg</string>
+    <string name="error_nfc_scan_ms_title">@string/v1_error_ms_scan_title</string>
+    <string name="error_nfc_scan_ms_msg">@string/v1_error_ms_scan_msg</string>
+    <!-- NFC BBeam TLV 0103H,0002H,1..* (WifiDirectError) -->
+    <string name="error_nfc_wifi_direct_connecting_as_client_title">@string/v1_error_nfc_wifi_direct_client_cannot_connect_title</string>
+    <string name="error_nfc_wifi_direct_connecting_as_client_msg">@string/v1_error_nfc_wifi_direct_client_cannot_connect_msg</string>
+    <string name="error_nfc_wifi_direct_connection_max_title">@string/v1_error_nfc_another_device_connected_title</string>
+    <string name="error_nfc_wifi_direct_connection_max_msg">@string/v1_error_nfc_another_device_connected_msg</string>
+    <string name="error_nfc_wifi_direct_cannot_connect_title">@string/v1_error_nfc_wifi_direct_cannot_connect_title</string>
+    <string name="error_nfc_wifi_direct_cannot_connect_msg">@string/v1_error_nfc_wifi_direct_cannot_connect_msg</string>
+    <string name="finddevice_WiFi_fragment_title">Wi-Fi</string>
+    <string name="finddevice_Bluetooth_fragment_title">Bluetooth</string>
+    <string name="findevice_Bluetooth_fragment_nodevice_msg">Selecione [Adic. Impressora].\nLigue a impressora e estabeleça ligação através de Bluetooth.</string>
+    <string name="finddevice_NFC_fragment_title">NFC</string>
+
+    <string name="faxtx_start_button">Fax</string>
+
+    <string name="error_fax_tx_too_long_numbers">Introduza o número de Fax utilizando %d dígitos ou menos.</string>
+
+    <string name="error_tray_option_not_available_title">Opções de bandeja não estão disponíveis</string>
+    <string name="error_tray_option_not_available_msg">Esta máquina não suporta Opções de bandeja em iPrint&amp;Scan.A bandeja é seleccionada automaticamente.Deseja continuar?</string>
+
+    <string name="common_file_saved">Guardado</string>
+
+
+    <string name ="browser_nobookmark">Os favoritos do browser estão vazios.</string>
+    <string name="firmware_update_avaliable_status">Nova versão disponível </string>
+    <string name="firmware_update_content">Está disponível uma nova atualização de firmware para este aparelho. Recomendamos vivamente que efetue esta atualização no seu aparelho para adicionar novas funcionalidades e aplicar correções de erros.                        </string>
+    <string name="firmware_update_faq">>FAQ</string>
+    <string name="firmware_update_latest_version">Última versão </string>
+    <string name="firmware_update_negative_button">Agora Não</string>
+    <string name="firmware_update_positive_button">Atualização</string>
+    <string name="firmware_update_prompt">A atualização do firmware adiciona novas funcionalidades e aplica correcções de erros. Recomendamos vivamente que efetue esta atualização no seu aparelho Brother. </string>
+    <string name="firmware_update_prompt_check"><u>Para atualizar o firmware, toque em [Atualizar] acima e depois toque em [Verificar Atualizações] no ecrã seguinte.</u></string>
+    <string name="firmware_update_prompt_faq">Consulte a página FAQ para instruções detalhadas sobre como atualizar o firmware.</string>
+    <string name="firmware_update_status_msg">Atualize o firmware do seu aparelho Brother.  </string>
+    <string name="firmware_update_title">Atualização Firmware</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_1">WLAN</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_2">Interface Rede</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_3">LAN com fios</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_4">Rede</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_5">Ativar I/F</string>
+    <string name="error_nfc_wifi_connection_info_not_found_msg_item_6">Wi-Fi Direct</string>
+	<string name="setting_label_converter_mode">Definições avançadas</string>
+	<string name="v1_print_convert_mode">Conversor de ficheiros PDF</string>
+	<string name="v1_print_convert_mode_id_0">Nuvem (Predefinição)</string>
+	<string name="v1_print_convert_mode_id_1">Local</string>
+
+    <string name="edited_image_delete_dialog_title">A imagem pré-visualizada não foi impressa</string>
+    <string name="edited_image_delete_dialog_msg">A imagem editada será eliminada se continuar.  Deseja continuar?</string>
+
+    <string name="error_ssl_certificate_is_invalid_title">Advertência</string>
+    <string name="error_ssl_certificate_is_invalid_msg">Existe um problema com o certificado de segurança deste sítio web. Deseja continuar?</string>
+    <string name="info_eula_title">Contrato de licença do utilizador final</string>
+
+</resources>

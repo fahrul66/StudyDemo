@@ -10,12 +10,14 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
+import android.support.graphics.drawable.AnimatedVectorDrawableCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
@@ -28,6 +30,7 @@ import android.view.ViewAnimationUtils;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.File;
 
@@ -68,6 +71,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn2.setOnClickListener(this);
         btn3.setOnClickListener(this);
 
+/*        AnimatedVectorDrawableCompat a = AnimatedVectorDrawableCompat.create(this,R.drawable.anim_vector);
+        img.setImageDrawable(a);
+        ((AnimatedVectorDrawableCompat)img.getDrawable()).start();*/
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -86,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn2 = (Button) findViewById(R.id.btn2);
         btn3 = (Button) findViewById(R.id.btn3);
         img = (ImageView) findViewById(R.id.img);
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -115,6 +123,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, Main2Activity.class)
                         , ActivityOptionsCompat.makeSceneTransitionAnimation(this, img, "img").toBundle());
                 break;
+
         }
     }
 
@@ -236,11 +245,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Bitmap bit = (Bitmap) b.get("data");
             img.setImageBitmap(bit);*/
 
-            img.setImageURI(Uri.fromFile(file));
+//            img.setImageURI(Uri.fromFile(file));
+            reSizeImg(file.getPath());
             //截图
 //            cropImageUri(Uri.fromFile(file), 150, 150, REQUEST_CODE_CROP);
         } else if (requestCode == REQUEST_CODE_CROP && resultCode == RESULT_OK) {
-            img.setImageURI(Uri.fromFile(file));
+            Toast.makeText(this, "crop", Toast.LENGTH_SHORT).show();
+            Bundle b = data.getExtras();
+            Bitmap bit = (Bitmap) b.get("data");
+            img.setImageBitmap(bit);
         }
     }
 
