@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private WritableWorkbook book;
     //目录
     File file = null;
+    //key对应的value值
+    String value = null;
 
     //所有的string文件
     String[] s = new String[]{"values/strings.xml", "values/strings_v1.xml",
@@ -101,12 +103,27 @@ public class MainActivity extends AppCompatActivity {
                     for (int i = 0; i < list.size(); i++) {
                         String name = list.get(i).getName();
                         String key = list.get(i).getText();
-                        if (key != null && key.startsWith("@")) {
-                            String[] keyA = key.split("/");
+                        //一直查找遍历，直到找到
+                        while (key != null && key.startsWith("@")) {
+                            //有@的话，去空格，防止干扰
+                            String keyTrim = key.trim();
+                            //拆分为两部分
+                            String[] keyA = keyTrim.split("/");
+                            //是否以v1开头，以v1开头的是引用v1的，否则是引用本地的
+                            String fileDir = null;
+                            if (keyA[1].startsWith("v1")) {
+                                //查询旧文件
+                                fileDir = s[j + 1];
+                            } else {
+                                //查询当前文件
+                                fileDir = s[j];
+                            }
                             //获取value值
-                            String value = readXML(s[j + 1], keyA[1], false);
+                            value = readXML(fileDir/*s[j + 1]*/, keyA[1], false);
+                            //将返回的text复制为key，key判断是否为@引用
                             //替换
                             list.set(i, new StringDemo(name, value));
+                            key = value;
                         }
                     }
                     //生成不同的文件名
@@ -128,10 +145,6 @@ public class MainActivity extends AppCompatActivity {
 
             book = Workbook.createWorkbook(file);
             WritableSheet sheet = book.createSheet("xml获取", 0);
-            Label label = new Label(0, 0, "name");
-            sheet.addCell(label);
-            Label label1 = new Label(1, 0, "value");
-            sheet.addCell(label1);
             //循环遍历
             for (int i = 0; i < list.size(); i++) {
 
