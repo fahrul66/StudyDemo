@@ -208,7 +208,7 @@
     <string name="firmware_update_negative_button">Inte nu</string>
     <string name="firmware_update_positive_button">Uppdatera</string>
     <string name="firmware_update_prompt">När du uppdaterar den inbyggda programvaran lägger det till nya funktioner och tillämpar buggfixar. Vi rekommenderar att du utför denna uppdatering på din Brother-maskin. </string>
-    <string name="firmware_update_prompt_check"><u>Uppdatera den inbyggda programvaran genom att trycka på [Uppdatera] ovan och tryck sedan [Sök efter uppdatering] på nästa skärm.</u></string>
+    <string name="firmware_update_prompt_check">Uppdatera den inbyggda programvaran genom att trycka på [Uppdatera] ovan och tryck sedan [Sök efter uppdatering] på nästa skärm.</string>
     <string name="firmware_update_prompt_faq">Hänvisa till sidan med vanliga frågor för detaljerade anvisningar för hur du uppdaterar den inbyggda programvaran.</string>
     <string name="firmware_update_status_msg">Uppdatera den inbyggda programvaran för Brother-maskinen.  </string>
     <string name="firmware_update_title">Uppdatera inbyggd programvara</string>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="firmware_update_prompt_check">For at opdatere firmwaren, tryk på [Opdater] oven for, og tryk derefter på [Søg efter opdateringer] på den næste skærm.</string>
+<string name="firmware_update_prompt_faq">Du kan finde flere oplysninger om at opdatere firmwaren på siden med ofte stillede spørgsmål.</string>
+<string name="firmware_update_prompt">Opdatering af firmwaren tilføjer nye funktioner og anvender fejlrettelser. Vi anbefaler, at du udfører denne opdatering på din Brother-maskine.</string>
+<string name="firmware_update_faq">Ofte stillede spørgsmål</string>
+<string name="error_nfc_wifi_connection_info_not_found_msg_item_1">WLAN</string>
+<string name="error_nfc_wifi_connection_info_not_found_msg_item_2">Netværks I/F</string>
+<string name="error_nfc_wifi_connection_info_not_found_msg_item_3">Kablet LAN</string>
+<string name="error_nfc_wifi_connection_info_not_found_msg_item_4">Netværk</string>
+<string name="error_nfc_wifi_connection_info_not_found_msg_item_5">Aktiver I/F</string>
+<string name="error_nfc_wifi_connection_info_not_found_msg_item_6">Wi-Fi Direct</string>
+<string name="setting_label_converter_mode">Avancerede indstillinger</string>
+<string name="v1_print_convert_mode">PDF-filkonverter</string>
+<string name="v1_print_convert_mode_id_0">Cloud (Standard)</string>
+<string name="v1_print_convert_mode_id_1">Lokal</string>
+<string name="edited_image_delete_dialog_title">Eksempelbilledet er ikke blevet udskrevet</string>
+<string name="edited_image_delete_dialog_msg">Billedet slettes, hvis du fortsætter. Vil du fortsætte?</string>
+<string name="error_ssl_certificate_is_invalid_title">Advarsel</string>
+<string name="error_ssl_certificate_is_invalid_msg">Der er et problem med dette websteds sikkerhedscertifikat. Vil du fortsætte?</string>
+<string name="info_eula_title">Slutbrugerlicensaftale</string>
+    </resources>

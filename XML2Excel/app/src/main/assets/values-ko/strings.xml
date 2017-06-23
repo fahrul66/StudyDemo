@@ -203,7 +203,7 @@
     <string name="firmware_update_negative_button">나중에 </string>
     <string name="firmware_update_positive_button">업데이트</string>
     <string name="firmware_update_prompt">펌웨어를 업데이트하면 새 기능이 추가되고 버그가 수정됩니다. 사용 중인 Brother 장치에서 본 업데이트를 실행하는 것이 좋습니다. </string>
-    <string name="firmware_update_prompt_check"><u>펌웨어를 업데이트하려면 위의 [업데이트]를 탭한 후 다음 화면에서 [업데이트 확인]을 탭하십시오.</u></string>
+    <string name="firmware_update_prompt_check">펌웨어를 업데이트하려면 위의 [업데이트]를 탭한 후 다음 화면에서 [업데이트 확인]을 탭하십시오.</string>
     <string name="firmware_update_prompt_faq">펌웨어 업데이트 수행방법에 대한 자세한 정보는 FAQ 페이지를 참조하십시오.</string>
     <string name="firmware_update_status_msg">사용 중인 Brother 기기의 펌웨어를 업데이트하십시오.  </string>
     <string name="firmware_update_title">펌웨어 업데이트</string>

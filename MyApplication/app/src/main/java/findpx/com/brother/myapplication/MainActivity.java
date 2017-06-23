@@ -2,9 +2,9 @@ package findpx.com.brother.myapplication;
 
 import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.ContentUris;
-import android.content.Context;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -13,7 +13,6 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -23,51 +22,73 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-    Button mBtn;
-    Button mBtn1, mBtn2, mBtn3, mBtn4, mBtn5;
-    RelativeLayout relativeLayout;
+    /**
+     * 按钮
+     */
+    Button mBtn, mBtn1, mBtn2, mBtn3, mBtn4, mBtn5;
+    /**
+     * bitmap和imageView对象
+     */
+    private Bitmap mBitmap;
+    private ImageView mImgv;
+    /**
+     * 总布局
+     */
+    RelativeLayout mRelativeLayout;
+    /**
+     * 跳转常量
+     */
     public static final int REQUEST_CODE = 1;
-
-    private TextView tv;
-    private Bitmap bitM;
-    private ImageView imageView;
+    public static final int REQUEST_CODE_PIC = 2;
+    /**
+     * 图片大小
+     */
+    public static final int PIC_SIZE = 200;
+    /**
+     * 是否是4.4以上版本，打开相册的判断
+     */
+    private boolean isKitkat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Example of a call to a native method
-        tv = (TextView) findViewById(R.id.sample_text);
-        imageView = (ImageView) findViewById(R.id.imge_bit);
+        // init views
+        mImgv = (ImageView) findViewById(R.id.imge_bit);
         mBtn1 = (Button) findViewById(R.id.btn1);
         mBtn2 = (Button) findViewById(R.id.btn2);
         mBtn3 = (Button) findViewById(R.id.btn3);
         mBtn4 = (Button) findViewById(R.id.btn4);
         mBtn5 = (Button) findViewById(R.id.btn5);
-        relativeLayout = (RelativeLayout) findViewById(R.id.activity_main);
-
+        mRelativeLayout = (RelativeLayout) findViewById(R.id.activity_main);
         //init
         mBtn = (Button) findViewById(R.id.btn);
+        //点击事件
         mBtn.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                //权限获取
-                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-                    requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE);
+                if (isKitkat) {
+                    //权限获取
+                    if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                        requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE);
+                    } else {
+                        //图片处理
+                        openImgv();
+                    }
                 } else {
                     //图片处理
-                    cvtImg();
+                    openImgv();
                 }
-
             }
         });
 
@@ -76,16 +97,18 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * android 6.0权限获取
-     * @param requestCode
-     * @param permissions
-     * @param grantResults
+     *
+     * @param requestCode  请求码
+     * @param permissions  获得的权限
+     * @param grantResults 权限的授权情况
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                cvtImg();
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                //获取权限后处理图片
+                openImgv();
             }
         }
     }
@@ -93,13 +116,17 @@ public class MainActivity extends AppCompatActivity {
     /**
      * 图片的处理
      */
-    private void cvtImg() {
+    private void openImgv() {
         Intent intent = new Intent();
         intent.setType("image/*");
-        intent.setData(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
-        intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
-        startActivityForResult(intent, 1);
+        if (isKitkat) {
+            intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
+        } else {
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+        }
+        startActivityForResult(intent, REQUEST_CODE_PIC);
     }
 
     /**
@@ -113,51 +140,71 @@ public class MainActivity extends AppCompatActivity {
         mBtn5.setBackgroundColor(Color.parseColor("#ffffff"));
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    /**
+     * 回调，获取图片后的回调
+     *
+     * @param requestCode 请求码
+     * @param resultCode  返回的结果
+     * @param data        传递的数据
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        //清除button的背景颜色
         clearBtnBg();
-
-        if (requestCode == 1 && resultCode == RESULT_OK) {
-
+        if (requestCode == REQUEST_CODE_PIC && resultCode == RESULT_OK) {
             Uri uri = data.getData();
-            final String path = getPath(this, uri);
+            String path = Uri.decode(uri.toString());
+            Uri contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+            //4.4以上获取图片的path
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                String wholeId = DocumentsContract.getDocumentId(uri);
+                String id = wholeId.split(":")[1];
+                String[] column = {MediaStore.Images.Media.DATA};
+                String sel = MediaStore.Images.Media._ID + "=?";
+                Cursor c = getContentResolver().query(contentUri, column, sel, new String[]{id}, null);
+                if (c.moveToFirst()) {
+                    path = c.getString(c.getColumnIndexOrThrow(column[0]));
+                }
+                //4.4以下获取图片path
+            } else {
+                ContentResolver c = getContentResolver();
+                Cursor cursor = c.query(uri, new String[]{MediaStore.Images.Media.DATA}, null, null, null);
+                cursor.moveToFirst();
+                int index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                path = cursor.getString(index);
+            }
 
+            //进度条显示
             final ProgressDialog p = new ProgressDialog(this);
             p.setMessage("loading..");
             p.setCanceledOnTouchOutside(false);
             p.show();
 
             //开子线程
+            final String finalPath = path;
+
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-
-                    final List<Integer> colors = new ArrayList<>();
+                    //进行图片的K-means聚类
                     int ColorNum = 5;
-                    ThemeColorPicker tcp = new ThemeColorPicker(path);
+                    MainColorPicker tcp = new MainColorPicker(finalPath);
                     tcp.setColorNumber(ColorNum);
-                    List<MyVector> vectors = tcp.getThemeColor();
-                    for (MyVector vector : vectors) {
-                        if (vector.size() == 3) {
-                            int r = vector.get(0).intValue();
-                            int g = vector.get(1).intValue();
-                            int b = vector.get(2).intValue();
-
-                            colors.add(Color.rgb(r, g, b));
-                        }
-                    }
-
+                    //获取main color
+                    final List<Integer> colors = tcp.getMainListColor();
+                    //主线程更新UI
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            //dialog消失
                             p.dismiss();
-
+                            //循环遍历设置主要的颜色值
                             for (int i = 0; i < colors.size(); i++) {
-                                relativeLayout.setBackgroundColor(colors.get(0));
+                                //main color
+                                mRelativeLayout.setBackgroundColor(colors.get(0));
                                 mBtn1.setBackgroundColor(colors.get(0));
+                                //其他聚类的颜色设置，判断
                                 if (colors.size() >= 2) {
 
                                     mBtn2.setBackgroundColor(colors.get(1));
@@ -175,7 +222,6 @@ public class MainActivity extends AppCompatActivity {
                                     mBtn5.setBackgroundColor(colors.get(4));
                                 }
                             }
-
                         }
                     });
 
@@ -183,178 +229,46 @@ public class MainActivity extends AppCompatActivity {
             }).start();
 
             //压缩显示图片
-            BitmapFactory.Options opt = new BitmapFactory.Options();
-            opt.inJustDecodeBounds = true;
-            bitM = BitmapFactory.decodeFile(path, opt);
-            opt.inSampleSize = calSampleSize(opt, 200, 200);
-            opt.inJustDecodeBounds = false;
-            bitM = BitmapFactory.decodeFile(path, opt);
-            imageView.setImageBitmap(bitM);
+            compressImgv(path);
+
 
         }
 
+    }
+
+    /**
+     * 压缩并设置图片
+     *
+     * @param path 图片的路径
+     */
+    private void compressImgv(String path) {
+        BitmapFactory.Options opt = new BitmapFactory.Options();
+        opt.inJustDecodeBounds = true;
+        mBitmap = BitmapFactory.decodeFile(path, opt);
+        opt.inSampleSize = calSampleSize(opt, PIC_SIZE, PIC_SIZE);
+        opt.inJustDecodeBounds = false;
+        mBitmap = BitmapFactory.decodeFile(path, opt);
+        mImgv.setImageBitmap(mBitmap);
     }
 
     /**
      * 压缩
      *
-     * @param opt
-     * @param width
-     * @param height
-     * @return
+     * @param opt       Options对象
+     * @param reqWidth  期待的图片宽
+     * @param reqHeight 期待的图片的高
+     * @return 返回压缩的比例
      */
-    private int calSampleSize(BitmapFactory.Options opt, int width, int height) {
+    private int calSampleSize(BitmapFactory.Options opt, int reqWidth, int reqHeight) {
         int sampleSize = 1;
         int realityWidth = opt.outWidth;
         int realityHeight = opt.outHeight;
-        if (realityHeight > height || realityWidth > width) {
-            int widthRate = Math.round(realityWidth * 1.0f / width);
-            int heightRate = Math.round(realityHeight * 1.0f / height);
-            sampleSize = Math.max(widthRate, heightRate);
+        if (realityHeight > reqHeight || realityWidth > reqWidth) {
+            int reqWidthRate = Math.round(realityWidth * 1.0f / reqWidth);
+            int reqHeightRate = Math.round(realityHeight * 1.0f / reqHeight);
+            sampleSize = Math.max(reqWidthRate, reqHeightRate);
         }
         return sampleSize;
-    }
-
-    /**
-     * 获取路径
-     *
-     * @param context
-     * @param uri
-     * @return
-     */
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public static String getPath(final Context context, final Uri uri) {
-
-        final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
-
-        // DocumentProvider
-        if (isKitKat && DocumentsContract.isDocumentUri(context, uri)) {
-            // ExternalStorageProvider
-            if (isExternalStorageDocument(uri)) {
-                final String docId = DocumentsContract.getDocumentId(uri);
-                final String[] split = docId.split(":");
-                final String type = split[0];
-
-                if ("primary".equalsIgnoreCase(type)) {
-                    return Environment.getExternalStorageDirectory() + "/" + split[1];
-                }
-
-                // TODO handle non-primary volumes
-            }
-            // DownloadsProvider
-            else if (isDownloadsDocument(uri)) {
-
-                final String id = DocumentsContract.getDocumentId(uri);
-                final Uri contentUri = ContentUris.withAppendedId(
-                        Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
-
-                return getDataColumn(context, contentUri, null, null);
-            }
-            // MediaProvider
-            else if (isMediaDocument(uri)) {
-                final String docId = DocumentsContract.getDocumentId(uri);
-                final String[] split = docId.split(":");
-                final String type = split[0];
-
-                Uri contentUri = null;
-                if ("image".equals(type)) {
-                    contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-                } else if ("video".equals(type)) {
-                    contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
-                } else if ("audio".equals(type)) {
-                    contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
-                }
-
-                final String selection = "_id=?";
-                final String[] selectionArgs = new String[]{
-                        split[1]
-                };
-
-                return getDataColumn(context, contentUri, selection, selectionArgs);
-            }
-        }
-        // MediaStore (and general)
-        else if ("content".equalsIgnoreCase(uri.getScheme())) {
-
-            // Return the remote address
-            if (isGooglePhotosUri(uri))
-                return uri.getLastPathSegment();
-
-            return getDataColumn(context, uri, null, null);
-        }
-        // File
-        else if ("file".equalsIgnoreCase(uri.getScheme())) {
-            return uri.getPath();
-
-
-        }
-
-        return null;
-    }
-
-    /**
-     * Get the value of the data column for this Uri. This is useful for
-     * MediaStore Uris, and other file-based ContentProviders.
-     *
-     * @param context       The context.
-     * @param uri           The Uri to query.
-     * @param selection     (Optional) Filter used in the query.
-     * @param selectionArgs (Optional) Selection arguments used in the query.
-     * @return The value of the _data column, which is typically a file path.
-     */
-    public static String getDataColumn(Context context, Uri uri, String selection,
-                                       String[] selectionArgs) {
-
-        Cursor cursor = null;
-        final String column = "_data";
-        final String[] projection = {
-                column
-        };
-
-        try {
-            cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs,
-                    null);
-            if (cursor != null && cursor.moveToFirst()) {
-                final int index = cursor.getColumnIndexOrThrow(column);
-                return cursor.getString(index);
-            }
-        } finally {
-            if (cursor != null)
-                cursor.close();
-        }
-        return null;
-    }
-
-    /**
-     * @param uri The Uri to check.
-     * @return Whether the Uri authority is ExternalStorageProvider.
-     */
-    public static boolean isExternalStorageDocument(Uri uri) {
-        return "com.android.externalstorage.documents".equals(uri.getAuthority());
-    }
-
-    /**
-     * @param uri The Uri to check.
-     * @return Whether the Uri authority is DownloadsProvider.
-     */
-    public static boolean isDownloadsDocument(Uri uri) {
-        return "com.android.providers.downloads.documents".equals(uri.getAuthority());
-    }
-
-    /**
-     * @param uri The Uri to check.
-     * @return Whether the Uri authority is MediaProvider.
-     */
-    public static boolean isMediaDocument(Uri uri) {
-        return "com.android.providers.media.documents".equals(uri.getAuthority());
-    }
-
-    /**
-     * @param uri The Uri to check.
-     * @return Whether the Uri authority is Google Photos.
-     */
-    public static boolean isGooglePhotosUri(Uri uri) {
-        return "com.google.android.apps.photos.content".equals(uri.getAuthority());
     }
 
 }

@@ -4,61 +4,54 @@ import java.util.ArrayList;
 
 /**
  * 聚类
- * Created by Mike on 12/9/2016.
  */
 public class Cluster {
+    /**
+     * 本类维护的一个颜色集合--聚类
+     */
+    private ArrayList<MyVector> mVectors = new ArrayList<>();
+    /**
+     * 聚类的大小
+     */
+    private int mEachVectorSize = 0;
 
-    String tag = "";
-
-    private ArrayList<MyVector> vectors = new ArrayList<>();
-    private int eachVectorSize = 0;
-
-    public ArrayList<MyVector> getVectors(){
-        return vectors;
-    }
-
-    public void addToCluster(MyVector vector){
-
-        this.vectors.add(vector);
-        this.eachVectorSize = vector.size();
-    }
-
-    public void printCluster(boolean withTag){
-        if (withTag){
-            System.out.println(tag);
-        }
-        for (int i=0;i<vectors.size();i++){
-            MyVector vector = vectors.get(i);
-            System.out.print("Vector "+i+": ");
-            vector.printVector();
-        }
-    }
-
-    public void clearCluster(){
-        this.vectors.clear();
+    /**
+     * 返回当前的聚类
+     * @return
+     */
+    public ArrayList<MyVector> getVectors() {
+        return mVectors;
     }
 
     /**
-     * 计算簇的中点
+     * 添加到集合中
+     * @param vector
+     */
+    public void addToCluster(MyVector vector) {
+        this.mVectors.add(vector);
+        this.mEachVectorSize = vector.size();
+    }
+
+    /**
+     * 计算当前聚类的的中点，也就是颜色的向量的平均值
      * @return
      */
-    public MyVector getCenterVector(){
+    public MyVector getCenterVector() {
         //预先初始化定长Vector
-        MyVector vector = new MyVector(eachVectorSize);
-
-        for (MyVector tempVector:vectors){
-            for (int i=0; i < tempVector.size();i++){
+        MyVector vector = new MyVector(mEachVectorSize);
+        //遍历当前聚类
+        for (MyVector tempVector : mVectors) {
+            for (int i = 0; i < tempVector.size(); i++) {
                 Double original = vector.get(i);
                 //计算每一个聚类的RGB的各个值的和。
-                vector.set(i,original+tempVector.get(i));
+                vector.set(i, original + tempVector.get(i));
             }
         }
-
-        for (int i=0;i<vector.size();i++){
+        //各个聚类的平均值
+        for (int i = 0; i < vector.size(); i++) {
             //计算每个聚类的RGB平均值
-            vector.set(i,vector.get(i)/this.vectors.size());
+            vector.set(i, vector.get(i) / this.mVectors.size());
         }
-
         return vector;
     }
 
@@ -66,8 +59,8 @@ public class Cluster {
      * 返回一个聚类中的颜色值
      * @return
      */
-    public int size(){
-        return vectors.size();
+    public int size() {
+        return mVectors.size();
     }
 
 }

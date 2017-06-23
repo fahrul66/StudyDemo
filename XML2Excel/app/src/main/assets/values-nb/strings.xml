@@ -206,7 +206,7 @@
 	<string name="firmware_update_negative_button">Ikke nå</string>
 	<string name="firmware_update_positive_button">Oppdater</string>
 	<string name="firmware_update_prompt">Nye funksjoner legges til og feilrettinger brukes på fastvaren oppdateres. Vi anbefaler på det sterkeste at du utfører denne oppdateringen på Brother-maskinen.</string>
-	<string name="firmware_update_prompt_check"><u>Ta hurtig på [Update] (Oppdater) ovenfor, og ta deretter hurtig på [Check for Update] (Se etter oppdatering) i neste skjerm for å oppdatere fastvaren.</u></string>
+	<string name="firmware_update_prompt_check">Ta hurtig på [Update] (Oppdater) ovenfor, og ta deretter hurtig på [Check for Update] (Se etter oppdatering) i neste skjerm for å oppdatere fastvaren.</string>
 	<string name="firmware_update_prompt_faq">Se siden med vanlige spørsmål for å finne detaljer instruksjoner om hvordan fastvaren oppdateres.</string>
 	<string name="firmware_update_status_msg">Oppdater fastvaren på Brother-maskinen.  </string>
 	<string name="firmware_update_title">Fastevareoppdatering</string>

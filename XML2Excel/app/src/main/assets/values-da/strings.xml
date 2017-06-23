@@ -218,7 +218,7 @@ Du kan se status for din maskine, som f.eks. mængden af blæk/toner og fejlmedd
     <string name="firmware_update_status_msg">Opdater din Brother-maskines firmware..  </string>
     <string name="firmware_update_avaliable_status">Ny version tilgængelig </string>
     <string name="firmware_update_latest_version">Seneste version </string>
-    <string name="firmware_update_prompt_check"><u>For at opdatere firmwaren, tryk på [Opdater] oven for, og tryk derefter på [Søg efter opdateringer] på den næste skærm.</u></string>
+    <string name="firmware_update_prompt_check">For at opdatere firmwaren, tryk på [Opdater] oven for, og tryk derefter på [Søg efter opdateringer] på den næste skærm.</string>
     <string name="firmware_update_prompt_faq">Du kan finde flere oplysninger om at opdatere firmwaren på siden med ofte stillede spørgsmål.</string>
     <string name="firmware_update_prompt">Opdatering af firmwaren tilføjer nye funktioner og anvender fejlrettelser. Vi anbefaler, at du udfører denne opdatering på din Brother-maskine.</string>
     <string name="firmware_update_faq">Ofte stillede spørgsmål</string>

@@ -171,7 +171,7 @@
     <string name="firmware_update_negative_button">現在還不要</string>
     <string name="firmware_update_positive_button">更新</string>
     <string name="firmware_update_prompt">更新韌體以新增功能並套用錯誤修正。 我們強烈建議您在 Brother 機器上執行此更新。 </string>
-    <string name="firmware_update_prompt_check"><u>如要更新韌體，請輕觸上方的 [更新]，然後在下個畫面中輕觸 [檢查更新]。</u></string>
+    <string name="firmware_update_prompt_check">如要更新韌體，請輕觸上方的 [更新]，然後在下個畫面中輕觸 [檢查更新]。</string>
     <string name="firmware_update_prompt_faq">有關如何更新韌體的詳細說明，請參閱常見問題頁面。</string>
     <string name="firmware_update_status_msg">請更新您的 Brother 機器韌體。  </string>
     <string name="firmware_update_title">韌體更新</string>
@@ -195,4 +195,5 @@
     <string name="error_ssl_certificate_is_invalid_msg">此網站的安全性憑證有問題。您是否要繼續？</string>
     <string name="info_eula_title">使用者授權合約</string>
 
+    <u></u>
 </resources>

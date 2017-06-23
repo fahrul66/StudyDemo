@@ -9,8 +9,6 @@
     <string name="common_btn_print_preview">@string/v1_browser_btn_print_preview</string>
     <string name="common_title_print_setting">プリント設定</string>
     <string name="common_title_fax_setting">ファクス設定</string>
-<!--    <string name="common_print_title_preview_empty">プリントプレビュー 処理中&#8230;</string>
-    <string name="common_dlg_title_scanning">原稿を追加読み取りしています&#8230;</string>-->
     <string name="common_dlg_btn_ng_scanning">キャンセル</string>
     <string name="common_dlg_title_printing">印刷中&#8230;</string>
     <string name="common_dlg_msg_printing">処理中&#8230;</string>
@@ -21,11 +19,8 @@
     <string name="common_dlg_title_searching">検索中</string>
     <string name="common_dlg_msg_searching">@string/v1_generic_msg_printer_search_now</string>
     <string name="common_dlg_title_print_error">印刷エラー</string>
-    <!--<string name="common_dlg_msg_page_not_selected">ページが選択されていません</string>-->
-    <!--<string name="common_toast_msg_task_cancelled">処理が中断されました</string>-->
     <string name="common_ab_menu_toggle_panel">トグルパネル開閉</string>
     <string name="common_ab_menu_edit">編集</string>
-    <!--<string name="common_dlg_msg_nodevice_topselectplz">トップ画面で製品を選択してください。</string>-->
 
     <string name="func_name_print">プリント</string>
     <string name="func_name_copy">コピー\nプレビュー</string>
@@ -34,7 +29,6 @@
     <string name="func_name_fax_rx">みるだけ受信</string>
     <string name="func_name_scan">スキャン</string>
     <string name="func_name_setting">ステータス</string>
-<!--    <string name="func_name_status">ステータス</string>-->
 
     <string name="top_devname_nodevice">製品が未選択です</string>
     <string name="top_dlg_msg_do_you_select_device">このアプリケーションを使用するにはトップ画面で製品を選択する必要があります。</string>
@@ -44,17 +38,13 @@
     <string name="status_name_volume">インク残量</string>
     <string name="status_name_laser_life">トナー残量</string>
     <string name="status_name_ip">IPアドレス</string>
-<!--    <string name="status_name_network">ネットワーク</string>-->
     <string name="status_name_memory">ファクス 受信メモリ</string>
     <string name="status_name_memory_full">メモリがいっぱいです</string>
     <string name="status_name_machine_sn">シリアル番号</string>
     <string name="status_msg_no_data">データがありません</string>
-    <!--<string name="status_msg_no_msg"></string>-->
-    <!--<string name="status_iconstr_maru">●</string>-->
     <string name="status_name_firm_ver">ファームウエアバージョン</string>
     <string name="status_name_error">エラー</string>
     <string name="status_name_warning">注意</string>
-    <!--<string name="status_iconstr_sankaku">▲</string>-->
 	<string name="status_network_online">オンライン（利用できます）</string>
     <string name="status_network_offline">オフライン（利用できません）</string>
     <string name="status_name_status"></string>
@@ -62,35 +52,22 @@
     <string name="status_name_buy_cartridge">購入する</string>
     <string name="status_name_laser_cartridge_model">トナーカートリッジ型番</string>
 
-    <!--<string name="status_name_cyan">シアン</string>-->
-    <!--<string name="status_name_magenta">マゼンタ</string>-->
-    <!--<string name="status_name_yellow">イエロー</string>-->
-    <!--<string name="status_name_black">ブラック</string>-->
     <string name="status_name_unknown">不明</string>
 
     <string name="fax_subfunc">@string/func_name_fax</string>
     <string name="fax_rx_btn_print">@string/common_btn_print</string>
-    <!--<string name="fax_rx_btn_print_preview">@string/common_btn_print_preview</string>-->
     <string name="fax_rx_title_received_fax">@string/func_name_fax_rx</string>
     <string name="fax_rx_tab_date">受信日</string>
     <string name="fax_rx_tab_sender">送信者</string>
-    <!--<string name="fax_rx_unknown_field">(NO STRING)</string>-->
     <string name="fax_rx_title_print_preview">@string/common_btn_print_preview</string>
 	<string name="fax_rx_please_wait">@string/common_dlg_msg_processing</string>
-	<!--<string name="fax_rx_no_fax_found">FAXがありません</string>-->
 	<string name="fax_rx_task_cancelled">@string/common_toast_msg_task_cancelled</string>
-	<!--<string name="fax_rx_toast_saved">保存されました</string>-->
-	<!--<string name="fax_rx_share_as">共有</string>-->
 	<string name="fax_rx_url_supportcenter">http://support.brother.co.jp/j/d/b7fa/</string>
 
 
     <string name="faxtx_start_button">送信</string>
-    <!--<string name="faxtx_choose_fax_num">ファクス番号を選択してください</string>-->
-    <!--<string name="faxtx_btn_scan">@string/common_btn_scan</string>-->
     <string name="faxtx_dlg_title_scanning">@string/common_dlg_title_scanning</string>
     <string name="faxtx_dlg_btn_ng_scanning">@string/common_dlg_btn_ng_scanning</string>
-    <!--<string name="faxtx_tab_mobile">モバイル端末の電話帳</string>-->
-    <!--<string name="faxtx_tab_device">製品本体の電話帳</string>-->
     <string name="faxtx_address_in_device">製品本体の電話帳</string>
     <string name="faxtx_address_in_mobile">モバイル端末の電話帳</string>
     <string name="faxtx_back_key_title">プレビュー画像はまだ送信されていません</string>
@@ -611,7 +588,7 @@
     <string name="firmware_update_avaliable_status">アップデートを行ってください</string>
     <string name="firmware_update_latest_version">最新バージョンです</string>
     <string name="firmware_update_faq">>FAQ</string>
-    <string name="firmware_update_prompt_check"><u>上の [アップデートする]をタップし、次ページにて  [最新ファームウェアの確認] をタップすると、ファームウェアのアップデートが開始されます。</u></string>
+    <string name="firmware_update_prompt_check">上の [アップデートする]をタップし、次ページにて  [最新ファームウェアの確認] をタップすると、ファームウェアのアップデートが開始されます。</string>
     <string name="firmware_update_prompt">機能追加または不具合修正のため、常に最新版にアップデートしてご利用ください。</string>
     <string name="firmware_update_prompt_faq">ファームウェアのアップデート方法についての詳細は、FAQにて掲載しております。</string>
 

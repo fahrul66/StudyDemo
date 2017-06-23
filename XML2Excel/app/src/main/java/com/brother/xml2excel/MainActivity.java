@@ -1,5 +1,6 @@
 package com.brother.xml2excel;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -32,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
     File file = null;
     //key对应的value值
     String value = null;
-
     //所有的string文件
     String[] s = new String[]{"values/strings.xml", "values/strings_v1.xml",
             "values-da/strings.xml", "values-da/strings_v1.xml",
@@ -82,7 +82,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    /**
+     * button 点击事件
+     *
+     * @param v
+     */
     public void click(View v) {
+
+        final ProgressDialog p = new ProgressDialog(this);
+        p.setMessage("string.xml提取中...");
+        p.setCanceledOnTouchOutside(false);
+        p.show();
+
+        //开线程，处理
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -90,20 +102,36 @@ public class MainActivity extends AppCompatActivity {
                  * 循环遍历
                  */
                 for (int j = 0, k = 0; j < s.length; j++) {
-                    //跳过判断
-                    if (j % 2 != 0) {
-                        continue;
-                    }
+                    //清空
+                    if (list != null) {
 
+                        list.clear();
+                    }
                     //数组重建
                     list = new ArrayList<>();
                     //读取xml的值，并保存到list中
-                    readXML(s[j], null, true);
+                    readXML(s[0], null, true);
+                    //比较后面的语言
+                    if (j % 2 == 0) {
+                        continue;
+                    }
                     //遍历是否是引用的
                     for (int i = 0; i < list.size(); i++) {
                         String name = list.get(i).getName();
                         String key = list.get(i).getText();
-                        //一直查找遍历，直到找到
+                        //普通引用的替换
+                        if (key != null && (!key.startsWith("@string"))) {
+                            //自己就不用进行替换了，一次读取时已经替换成功。
+                            if (j != 1) {
+                                //v1的新文件
+                                String fileDir = s[j - 1];
+                                //获取value值
+                                value = readXML(fileDir, name, false);
+                                //替换
+                                list.set(i, new StringDemo(name, value));
+                            }
+                        }
+                        //一直查找遍历，直到找到。多次引用判断
                         while (key != null && key.startsWith("@")) {
                             //有@的话，去空格，防止干扰
                             String keyTrim = key.trim();
@@ -113,13 +141,21 @@ public class MainActivity extends AppCompatActivity {
                             String fileDir = null;
                             if (keyA[1].startsWith("v1")) {
                                 //查询旧文件
-                                fileDir = s[j + 1];
-                            } else {
-                                //查询当前文件
                                 fileDir = s[j];
+                                //获取value值
+                                value = readXML(fileDir, keyA[1], false);
+                            } else {
+                                //查询当前共同strings文件,1.会出现v1,再次循环  ok
+                                fileDir = s[0];
+                                value = readXML(fileDir, keyA[1], false);
+                                if (j != 1 && (!value.startsWith("@string/v1"))) {
+                                    //2.出现引用本地,不跳转到v1去，只有本地拥有此key ok
+                                    //3.出现引用本地，不跳转到v1去，但是其他文件也有此key值
+                                    value = null;
+                                }
                             }
-                            //获取value值
-                            value = readXML(fileDir/*s[j + 1]*/, keyA[1], false);
+//                            //获取value值
+//                            value = readXML(fileDir, keyA[1], false);
                             //将返回的text复制为key，key判断是否为@引用
                             //替换
                             list.set(i, new StringDemo(name, value));
@@ -127,14 +163,33 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                     //生成不同的文件名
-                    file = new File(Environment.getExternalStorageDirectory().getPath() + File.separator + sDir[k] + ".xls");
-                    k++;
+//                    file = new File(Environment.getExternalStorageDirectory().getPath() + File.separator + sDir[k] + ".xls");
+                    file = new File(Environment.getExternalStorageDirectory().getPath() + File.separator + "IPS_strings_v1抽取.xls");
                     //将数据保存到excel中
-                    write2Excel();
+                    if (!file.exists()) {
+                        //创建文件
+                        write2Excel();
+                    } else {
+                        //添加数据
+                        addData(k);
+                        k++;
+                    }
                 }
+                //取消
+                runOnUiThread(new Runnable() {
+                                  @Override
+                                  public void run() {
+                                      p.dismiss();
+                                  }
+                              }
+                );
+
             }
 
-        }).start();
+        }
+
+        ).start();
+
     }
 
     /**
@@ -148,9 +203,9 @@ public class MainActivity extends AppCompatActivity {
             //循环遍历
             for (int i = 0; i < list.size(); i++) {
 
-                Label l = new Label(0, i + 1, list.get(i).getName());
+                Label l = new Label(0, i, list.get(i).getName());
                 sheet.addCell(l);
-                Label ll = new Label(1, i + 1, list.get(i).getText());
+                Label ll = new Label(1, i, list.get(i).getText());
                 sheet.addCell(ll);
             }
             book.write();
@@ -163,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * 添加数据
      *
-     * @param page
+     * @param page 第几个sheet,0
      * @param x    列
      * @param y    行
      * @param data
@@ -186,6 +241,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * @param index 第几列
+     *              添加数据
+     */
+    public void addData(int index) {
+        try {
+            //Excel获得文件
+            Workbook wb = Workbook.getWorkbook(file);
+            //打开一个文件的副本，并且指定数据写回到原文件
+            book = Workbook.createWorkbook(file, wb);
+            WritableSheet sheet = book.getSheet(0);
+
+            //循环遍历
+            for (int i = 0; i < list.size(); i++) {
+                Label ll = new Label(2 + index, i, list.get(i).getText());
+                sheet.addCell(ll);
+            }
+            // 写入数据并关闭文件
+            book.write();
+            book.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 读取数据并保存
      *
      * @param fileName 读取解析的文件名
@@ -197,6 +277,10 @@ public class MainActivity extends AppCompatActivity {
         try {
             XmlPullParserFactory xpf = XmlPullParserFactory.newInstance();
             XmlPullParser parser = xpf.newPullParser();
+            //判断file是否为空
+            if (fileName == null) {
+                return null;
+            }
             parser.setInput(getAssets().open(fileName), "UTF-8");
             //获取事件类型
             int eventType = parser.getEventType();
@@ -215,6 +299,7 @@ public class MainActivity extends AppCompatActivity {
 
                             sd.setName(name);
                             sd.setText(text);
+
                             if (flag) {
                                 //添加到集合中
                                 list.add(sd);
@@ -231,6 +316,8 @@ public class MainActivity extends AppCompatActivity {
 
                 eventType = parser.next();
             }
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }

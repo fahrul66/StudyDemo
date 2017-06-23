@@ -171,7 +171,7 @@
     <string name="firmware_update_negative_button">取消</string>
     <string name="firmware_update_positive_button">更新</string>
     <string name="firmware_update_prompt">更新固件可添加新功能并进行错误修复。 我们强烈建议您对 Brother 设备执行该更新。 </string>
-    <string name="firmware_update_prompt_check"><u>要更新固件，请点击上方的 [更新]，然后点击下一个屏幕中的 [检查更新]。</u></string>
+    <string name="firmware_update_prompt_check">要更新固件，请点击上方的 [更新]，然后点击下一个屏幕中的 [检查更新]。</string>
     <string name="firmware_update_prompt_faq">请参阅常见问题解答页面，了解如何更新固件的相关说明。</string>
     <string name="firmware_update_status_msg">请更新 Brother 设备的固件。  </string>
     <string name="firmware_update_title">固件更新</string>

@@ -202,7 +202,7 @@
     <string name="firmware_update_title">Firmware-Aktualisierung</string>
     <string name="firmware_update_status_msg">Bitte aktualisieren Sie die Firmware Ihrer Brother-Maschine.  </string>
     <string name="firmware_update_prompt_faq">Ausführliche Anweisungen zum Aktualisieren der Firmware finden Sie auf der FAQ-Seite (Häufig gestellte Fragen).</string>
-    <string name="firmware_update_prompt_check"><u>Zum Aktualisieren der Firmware tippen Sie oben auf [Update] (Aktualisieren), anschließend tippen Sie im nächsten Fenster auf [Check for Update] (Auf Update prüfen).</u></string>
+    <string name="firmware_update_prompt_check">Zum Aktualisieren der Firmware tippen Sie oben auf [Update] (Aktualisieren), anschließend tippen Sie im nächsten Fenster auf [Check for Update] (Auf Update prüfen).</string>
     <string name="firmware_update_prompt">Durch das Aktualisieren der Firmware werden neue Funktionen hinzugefügt und Problembehebungen installiert. Wir empfehlen Ihnen, dieses Update auf Ihrer Brother-Maschine zu installieren.</string>
     <string name="firmware_update_positive_button">Update</string>
     <string name="firmware_update_negative_button">Nicht jetzt</string>

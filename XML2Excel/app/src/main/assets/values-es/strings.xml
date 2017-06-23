@@ -206,7 +206,7 @@
     <string name="firmware_update_negative_button">Ahora no</string>
     <string name="firmware_update_positive_button">Actualizar</string>
     <string name="firmware_update_prompt">Al actualizar el firmware, se agregan nuevas características y se aplican las correcciones de errores. Recomendamos enfáticamente que lleve a cabo esta actualización en su dispositivo Brother. </string>
-    <string name="firmware_update_prompt_check"><u>Para actualizar el firmware, pulse [Actualizar] arriba y, luego, pulse [Comprobar actualización] en la pantalla siguiente.</u></string>
+    <string name="firmware_update_prompt_check">Para actualizar el firmware, pulse [Actualizar] arriba y, luego, pulse [Comprobar actualización] en la pantalla siguiente.</string>
     <string name="firmware_update_prompt_faq">Consulte la página de Preguntas más frecuentes para obtener instrucciones detalladas para la actualización del firmware.</string>
     <string name="firmware_update_status_msg">Actualice el firmware de su dispositivo Brother.  </string>
     <string name="firmware_update_title">Actualización de firmware</string>
