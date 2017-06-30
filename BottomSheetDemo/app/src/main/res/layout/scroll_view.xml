@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FBAAAA"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="100dp"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bottom Sheet的类型有两种类型的Bottom Sheet：1.Persistent bottom sheet :- 通常用于显示主界面之外的额外信息，它是主界面的一部分，只不过默认被隐藏了，其深度（elevation）跟主界面处于同一级别；还有一个重要特点是在Persistent bottom sheet打开的时候，主界面仍然是可以操作的。ps：Persistent bottom sheet该如何翻译呢？我觉得翻译为普通bottom sheet就好了，还看到有人翻译为“常驻bottom sheet”，可能更接近于英语的字面意思，可是反而不易理解。"
+            android:lineSpacingExtra="2dp"
+            android:textColor="@android:color/white" />
+        <ImageView
+            android:src="@drawable/cs4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"/>
+        <ImageView
+            android:src="@drawable/cs7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"/>
+        <ImageView
+            android:src="@drawable/cs6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"/>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
